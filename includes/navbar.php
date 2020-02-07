@@ -10,9 +10,12 @@
 	<div class="collapse navbar-collapse" id="navbarSupportedContent">
 		<ul class="navbar-nav mr-auto">
 			<li class="nav-item active"><a class="nav-link" href="#">Home</a></li>
-			<li class="nav-item"><a class="nav-link" href="#">Link</a></li>
+			<li class="nav-item"><a class="nav-link" href="#">Search</a></li>
+			<li class="nav-item"><a class="nav-link" href="#">About Us</a></li>
 		</ul>
+		<form action="user/login.php">
 		<button class="btn btn-outline-light my-2 my-sm-0" type="submit">Sign
 			in</button>
+		</form>
 	</div>
 </nav>
