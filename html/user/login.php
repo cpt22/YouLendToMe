@@ -6,6 +6,7 @@
 <title>You Lend To Me</title>
 </head>
 <body>
+<!-- HI -->
 	<?php require_once('../../includes/navbar.php'); ?>
 	<div class="container">
 		<div class="row justify-content-center">
