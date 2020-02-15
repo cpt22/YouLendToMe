@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <?php require_once('../../includes/header.php'); ?>
-<link href="http://localhost/styles/loginregister.css" rel="stylesheet">
+<link href="../styles/loginregister.css" rel="stylesheet">
 <title>You Lend To Me</title>
 </head>
 <body>

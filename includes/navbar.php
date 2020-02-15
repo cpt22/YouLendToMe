@@ -13,7 +13,7 @@
 			<li class="nav-item"><a class="nav-link" href="#">Search</a></li>
 			<li class="nav-item"><a class="nav-link" href="#">About Us</a></li>
 		</ul>
-		<form action="http://localhost/user/login.php">
+		<form action="./user/login.php">
 		<button class="btn btn-outline-light my-2 my-sm-0" type="submit">Sign
 			in</button>
 		</form>
