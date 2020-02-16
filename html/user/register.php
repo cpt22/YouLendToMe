@@ -1,12 +1,12 @@
 <!doctype html>
 <html lang="en">
 <head>
-<?php require_once('../../includes/header.php'); ?>
+<?php require_once '../../includes/header.php'; ?>
 <link href="../styles/loginregister.css" rel="stylesheet">
 <title>You Lend To Me</title>
 </head>
 <body>
-	<?php require_once('../../includes/navbar.php'); ?>
+	<?php require_once '../../includes/navbar.php'; ?>
 	<div class="container">
 		<form class="" action="" method="post">
 			<div class="row justify-content-center">
@@ -29,18 +29,23 @@
 							<div class="form-signin">
 								<div class="form-label-group">
 									<input type="text" id="inputFirstName" class="form-control"
-										placeholder="First name" name="firstName" required autofocus>
+										placeholder="First name" name="first-name" required autofocus>
 									<label for="inputFirstName">First name</label>
 								</div>
 								<div class="form-label-group">
 									<input type="text" id="inputLastName" class="form-control"
-										placeholder="Last name" name="lastName" required> <label
+										placeholder="Last name" name="last-name" required> <label
 										for="inputLastName">Last name</label>
 								</div>
 								<div class="form-label-group">
 									<input type="email" id="inputEmail" class="form-control"
 										placeholder="Email address" name="email" required> <label
 										for="inputEmail">Email address</label>
+								</div>
+								<div class="form-label-group">
+									<input type="text" id="inputUsername" class="form-control"
+										placeholder="Username" name="username" required> <label
+										for="inputUsername">Username</label>
 								</div>
 								<div class="form-label-group">
 									<input type="password" id="inputPassword" class="form-control"
@@ -50,7 +55,7 @@
 								<div class="form-label-group">
 									<input type="password" id="inputConfirmPassword"
 										class="form-control" placeholder="Confirm Password"
-										name="confirmPassword" required> <label
+										name="confirm-password" required> <label
 										for="inputConfirmPassword">Confirm Password</label>
 								</div>
 							</div>
@@ -59,18 +64,23 @@
 							<div class="form-signin">
 								<div class="form-label-group">
 									<input type="text" id="inputAddress1" class="form-control"
-										placeholder="Address line 1" name="address1" required> <label
+										placeholder="Address line 1" name="address-1" required> <label
 										for="inputAddress1">Address line 1</label>
 								</div>
 								<div class="form-label-group">
 									<input type="text" id="inputAddress2" class="form-control"
-										placeholder="Address line 2" name="address2" required> <label
+										placeholder="Address line 2" name="address-2" required> <label
 										for="inputAddress2">Address line 2</label>
 								</div>
 								<div class="form-label-group">
 									<input type="text" id="inputCity" class="form-control"
 										placeholder="City" name="city" required> <label
 										for="inputCity">City</label>
+								</div>
+								<div class="form-label-group">
+									<input type="text" id="inputState" class="form-control"
+										placeholder="State" name="state" required> <label
+										for="inputState">State</label>
 								</div>
 								<!-- STATE CODE HERE -->
 								<div class="form-label-group">
@@ -90,6 +100,6 @@
 			</div>
 		</form>
 	</div>
-	<?php require_once('../../includes/footer.php'); ?>
+	<?php require_once '../../includes/footer.php'; ?>
 </body>
 </html>

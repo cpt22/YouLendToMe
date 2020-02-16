@@ -1,4 +1,4 @@
 <?php
 //Begin user session
-session_status();
+session_start();
 ?>
