@@ -1,3 +1,5 @@
+<?php require_once '../../includes/registerUser.php' ?>
+<?php require_once '../../includes/USStates.php' ?>
 <!doctype html>
 <html lang="en">
 <head>
@@ -63,13 +65,18 @@
 						<div class="col-9 col-sm-6">
 							<div class="form-signin">
 								<div class="form-label-group">
+									<input type="text" id="inputPhone" class="form-control"
+										placeholder="Phone Number" name="phone" required> <label
+										for="inputPhone">Phone Number</label>
+								</div>
+								<div class="form-label-group">
 									<input type="text" id="inputAddress1" class="form-control"
 										placeholder="Address line 1" name="address-1" required> <label
 										for="inputAddress1">Address line 1</label>
 								</div>
 								<div class="form-label-group">
 									<input type="text" id="inputAddress2" class="form-control"
-										placeholder="Address line 2" name="address-2" required> <label
+										placeholder="Address line 2" name="address-2"> <label
 										for="inputAddress2">Address line 2</label>
 								</div>
 								<div class="form-label-group">
@@ -78,9 +85,16 @@
 										for="inputCity">City</label>
 								</div>
 								<div class="form-label-group">
-									<input type="text" id="inputState" class="form-control"
-										placeholder="State" name="state" required> <label
-										for="inputState">State</label>
+									<select id="inputState" class="form-control form-control-lg" name="state"
+										required>
+										<option>State</option>
+										<?php 
+										global $USStates;
+										foreach ($USStates as $thisState) {
+										    echo '<option value="' . $thisState . '">' . $thisState . '</option>';
+										}
+										?>
+									</select>
 								</div>
 								<!-- STATE CODE HERE -->
 								<div class="form-label-group">
@@ -94,7 +108,8 @@
 							<label> <input type="checkbox" value="remember-me"> Remember me
 							</label>
 						</div>
-						<button class="btn btn-lg btn-primary btn-block" type="submit">Sign up</button>
+						<button class="btn btn-lg btn-primary btn-block" type="submit">Sign
+							up</button>
 					</div>
 				</div>
 			</div>

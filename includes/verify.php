@@ -9,6 +9,12 @@ function cleanData($data) {
     return $data;
 }
 
+function cleanPhone($data) {
+    $data = cleanData($data);
+    $data = preg_replace("/[^0-9]+/", "", $data);
+    return $data;
+}
+
 function cleanAlphabetical($data) {
     $data = cleanData($data);
     $data = preg_replace("/[^a-zA-Z]+/", "", $data);
@@ -45,16 +51,28 @@ function verifyEmail($email) {
     return filter_var($email, FILTER_VALIDATE_EMAIL);
 }
 
+function verifyUsername($username) {
+    return preg_match("/^[a-zA-Z0-9]*$/", $username);
+}
+
+function verifyPhone($phone) {
+    /*
+     * ADD MORE LOGIC TO VERIFY PHONES HERE
+     */
+    return preg_match("/^[0-9]*$/", $phone);
+}
+
 function verifyAddress($addr) {
-    return preg_match("/^[a-zA-Z0-9. ]*$/",$name);
+    return preg_match("/^[a-zA-Z0-9. ]*$/", $addr);
 }
 
 function verifyState($state) {
+    global $USStates;
     return in_array($state, $USStates);
 }
 
 function verifyZipcode($zip) {
-    return (preg_match("/^[0-9]*$/",zip) && strlen($zip) == 5);
+    return (preg_match("/^[0-9]*$/", $zip) && strlen($zip) == 5);
 }
 
 
@@ -77,8 +95,16 @@ function checkRecordNotExists($tblName, $attrName, $value) {
  * @return boolean
  */
 function checkRecordExists($tblName, $attrName, $value) {
-    /*
-     * logic
-     */
+    global $con;
+    $sql = "SELECT ID FROM users WHERE " . $attrName . "=?;";
+    $stmt = $con->prepare($sql);
+    $stmt->bind_param("s", $value);
+    $stmt->execute();
+    $result = $stmt->get_result(); // get the mysqli result
+    
+    if ($result->num_rows > 0) {
+        return true;
+    }
+    return false;
 }
 ?>
