@@ -174,10 +174,14 @@ if ($_SERVER['method']="post") {
         
     }
     
-    
+    /*
+     * If errors arr is empty, register the user
+     * Otherwise, return errors to the registration page
+     */
     if (empty($errors)) {
         doRegistration($firstName, $lastName, $email, $username, $password, $phone, $address1, $address2, $city, $state, $zipcode, $rememberMe);
     } else {
+        // For now just dump errors but in the future they will be handled
         var_dump($errors);
     }
 }
@@ -199,14 +203,16 @@ if ($_SERVER['method']="post") {
  */
 function doRegistration($firstName, $lastName, $email, $username, $password, $phone, $address1, $address2, $city, $state, $zipcode, $rememberMe) {
     $password = password_hash($password, PASSWORD_DEFAULT);
-    
     global $con;
+    
+    // Insert new user
     $sql = "INSERT INTO users (first_name, last_name, email, username, password, phone_number) VALUES (?, ?, ?, ?, ? ,?)";
     $stmt = $con->prepare($sql);
     $stmt->bind_param("ssssss", $firstName, $lastName, $email, $username, $password, $phone);
     $stmt->execute();
     $stmt->close();
     
+    // Get ID of the user just created
     $stmt = $con->prepare("SELECT ID FROM users WHERE email=?;");
     $stmt->bind_param("s", $email);
     $stmt->execute();
@@ -214,6 +220,7 @@ function doRegistration($firstName, $lastName, $email, $username, $password, $ph
     $result = $result->fetch_assoc();
     $stmt->close();
     
+    // Add user's primary address
     $userID = $result['ID'];
     $stmt = $con->prepare("INSERT INTO addresses (line1, line2, city, state, zipcode, user_ID) VALUES (?, ?, ?, ?, ?, ?)");
     $stmt->bind_param("ssssii", $address1, $address2, $city, $state, $zipcode, $userID);
