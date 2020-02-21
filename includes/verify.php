@@ -15,7 +15,7 @@ function cleanPhone($data) {
     return $data;
 }
 
-function cleanAlphabetical($data) {
+/*function cleanAlphabetical($data) {
     $data = cleanData($data);
     $data = preg_replace("/[^a-zA-Z]+/", "", $data);
     return $data;
@@ -31,7 +31,7 @@ function cleanAlphanumeric($data) {
     $data = cleanData($data);
     $data = preg_replace("/[^a-zA-Z0-9]+/", "", $data);
     return $data;
-}
+}*/
 
 /**
  * Verifies validity of name
@@ -39,7 +39,7 @@ function cleanAlphanumeric($data) {
  * @return true if valid name
  */
 function verifyName($name) {
-    return preg_match("/^[a-zA-Z ]*$/",$name);
+    return preg_match("/^[a-zA-Z.\-' ]*$/",$name);
 }
 
 /**
