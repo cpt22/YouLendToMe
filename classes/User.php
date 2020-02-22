@@ -3,5 +3,6 @@ namespace classes;
 
 class User
 {
+    hi
 }
 
