@@ -64,7 +64,7 @@ function verifyPhone($phone) {
 }
 
 function verifyAddress($addr) {
-    return preg_match("/^[a-zA-Z0-9. ]*$/", $addr);
+    return preg_match("/^[a-zA-Z0-9.# ]*$/", $addr);
 }
 
 function verifyState($state) {
@@ -102,7 +102,7 @@ function checkRecordExists($tblName, $attrName, $value) {
     $stmt->bind_param("s", $value);
     $stmt->execute();
     $result = $stmt->get_result(); // get the mysqli result
-    
+
     if ($result->num_rows > 0) {
         return true;
     }
