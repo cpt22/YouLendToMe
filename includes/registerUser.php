@@ -5,7 +5,7 @@ require_once 'verify.php';
 $firstName = $lastName = $email = $username = $password = $confirmPW = $phone = $address1 = $address2 = $city = $state = $zipcode = $rememberMe = "";
 $errors = array();
 
-if ($_SERVER['method'] = "post") {
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     /*
      * Verify first and last names
      */
@@ -49,8 +49,12 @@ if ($_SERVER['method'] = "post") {
     if (! empty($_POST['username'])) {
         $username = cleanData($_POST['username']);
         if (verifyUsername($username)) {
-            if (checkRecordNotExists('users', 'username', $username)) {} else {
-                $errors['username'] = "This username is already taken!";
+            if (strlen($username) >= 2 && strlen($username) <= 15) {
+                if (checkRecordNotExists('users', 'username', $username)) {} else {
+                    $errors['username'] = "This username is already taken!";
+                }
+            } else {
+                $errors['username'] = "Username must be between 2 and 15 characters long";
             }
         } else {
             $errors['username'] = "Please enter a valid username";
@@ -204,6 +208,8 @@ function doRegistration($firstName, $lastName, $email, $username, $password, $ph
     $stmt->bind_param("ssssii", $address1, $address2, $city, $state, $zipcode, $userID);
     $stmt->execute();
     $stmt->close();
+    
+    initializeSessionUUID($result['ID']);
 }
 
 ?>
