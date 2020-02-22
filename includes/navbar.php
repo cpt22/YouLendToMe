@@ -13,9 +13,16 @@
 			<li class="nav-item"><a class="nav-link" href="#">Search</a></li>
 			<li class="nav-item"><a class="nav-link" href="#">About Us</a></li>
 		</ul>
-		<form action="./user/login.php">
-		<button class="btn btn-outline-light my-2 my-sm-0" type="submit">Sign
-			in</button>
+		
+		<?php 
+		if (isset($user)) {
+		  echo '<form action="./user/account.php"><button class="btn btn-outline-light my-2 my-sm-0" type="submit">Your Account</button>';
+		} else {
+		    echo '<form action="./user/login.php"><button class="btn btn-outline-light my-2 my-sm-0" type="submit">Sign
+			in</button>';
+		}
+
+		?>
 		</form>
 	</div>
 </nav>

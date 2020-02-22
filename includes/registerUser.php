@@ -1,6 +1,7 @@
 <?php
-require_once 'session.php';
-require_once 'verify.php';
+define('__ROOT__', dirname(dirname(__FILE__))); 
+require_once __ROOT__ . '/includes/session.php';
+require_once __ROOT__ . '/includes/verify.php';
 
 $firstName = $lastName = $email = $username = $password = $confirmPW = $phone = $address1 = $address2 = $city = $state = $zipcode = $rememberMe = "";
 $errors = array();
@@ -209,7 +210,7 @@ function doRegistration($firstName, $lastName, $email, $username, $password, $ph
     $stmt->execute();
     $stmt->close();
     
-    initializeSessionUUID($result['ID']);
+    initializeSession($username);
 }
 
 ?>
