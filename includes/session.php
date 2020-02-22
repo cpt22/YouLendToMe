@@ -37,6 +37,14 @@ function initializeSession($username) {
         }
     }
     
-    header("Location: account.php");
+    header("Location: index.php");
+}
+
+/**
+ * Returns if user is logged in or not
+ * @return boolean
+ */
+function isUserLoggedIn() {
+    return isset($_SESSION['username']) && isset($_SESSION['userID']);
 }
 ?>

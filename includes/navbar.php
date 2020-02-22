@@ -16,7 +16,7 @@
 		
 		<?php 
 		if (isset($user)) {
-		  echo '<form action="./user/account.php"><button class="btn btn-outline-light my-2 my-sm-0" type="submit">Your Account</button>';
+		  echo '<form action="./user/logout.php"><button class="btn btn-outline-danger my-2 my-sm-0" type="submit">Logout</button>';
 		} else {
 		    echo '<form action="./user/login.php"><button class="btn btn-outline-light my-2 my-sm-0" type="submit">Sign
 			in</button>';
