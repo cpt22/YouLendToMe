@@ -1,6 +1,7 @@
 <?php
-require_once 'connect.php';
-require_once 'USStates.php';
+define('__ROOT__', dirname(dirname(__FILE__)));
+require_once __ROOT__ . '/includes/connect.php';
+require_once __ROOT__ . '/includes/USStates.php';
 
 function cleanData($data) {
     $data = trim($data);

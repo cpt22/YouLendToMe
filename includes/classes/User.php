@@ -1,7 +1,8 @@
 <?php
-require_once '../connect.php';
-require_once 'Card.php';
-require_once 'Address.php';
+define('__ROOT__', dirname(dirname(dirname(__FILE__))));
+require_once __ROOT__ . '/includes/connect.php';
+require_once __ROOT__ . '/includes/classes/Card.php';
+require_once  __ROOT__ . '/includes/classes/Address.php';
 
 class User {
     private $username;

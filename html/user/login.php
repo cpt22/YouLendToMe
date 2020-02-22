@@ -1,12 +1,14 @@
+<?php define('__ROOT__', dirname(dirname(dirname(__FILE__))));
+?>
 <!doctype html>
 <html lang="en">
 <head>
-<?php require_once '../../includes/header.php'; ?>
+<?php require_once __ROOT__ . '/includes/header.php'; ?>
 <link href="../styles/loginregister.css" rel="stylesheet">
 <title>You Lend To Me</title>
 </head>
 <body>
-	<?php require_once '../../includes/navbar.php'; ?>
+	<?php require_once __ROOT__ . '/includes/navbar.php'; ?>
 	<div class="container">
 		<div class="row justify-content-center">
 			<div class="col-4">
@@ -42,6 +44,6 @@
 			</div>
 		</div>
 	</div>
-	<?php require_once '../../includes/footer.php'; ?>
+	<?php require_once __ROOT__ . '/includes/footer.php'; ?>
 </body>
 </html>
