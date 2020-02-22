@@ -11,11 +11,18 @@
 <body>
 	<?php require_once '../includes/navbar.php'; ?>
 
+            <div class="jumbotron jumbotron-fluid">
+            <div class="container">
+              <h1 class="display-12">New Item Listing</h1>
+              <p class="lead">Fill out the form below, upload images, and click submit to create a new item listing.</p>
+            </div>
+            </div>
 
   <div class="container">
     <div class="row">
       <div class="col-9 col-sm-6">
         <div class="form-signin">
+
 
           <div class="col">
             <form class="" action="" method="post">
@@ -60,16 +67,10 @@
               <input type="text" class="form-control" id="location" placeholder="Zip Code"required>
           </div>
 
-
+          <button type="submitButton" class="btn btn-primary btn-lg">Submit</button>
 
         </form>
       </div>
-<!--
-    <div class="col"></div>
-    <div class="w-100"></div>
-    <div class="col"></div>
-    <div class="col"></div>
--->
 
       </div>
     </div>
