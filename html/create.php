@@ -14,66 +14,69 @@
 
   <div class="container">
     <div class="row">
-      <!-- first col-->
-      <div class="col">
-        <form class="" action="" method="post">
-          <div class="form-group">
-            <label for="ItemTitle">Item Name</label>
-              <input type="text" class="form-control" id="ItemTitle" placeholder="Item Name"required autofocus>
-          </div>
-          <div class="form-group">
-        <label for="ItemDescription">Description</label>
-          <textarea class="form-control" id="ItemDescription"placeholder="Item Description here" rows="5"required></textarea>
-          </div>
+      <div class="col-9 col-sm-6">
+        <div class="form-signin">
 
-          <div class="form-label-group">
-            <input type="text" id="dailyRate" class="form-control"
-              placeholder="Daily Rate (in dollars per day)" name="Daily Rate" required>
-            <label for="dailyRate">Daily Rate</label>
-          </div>
-          <div class="form-group">
-             <input type="text" class="form-control" id="StartDate" placeholder="Start Date (MM/DD/XXXX)"required>
+          <div class="col">
+            <form class="" action="" method="post">
+              <div class="form-group">
+                <label for="itemTitle">Item Name</label>
+                <input type="text" class="form-control" id="itemTitle" placeholder="Item Name"required autofocus>
           </div>
 
           <div class="form-group">
-              <input type="text" class="form-control" id="EndDate" placeholder="End Date (MM/DD/XXXX)"required>
+            <label for="itemDescription">Description</label>
+            <textarea  class="form-control" id="itemDescription"placeholder="Item Description here" rows="5"required></textarea>
+          </div>
+
+          <div>
+            <small id="dailyRateHelpBlock" class="form-text text-muted">
+            enter dollar amount using numerical values.
+            </small>
+            <input type="text" id="dailyRate" class="form-control" aria-describedby="dailyRateHelpBlock"placeholder="Daily Rate (dollars per day)"required>
+          </div>
+
+          <div>&nbsp</div>
+
+          <div class="form-group">
+            <small id="startDateHelpBlock" class="form-text text-muted">
+            start date
+            </small>
+             <input type="text" class="form-control" id="startDate" placeholder="Start Date (MM/DD/XXXX)"required>
           </div>
 
           <div class="form-group">
-              <input type="text" class="form-control" id="Location" placeholder="Zip Code"required>
+            <small id="endDateHelpBlock" class="form-text text-muted">
+            end date
+            </small>
+            <input type="text" class="form-control" id="endDate" placeholder="End Date (MM/DD/XXXX)"required>
           </div>
 
+          <div class="form-group">
+              <small id="locationHelpBlock" class="form-text text-muted">
+              zip code
+              </small>
+
+              <input type="text" class="form-control" id="location" placeholder="Zip Code"required>
+          </div>
 
 
 
         </form>
       </div>
-
-
-      <div class="col"></div>
-
-      <form>
-
-
-      </form>
-
-
-      <div class="w-100">
-
-      </div>
-
-      <div class="col">
-
-
-      </div>
-
-      <div class="col">
-
+<!--
+    <div class="col"></div>
+    <div class="w-100"></div>
+    <div class="col"></div>
+    <div class="col"></div>
+-->
 
       </div>
     </div>
   </div>
 
+
+</div>
 
 
 
