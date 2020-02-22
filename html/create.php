@@ -14,10 +14,9 @@
 
   <div class="container">
     <div class="row">
-
       <!-- first col-->
       <div class="col">
-        <form>
+        <form class="" action="" method="post">
           <div class="form-group">
             <label for="ItemTitle">Item Name</label>
               <input type="text" class="form-control" id="ItemTitle" placeholder="Item Name"required autofocus>
@@ -27,8 +26,10 @@
           <textarea class="form-control" id="ItemDescription"placeholder="Item Description here" rows="5"required></textarea>
           </div>
 
-          <div class="form-group">
-              <input type="text" class="form-control" id="DailyRate" placeholder="Daily Rate (in dollars per day)"required>
+          <div class="form-label-group">
+            <input type="text" id="dailyRate" class="form-control"
+              placeholder="Daily Rate (in dollars per day)" name="Daily Rate" required>
+            <label for="dailyRate">Daily Rate</label>
           </div>
           <div class="form-group">
              <input type="text" class="form-control" id="StartDate" placeholder="Start Date (MM/DD/XXXX)"required>
