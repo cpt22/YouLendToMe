@@ -1,16 +1,19 @@
-<?php require_once '../../includes/registerUser.php' ?>
-<?php require_once '../../includes/USStates.php' ?>
+<?php 
+define('__ROOT__', dirname(dirname(dirname(__FILE__))));
+require_once __ROOT__ . '/includes/registerUser.php';
+require_once __ROOT__ . '/includes/USStates.php';
+?>
 <!doctype html>
 <html lang="en">
 <head>
-<?php require_once '../../includes/header.php'; ?>
+<?php require_once __ROOT__ . '/includes/header.php'; ?>
 <link href="../styles/loginregister.css" rel="stylesheet">
 <title>You Lend To Me</title>
 <script src="https://code.jquery.com/jquery-3.4.1.js" integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script>
 <script type="text/javascript" src="../js/register.js"></script>
 </head>
 <body>
-	<?php require_once '../../includes/navbar.php'; ?>
+	<?php require_once __ROOT__ . '/includes/navbar.php'; ?>
 	<div class="container">
 		<form class="" action="" method="post">
 			<div class="row justify-content-center">
@@ -129,6 +132,6 @@
 			</div>
 		</form>
 	</div>
-	<?php require_once '../../includes/footer.php'; ?>
+	<?php require_once __ROOT__ . '/includes/footer.php'; ?>
 </body>
 </html>
