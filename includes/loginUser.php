@@ -4,7 +4,21 @@ require_once __ROOT__ . '/includes/session.php';
 require_once __ROOT__ . '/includes/verify.php';
 
 $username = $password = $rememberMe = "";
+$path = $redirectURL = "";
+
 $errors = array();
+
+if (isset($_GET['ret'])) {
+    $path = cleanData($_GET['ret']);
+    if (isset($_GET['item'])) {
+        $item = cleanData($_GET['item']);
+        $path = getRet($path, $item);
+    } else {
+        $path = getRet($path);
+    }
+    
+    $redirectURL = "http://localhost/" . $path;
+}
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if (isset($_POST['username'])) {
@@ -34,7 +48,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
 function doLogin($username, $password, $rememberMe)
 {
-    global $con;
+    global $con, $redirectURL;
     $sql = "SELECT username,password FROM users WHERE username=?";
     $stmt = $con->prepare($sql);
     $stmt->bind_param("s", $username);
@@ -49,7 +63,7 @@ function doLogin($username, $password, $rememberMe)
         $passwordHash = $result['password'];
                
         if (password_verify($password, $passwordHash)) {
-            initializeSession($username);
+            initializeSession($username, $redirectURL);
         } else {
             echo "USER NOT FOUND";
         }

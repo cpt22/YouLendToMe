@@ -21,7 +21,7 @@ if (isset($_SESSION['username']) && isset($_SESSION['userID'])) {
  * Initializes the session with variables from the database
  * @param Int $userID
  */
-function initializeSession($username) {
+function initializeSession($username, $url) {
     global $con;
     
     $sql = "SELECT * FROM users WHERE username='$username'";
@@ -37,7 +37,11 @@ function initializeSession($username) {
         }
     }
     
-    header("Location: index.php");
+    header("Location: " . $url);
+}
+
+function initializeSession($username) {
+    intializeSession($username, "index.php");
 }
 
 /**

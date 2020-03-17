@@ -1,5 +1,6 @@
-<?php 
+<?php
 define('__ROOT__', dirname(dirname(dirname(__FILE__))));
+require_once __ROOT__ . '/includes/retPath.php';
 require_once __ROOT__ . '/includes/loginUser.php';
 
 if (isUserLoggedIn()) {
@@ -38,14 +39,15 @@ if (isUserLoggedIn()) {
 					</div>
 					<div class="form-label-group">
 						<input type="password" id="inputPassword" class="form-control"
-							placeholder="Password" name="password" required> 
-						<label for="inputPassword">Password</label>
+							placeholder="Password" name="password" required> <label
+							for="inputPassword">Password</label>
 					</div>
 					<div class="checkbox mb-3">
 						<label> <input type="checkbox" value="remember-me"> Remember me
 						</label>
 					</div>
-					<button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
+					<button class="btn btn-lg btn-primary btn-block" type="submit">Sign
+						in</button>
 				</form>
 			</div>
 		</div>

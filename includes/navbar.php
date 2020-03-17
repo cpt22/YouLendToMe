@@ -16,9 +16,9 @@
 		
 		<?php 
 		if (isset($user)) {
-		  echo '<form action="./user/logout.php"><button class="btn btn-outline-danger my-2 my-sm-0" type="submit">Logout</button>';
+		  echo '<form action="http://localhost/user/logout.php"><button class="btn btn-outline-danger my-2 my-sm-0" type="submit">Logout</button>';
 		} else {
-		    echo '<form action="./user/login.php"><button class="btn btn-outline-light my-2 my-sm-0" type="submit">Sign
+		    echo '<form action="http://localhost/user/login.php"><button class="btn btn-outline-light my-2 my-sm-0" type="submit">Sign
 			in</button>';
 		}
 
