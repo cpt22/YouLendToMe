@@ -1,6 +1,5 @@
 <?php
-define('__ROOT__', dirname(dirname(dirname(__FILE__))));
-require_once __ROOT__ . '/includes/session.php';
+require_once SRC . 'session.php';
 
 if (isset($_SESSION['username']) || isset($_SESSION['userID'])) {
     // remove PHPSESSID from browser

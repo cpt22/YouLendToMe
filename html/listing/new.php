@@ -1,18 +1,17 @@
 <?php
-define('__ROOT__', dirname(dirname(dirname(__FILE__))));
-require_once __ROOT__ . '/includes/itemProc/doNewItem.php';
+require_once SRC . 'itemProc/doNewItem.php';
 ?>
 <!doctype html>
 <html lang="en">
 <head>
-<?php require_once __ROOT__ . '/includes/components/header.php'; ?>
+<?php require_once SRC . 'components/header.php'; ?>
 <link href="styles/loginregister.css" rel="stylesheet">
 <title>You Lend To Me</title>
 </head>
 
 
 <body>
-	<?php require_once __ROOT__ . '/includes/components/navbar.php'; ?>
+	<?php require_once SRC . 'components/navbar.php'; ?>
 
             <div class="jumbotron jumbotron-fluid">
 		<div class="container">
@@ -71,6 +70,6 @@ require_once __ROOT__ . '/includes/itemProc/doNewItem.php';
 			</div>
 		</div>
 	</div>
-	<?php require_once __ROOT__ . '/includes/components/footer.php'; ?>
+	<?php require_once SRC . 'components/footer.php'; ?>
 </body>
 </html>

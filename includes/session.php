@@ -2,9 +2,8 @@
 //Begin user session
 session_start();
 
-define('__ROOT__', dirname(dirname(__FILE__))); 
-require_once __ROOT__ . '/includes/connect.php';
-require_once __ROOT__ . '/includes/classes/User.php';
+require_once SRC . 'connect.php';
+require_once SRC . 'classes/User.php';
 
 
 $user = null;
