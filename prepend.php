@@ -1,4 +1,4 @@
 <?php
-define("ROOT", dirname(__FILE__));
-echo "hey there";
+define('__ROOT__', dirname(__FILE__));
+echo __ROOT__;
 ?>
