@@ -16,7 +16,7 @@ if (isset($_GET['ret'])) {
         $path = getRet($path, null);
     }
     
-    $redirectURL = "http://youlendto.me/" . $path;
+    $redirectURL = __HOST__ . $path;
 }
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
