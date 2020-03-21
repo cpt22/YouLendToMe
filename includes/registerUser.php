@@ -210,7 +210,8 @@ function doRegistration($firstName, $lastName, $email, $username, $password, $ph
     $stmt->execute();
     $stmt->close();
     
-    initializeSession($username);
+    //TODO: Implement link redirection for login pages
+    initializeSession($username, null);
 }
 
 ?>

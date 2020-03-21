@@ -40,9 +40,10 @@ function initializeSession($username, $url) {
     header("Location: " . $url);
 }
 
-function initializeSession($username) {
+//TODO: REMOVE
+/*function initializeSession($username) {
     intializeSession($username, "index.php");
-}
+}*/
 
 /**
  * Returns if user is logged in or not
