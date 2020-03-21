@@ -10,12 +10,12 @@ if (isUserLoggedIn()) {
 <!doctype html>
 <html lang="en">
 <head>
-<?php require_once __ROOT__ . '/includes/header.php'; ?>
+<?php require_once __ROOT__ . '/includes/components/header.php'; ?>
 <link href="../styles/loginregister.css" rel="stylesheet">
 <title>You Lend To Me</title>
 </head>
 <body>
-	<?php require_once __ROOT__ . '/includes/navbar.php'; ?>
+	<?php require_once __ROOT__ . '/includes/components/navbar.php'; ?>
 	<div class="container">
 		<div class="row justify-content-center">
 			<div class="col-4">
@@ -52,6 +52,6 @@ if (isUserLoggedIn()) {
 			</div>
 		</div>
 	</div>
-	<?php require_once __ROOT__ . '/includes/footer.php'; ?>
+	<?php require_once __ROOT__ . '/includes/components/footer.php'; ?>
 </body>
 </html>

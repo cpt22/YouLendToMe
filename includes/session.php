@@ -37,7 +37,11 @@ function initializeSession($username, $url) {
         }
     }
     
-    header("Location: " . $url);
+    if ($url != null && $url != "") {
+        header("Location: " . $url);
+    } else {
+        header ("Location: https://youlendto.me/user/index.php");
+    }
 }
 
 //TODO: REMOVE

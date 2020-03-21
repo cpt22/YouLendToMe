@@ -15,5 +15,5 @@ if (isset($_SESSION['username']) || isset($_SESSION['userID'])) {
     //Begin new session
     session_start();
 }
-    header("location: http://localhost/index.php");
+    header("location: https://youlendto.me/index.php");
 ?>

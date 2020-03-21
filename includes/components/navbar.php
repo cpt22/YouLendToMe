@@ -16,13 +16,12 @@
 		
 		<?php 
 		if (isset($user)) {
-		  echo '<form action="http://localhost/user/logout.php"><button class="btn btn-outline-danger my-2 my-sm-0" type="submit">Logout</button>';
+		    echo '<button class="btn btn-outline-danger my-2 my-sm-0" type="submit" onclick="' . "'https://youlendto.me/user/logout.php'" . '">Logout</button>';
 		} else {
-		    echo '<form action="http://localhost/user/login.php"><button class="btn btn-outline-light my-2 my-sm-0" type="submit">Sign
+		    echo '<button class="btn btn-outline-light my-2 my-sm-0" type="submit" onclick="' . "'https://youlendto.me/user/login.php'" . '">Sign
 			in</button>';
 		}
 
 		?>
-		</form>
 	</div>
 </nav>
