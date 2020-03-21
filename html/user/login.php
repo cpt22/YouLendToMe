@@ -10,7 +10,7 @@ if (isUserLoggedIn()) {
 <html lang="en">
 <head>
 <?php require_once SRC . 'components/header.php'; ?>
-<link href="../styles/loginregister.css" rel="stylesheet">
+<?php echo '<link href="' . __HOST__ . 'styles/loginregister.css" rel="stylesheet">' ?>
 <title>You Lend To Me</title>
 </head>
 <body>

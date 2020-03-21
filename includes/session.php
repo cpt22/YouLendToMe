@@ -39,7 +39,7 @@ function initializeSession($username, $url) {
     if ($url != null && $url != "") {
         header("Location: " . $url);
     } else {
-        header ("Location: https://youlendto.me/user/index.php");
+        header ("Location: " . __HOST__ . "user/index.php");
     }
 }
 

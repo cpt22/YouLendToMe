@@ -6,7 +6,7 @@ require_once SRC . 'USStates.php';
 <html lang="en">
 <head>
 <?php require_once SRC . 'components/header.php'; ?>
-<link href="../styles/loginregister.css" rel="stylesheet">
+<?php echo '<link href="' . __HOST__ . 'styles/loginregister.css" rel="stylesheet">' ?>
 <title>You Lend To Me</title>
 <script src="https://code.jquery.com/jquery-3.4.1.js" integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script>
 <script type="text/javascript" src="../js/register.js"></script>

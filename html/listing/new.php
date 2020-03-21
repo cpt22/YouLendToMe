@@ -9,8 +9,12 @@ require_once SRC . 'itemProc/doNewItem.php';
 <link href="../styles/loginregister.css" rel="stylesheet">
 =======
 <?php require_once SRC . 'components/header.php'; ?>
+<<<<<<< HEAD
 <link href="styles/loginregister.css" rel="stylesheet">
 >>>>>>> b7ba212ebc3c5eff949ddda78b429d0183766f63
+=======
+<?php echo '<link href="' . __HOST__ . 'styles/loginregister.css" rel="stylesheet">' ?>
+>>>>>>> ce020df825a57867c8e2cf1a20774d949dc83d1b
 <title>You Lend To Me</title>
 <style>
 		.image-preview{
