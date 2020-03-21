@@ -1,4 +1,4 @@
 <?php
-define('__ROOT__', dirname(__FILE__));
-echo __ROOT__;
+define('ROOT', dirname(__FILE__));
+define('SRC', ROOT . '/includes');
 ?>
