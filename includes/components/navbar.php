@@ -16,9 +16,9 @@
 		
 		<?php 
 		if (isset($user)) {
-		    echo '<button class="btn btn-outline-danger my-2 my-sm-0" type="submit" onclick="window.location.href=' . "'https://youlendto.me/user/logout.php'" . ';">Logout</button>';
+		    echo '<button class="btn btn-outline-danger my-2 my-sm-0" type="submit" onclick="window.location.href=' . "'" . __HOST__ . "user/logout.php'" . ';">Logout</button>';
 		} else {
-		    echo '<button class="btn btn-outline-light my-2 my-sm-0" type="submit" onclick="window.location.href=' . "'https://youlendto.me/user/login.php'" . ';">Sign
+		    echo '<button class="btn btn-outline-light my-2 my-sm-0" type="submit" onclick="window.location.href=' . "'" . __HOST__ . "user/login.php'" . ';">Sign
 			in</button>';
 		}
 
