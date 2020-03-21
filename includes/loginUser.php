@@ -14,7 +14,7 @@ if (isset($_GET['ret'])) {
         $item = cleanData($_GET['item']);
         $path = getRet($path, $item);
     } else {
-        $path = getRet($path);
+        $path = getRet($path, null);
     }
     
     $redirectURL = "http://localhost/" . $path;

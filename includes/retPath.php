@@ -1,6 +1,6 @@
 <?php
 $retMap = array(
-    'azOfQW' => '/create.php',
+    'azOfQW' => '/listing/new.php',
 );
 
 function getRet($ret, $options) {
