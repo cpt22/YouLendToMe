@@ -1,7 +1,6 @@
 <?php
-define('__ROOT__', dirname(dirname(dirname(__FILE__))));
-require_once __ROOT__ . '/includes/retPath.php';
-require_once __ROOT__ . '/includes/loginUser.php';
+require_once SRC . 'retPath.php';
+require_once SRC . 'loginUser.php';
 
 if (isUserLoggedIn()) {
     header('location: index.php');
@@ -10,12 +9,12 @@ if (isUserLoggedIn()) {
 <!doctype html>
 <html lang="en">
 <head>
-<?php require_once __ROOT__ . '/includes/components/header.php'; ?>
+<?php require_once SRC . 'components/header.php'; ?>
 <link href="../styles/loginregister.css" rel="stylesheet">
 <title>You Lend To Me</title>
 </head>
 <body>
-	<?php require_once __ROOT__ . '/includes/components/navbar.php'; ?>
+	<?php require_once SRC . 'components/navbar.php'; ?>
 	<div class="container">
 		<div class="row justify-content-center">
 			<div class="col-4">
@@ -52,6 +51,6 @@ if (isUserLoggedIn()) {
 			</div>
 		</div>
 	</div>
-	<?php require_once __ROOT__ . '/includes/components/footer.php'; ?>
+	<?php require_once SRC . 'components/footer.php'; ?>
 </body>
 </html>

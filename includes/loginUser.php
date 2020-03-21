@@ -1,7 +1,6 @@
 <?php
-define('__ROOT__', dirname(dirname(dirname(__FILE__))));
-require_once __ROOT__ . '/includes/session.php';
-require_once __ROOT__ . '/includes/verify.php';
+require_once SRC . 'session.php';
+require_once SRC . 'verify.php';
 
 $username = $password = $rememberMe = "";
 $path = $redirectURL = "";

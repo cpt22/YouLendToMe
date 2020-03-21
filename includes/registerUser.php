@@ -1,7 +1,6 @@
 <?php
-define('__ROOT__', dirname(dirname(__FILE__))); 
-require_once __ROOT__ . '/includes/session.php';
-require_once __ROOT__ . '/includes/verify.php';
+require_once SRC . 'session.php';
+require_once SRC . 'verify.php';
 
 $firstName = $lastName = $email = $username = $password = $confirmPW = $phone = $address1 = $address2 = $city = $state = $zipcode = $rememberMe = "";
 $errors = array();

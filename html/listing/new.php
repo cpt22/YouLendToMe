@@ -1,12 +1,16 @@
 <?php
-define('__ROOT__', dirname(dirname(dirname(__FILE__))));
-require_once __ROOT__ . '/includes/itemProc/doNewItem.php';
+require_once SRC . 'itemProc/doNewItem.php';
 ?>
 <!doctype html>
 <html lang="en">
 <head>
+<<<<<<< HEAD
 <?php require_once __ROOT__ . '/includes/components/header.php'; ?>
 <link href="../styles/loginregister.css" rel="stylesheet">
+=======
+<?php require_once SRC . 'components/header.php'; ?>
+<link href="styles/loginregister.css" rel="stylesheet">
+>>>>>>> b7ba212ebc3c5eff949ddda78b429d0183766f63
 <title>You Lend To Me</title>
 <style>
 		.image-preview{
@@ -31,7 +35,7 @@ require_once __ROOT__ . '/includes/itemProc/doNewItem.php';
 
 
 <body>
-	<?php require_once __ROOT__ . '/includes/components/navbar.php'; ?>
+	<?php require_once SRC . 'components/navbar.php'; ?>
 
             <div class="jumbotron jumbotron-fluid">
 		<div class="container">
@@ -98,6 +102,7 @@ require_once __ROOT__ . '/includes/itemProc/doNewItem.php';
 			</div>
 		</div>
 	</div>
+<<<<<<< HEAD
 	<script>
 	 const inpFile = document.getElementById("inpFile");
 	 const previewContainer = document.getElementById("imagePreview");
@@ -123,5 +128,8 @@ require_once __ROOT__ . '/includes/itemProc/doNewItem.php';
 	 });
 	</script>
 	<?php require_once __ROOT__ . '/includes/components/footer.php'; ?>
+=======
+	<?php require_once SRC . 'components/footer.php'; ?>
+>>>>>>> b7ba212ebc3c5eff949ddda78b429d0183766f63
 </body>
 </html>
