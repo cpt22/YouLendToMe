@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 22, 2020 at 07:24 PM
+-- Generation Time: Mar 21, 2020 at 02:34 PM
 -- Server version: 8.0.18
 -- PHP Version: 7.3.11
 
@@ -42,7 +42,9 @@ CREATE TABLE `addresses` (
 --
 
 INSERT INTO `addresses` (`line1`, `line2`, `city`, `state`, `zipcode`, `user_ID`) VALUES
-('145 Evergreen Ln', '', 'Winnetka', 'Illinois', 60093, 8);
+('13kjh', 'jhhgj', 'jhgjhg', 'Alabama', 60093, 12),
+('145 Evergreen Ln', '', 'Winnetka', 'Illinois', 60093, 8),
+('18767', '765', '765', 'Idaho', 60093, 13);
 
 -- --------------------------------------------------------
 
@@ -136,7 +138,9 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`first_name`, `last_name`, `email`, `username`, `password`, `phone_number`, `ID`) VALUES
-('Christian', 'Tingle', 'ctingle18@gmail.com', 'ctingle18', '$2y$10$8JfFlHQhfsjE1KlmaAFrb.y5X0mVATrg997.awyLYNjTZYvKs1mG6', '8472743667', 8);
+('Christian', 'Tingle', 'ctingle18@gmail.com', 'ctingle18', '$2y$10$8JfFlHQhfsjE1KlmaAFrb.y5X0mVATrg997.awyLYNjTZYvKs1mG6', '8472743667', 8),
+('Jerry', 'Jerry', 'cpt15@case.edu', 'jerry', '$2y$10$kjib.2Soz6TE90zfN8QCAOMDWrq8R5oVzmR7u/ifEpMXbbVQSyrG2', '8472743667', 12),
+('Crhkjsh', 'kjhfjk', 'cpt@gmail.com', 'acting', '$2y$10$2TJQ4Anz0YDOLunLlYVn8.9yXtJbXUQbjwGhUQnHNuRQc6C4z8RGy', '8766', 13);
 
 --
 -- Indexes for dumped tables
@@ -216,7 +220,7 @@ ALTER TABLE `items`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- Constraints for dumped tables
