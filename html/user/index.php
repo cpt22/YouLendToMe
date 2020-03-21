@@ -8,6 +8,6 @@ require_once SRC . 'session.php' ?>
 </head>
 <body>
 	<?php require_once SRC . 'components/navbar.php'; ?>
-	<?php require_once SRC . 'includes/components/footer.php'; ?>
+	<?php require_once SRC . 'components/footer.php'; ?>
 </body>
 </html>

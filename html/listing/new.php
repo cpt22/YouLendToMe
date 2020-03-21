@@ -4,17 +4,8 @@ require_once SRC . 'itemProc/doNewItem.php';
 <!doctype html>
 <html lang="en">
 <head>
-<<<<<<< HEAD
-<?php require_once __ROOT__ . '/includes/components/header.php'; ?>
-<link href="../styles/loginregister.css" rel="stylesheet">
-=======
 <?php require_once SRC . 'components/header.php'; ?>
-<<<<<<< HEAD
-<link href="styles/loginregister.css" rel="stylesheet">
->>>>>>> b7ba212ebc3c5eff949ddda78b429d0183766f63
-=======
 <?php echo '<link href="' . __HOST__ . 'styles/loginregister.css" rel="stylesheet">' ?>
->>>>>>> ce020df825a57867c8e2cf1a20774d949dc83d1b
 <title>You Lend To Me</title>
 <style>
 		.image-preview{
@@ -94,19 +85,19 @@ require_once SRC . 'itemProc/doNewItem.php';
 
 							<input type="file" name="inpFile" id="inpFile">
 							<div class="image-preview" id="imagePreview">
-								<img src="" alt="Image Preview" class="image-preview__image"
+								<img src="" alt="Image Preview" class="image-preview__image"/>
 								<span class="image-preview__default-text">Image Preview</span>
 							</div>
 
 							<div>
 							<button type="submit" class="btn btn-primary btn-lg">Submit</button>
+							</div>
 						</form>
 					</div>
 				</div>
 			</div>
 		</div>
 	</div>
-<<<<<<< HEAD
 	<script>
 	 const inpFile = document.getElementById("inpFile");
 	 const previewContainer = document.getElementById("imagePreview");
@@ -131,9 +122,6 @@ require_once SRC . 'itemProc/doNewItem.php';
 		 }
 	 });
 	</script>
-	<?php require_once __ROOT__ . '/includes/components/footer.php'; ?>
-=======
 	<?php require_once SRC . 'components/footer.php'; ?>
->>>>>>> b7ba212ebc3c5eff949ddda78b429d0183766f63
 </body>
 </html>
