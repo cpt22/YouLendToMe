@@ -6,8 +6,27 @@ require_once __ROOT__ . '/includes/itemProc/doNewItem.php';
 <html lang="en">
 <head>
 <?php require_once __ROOT__ . '/includes/components/header.php'; ?>
-<link href="styles/loginregister.css" rel="stylesheet">
+<link href="../styles/loginregister.css" rel="stylesheet">
 <title>You Lend To Me</title>
+<style>
+		.image-preview{
+			width: 300px;
+			min-height: 100px;
+			border: 2px solid #dddddd;
+			margin-top: 15px;
+
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			font-weight: bold;
+			color: #cccccc
+		}
+
+		.image-preview__image{
+				display: none;
+				width: 100%;
+		}
+</style>
 </head>
 
 
@@ -64,6 +83,14 @@ require_once __ROOT__ . '/includes/itemProc/doNewItem.php';
 									code </small> <input type="text" class="form-control"
 									id="location" placeholder="Zip Code" required>
 							</div>
+
+							<input type="file" name="inpFile" id="inpFile">
+							<div class="image-preview" id="imagePreview">
+								<img src="" alt="Image Preview" class="image-preview__image"
+								<span class="image-preview__default-text">Image Preview</span>
+							</div>
+
+							<div>
 							<button type="submit" class="btn btn-primary btn-lg">Submit</button>
 						</form>
 					</div>
@@ -71,6 +98,30 @@ require_once __ROOT__ . '/includes/itemProc/doNewItem.php';
 			</div>
 		</div>
 	</div>
+	<script>
+	 const inpFile = document.getElementById("inpFile");
+	 const previewContainer = document.getElementById("imagePreview");
+	 const previewImage = previewContainer.querySelector(".image-preview__image");
+	 const previewDefaultText = previewContainer.querySelector(".image-preview__default-text");
+
+	 inpFile.addEventListener("change",function(){
+		 const file = this.files[0];
+
+		 if(file){
+			 const reader = new FileReader();
+
+			//previewDefaultText.style.display = "none";
+			 previewImage.style.display = "block";
+
+			 reader.addEventListener("load", function() {
+				 console.log(this);
+				 previewImage.setAttribute("src", this.result);
+			 });
+
+			 reader.readAsDataURL(file);
+		 }
+	 });
+	</script>
 	<?php require_once __ROOT__ . '/includes/components/footer.php'; ?>
 </body>
 </html>
