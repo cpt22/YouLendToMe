@@ -90,7 +90,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
      * Verify phone number
      */
     if (! empty($_POST['phone'])) {
-        $vals['phone'] = $phone = cleanPhone($_POST['phone']);
+        $vals['phone'] = $phone = cleanNumeric($_POST['phone']);
         if (!verifyPhone($phone)) {
             $errors['phone'] = "Please enter a valid phone number";
         }

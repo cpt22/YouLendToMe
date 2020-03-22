@@ -9,7 +9,7 @@ function cleanData($data) {
     return $data;
 }
 
-function cleanPhone($data) {
+function cleanNumeric($data) {
     $data = cleanData($data);
     $data = preg_replace("/[^0-9]+/", "", $data);
     return $data;
@@ -30,13 +30,13 @@ function cleanAlphabeticalWWS($data) {
     $data = cleanData($data);
     $data = preg_replace("/[^a-zA-Z ]+/", "", $data);
     return $data;
-}
+}*/
 
 function cleanAlphanumeric($data) {
     $data = cleanData($data);
     $data = preg_replace("/[^a-zA-Z0-9]+/", "", $data);
     return $data;
-}*/
+}
 
 /**
  * Verifies validity of name

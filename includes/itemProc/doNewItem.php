@@ -92,7 +92,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if (empty($errors)) {
         uploadItem($title, $description, $dailyRate, $startDate, $endDate, $zipcode, $file_tmp, $file_ext);
     } else {
-        var_dump($errors);
     }
 }
 
@@ -117,8 +116,9 @@ function uploadItem($title, $description, $dailyRate, $startDate, $endDate, $zip
     $stmt->bind_param("ss", $imgFilename, $id);
     $stmt->execute();
     $stmt->close();
-    echo $file_tmp;
     move_uploaded_file($file_tmp , ROOT . "html/images/item/" . $imgFilename);
+    
+    header("Location: " . __HOST__ . "listing/item.php?i=" . $id);
 }
 
 function reformatDate($date) {

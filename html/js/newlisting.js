@@ -1,68 +1,40 @@
-$(document).ready(function() {
-	
-	$("#startDate").keypress(function() {
-		onInput($(this));
-	});
-	
-	$("#startDate").blur(function() {
-		onInput($(this));
-	});
-	
-	$("#endDate").keypress(function() {
-		onInput($(this));
-	});
-	
-	$("#endDate").blur(function() {
-		onInput($(this));
-	});
-	
-	function onInput(e) {
-		  e.type = 'text';
-		  var input = e.val();
-		  if (/\D\/$/.test(input)) input = input.substr(0, input.length - 3);
-		  var values = input.split('/').map(function(v) {
-		    return v.replace(/\D/g, '')
-		  });
-		  if (values[0]) values[0] = checkValue(values[0], 12);
-		  if (values[1]) values[1] = checkValue(values[1], 31);
-		  var output = values.map(function(v, i) {
-		    return v.length == 2 && i < 2 ? v + ' / ' : v;
-		  });
-		  e.val(output.join('').substr(0, 14));
-	}
-	
-	function checkValue(str, max) {
-	  if (str.charAt(0) !== '0' || str == '00') {
-	    var num = parseInt(str);
-	    if (isNaN(num) || num <= 0 || num > max) num = 1;
-	    str = num > parseInt(max.toString().charAt(0)) && num.toString().length == 1 ? '0' + num : num.toString();
-	  };
-	  return str;
-	}
-	
-	function onBlur(e) {
-		  e.type = 'text';
-		  var input = e.val();
-		  var values = input.split('/').map(function(v, i) {
-		    return v.replace(/\D/g, '')
-		  });
-		  var output = '';
-		  
-		  if (values.length == 3) {
-		    var year = values[2].length !== 4 ? parseInt(values[2]) + 2000 : parseInt(values[2]);
-		    var month = parseInt(values[0]) - 1;
-		    var day = parseInt(values[1]);
-		    var d = new Date(year, month, day);
-		    if (!isNaN(d)) {
-		      document.getElementById('result').innerText = d.toString();
-		      var dates = [d.getMonth() + 1, d.getDate(), d.getFullYear()];
-		      output = dates.map(function(v) {
-		        v = v.toString();
-		        return v.length == 1 ? '0' + v : v;
-		      }).join(' / ');
-		    };
-		  };
-		  e.val(output);
-		}
+var datefield = document.createElement("input")
 
+datefield.setAttribute("type", "date")
+
+if (datefield.type != "date") { // if browser doesn't support input type="date",
+	// load files for jQuery UI Date Picker
+	document
+			.write('<link href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/base/jquery-ui.css" rel="stylesheet" type="text/css" />\n');
+	document
+			.write('<script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"><\/script>\n');
+}
+if (datefield.type != "date") { // if browser doesn't support input type="date",
+	// initialize date picker widget:
+	$(document).ready(function() {
+		$('#startDate').datepicker();
+		$('#endDate').datepicker();
+	});
+}
+
+// document.removeElement(datefield);
+
+$(document).ready(function() {
+	function readURL(input) {
+		//if (input.files && input.files[0]) {
+			var reader = new FileReader();
+
+			reader.onload = function(e) {
+				$('#preview-image').attr('src', e.target.result);
+				$('#imagePreview').show();
+			}
+
+			reader.readAsDataURL(input.files[0]);
+		//}
+	}
+
+	$("#inpFile").change(function() {
+		console.log("hi");
+		readURL(this);
+	});
 });
