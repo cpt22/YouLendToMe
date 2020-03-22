@@ -22,14 +22,7 @@ if (isUserLoggedIn()) {
 					<div class="text-center mb-4">
 						<img class="mb-4" src="/docs/4.3/assets/brand/bootstrap-solid.svg"
 							alt="" width="72" height="72">
-						<h1 class="h3 mb-3 font-weight-normal">Floating labels</h1>
-						<p>
-							Build form controls with floating labels via the
-							<code>:placeholder-shown</code>
-							pseudo-element. <a
-								href="https://caniuse.com/#feat=css-placeholder-shown">Works in
-								latest Chrome, Safari, and Firefox.</a>
-						</p>
+						<h1 class="h3 mb-3 font-weight-normal">Sign in to YLTM</h1>
 					</div>
 					<?php if(isset($errors['loginAttempt']) && $errors['loginAttempt'] == false) {
 					   echo '<div class="text-center mb-4">
@@ -37,25 +30,33 @@ if (isUserLoggedIn()) {
 					</div>';
 					}
 					?>
-					
-					
+
+
 					<div class="form-label-group">
 						<input type="text" id="inputUsername" class="<?php echo isset($errors['username']) ? "is-invalid" : ""; ?> form-control"
 							placeholder="Username" name="username" <?php echo isset($vals['username']) ? 'value="'.$vals['username'].'"' : ""; ?> required autofocus> <label
 							for="inputUsername">Username</label>
 					</div>
+
 					<div class="form-label-group">
 						<input type="password" id="inputPassword" class="form-control"
 							placeholder="Password" name="password" required> <label
 							for="inputPassword">Password</label>
 					</div>
+
 					<div class="checkbox mb-3">
 						<label> <input type="checkbox" name="remember-me"> Remember me
 						</label>
 					</div>
+
 					<button class="btn btn-lg btn-primary btn-block" type="submit">Sign
 						in</button>
 				</form>
+
+        <form class="form-signin" method="post" action="register.php">
+        <button class="btn btn-lg btn-secondary btn-block" type="submit">Sign
+            up</button>
+        </form>
 			</div>
 		</div>
 	</div>
