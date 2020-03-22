@@ -8,8 +8,6 @@ require_once SRC . 'USStates.php';
 <?php require_once SRC . 'components/header.php'; ?>
 <?php echo '<link href="' . __HOST__ . 'styles/loginregister.css" rel="stylesheet">' ?>
 <title>You Lend To Me</title>
-<script src="https://code.jquery.com/jquery-3.4.1.js" integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script>
-<script type="text/javascript" src="../js/register.js"></script>
 </head>
 <body>
 	<?php require_once SRC . 'components/navbar.php'; ?>
@@ -131,5 +129,6 @@ require_once SRC . 'USStates.php';
 		</form>
 	</div>
 	<?php require_once SRC . 'components/footer.php'; ?>
+	<script type="text/javascript" src="../js/register.js"></script>
 </body>
 </html>

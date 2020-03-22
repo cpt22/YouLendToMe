@@ -5,7 +5,7 @@ require_once SRC . 'itemProc/doNewItem.php';
 <html lang="en">
 <head>
 <?php require_once SRC . 'components/header.php'; ?>
-<?php echo '<link href="' . __HOST__ . 'styles/loginregister.css" rel="stylesheet">' ?>
+<?php echo '<link href="' . __HOST__ . 'styles/loginregister.css" rel="stylesheet">'; ?>
 <title>You Lend To Me</title>
 <style>
 		.image-preview{
@@ -45,45 +45,45 @@ require_once SRC . 'itemProc/doNewItem.php';
 			<div class="col-9 col-sm-6">
 				<div class="form-signin">
 					<div class="col">
-						<form class="" action="" method="post">
+						<form class="" action="" method="post" enctype="multipart/form-data">
 							<div class="form-group">
 								<label for="itemTitle">Item Name</label> <input type="text"
-									class="form-control" id="itemTitle" placeholder="Item Name"
-									required autofocus>
+									class="<?php echo isset($errors['itemTitle']) ? "is-invalid" : ""; ?> form-control" id="itemTitle" placeholder="Title"
+									name="itemTitle" <?php echo isset($vals['itemTitle']) ? 'value="'.$vals['itemTitle'].'"' : ""; ?> required autofocus>
 							</div>
 
 							<div class="form-group">
 								<label for="itemDescription">Description</label>
-								<textarea class="form-control" id="itemDescription"
-									placeholder="Item Description here" rows="5" required></textarea>
+								<textarea class="<?php echo isset($errors['description']) ? "is-invalid" : ""; ?> form-control" id="itemDescription"
+									placeholder="Item Description here" rows="5" name="itemDescription" required><?php echo isset($vals['description']) ? $vals['description'] : ""; ?> </textarea>
 							</div>
 
 							<div>
 								<small id="dailyRateHelpBlock" class="form-text text-muted">
 									enter dollar amount using numerical values. </small> <input
-									type="text" id="dailyRate" class="form-control"
+									type="text" id="dailyRate" class="<?php echo isset($errors['dailyRate']) ? "is-invalid" : ""; ?> form-control"
 									aria-describedby="dailyRateHelpBlock"
-									placeholder="Daily Rate (dollars per day)" required>
+									placeholder="Daily Rate (dollars per day)" name="dailyRate" <?php echo isset($vals['dailyRate']) ? 'value="'.$vals['dailyRate'].'"' : ""; ?> required>
 							</div>
 							<div class="form-group">
 								<small id="startDateHelpBlock" class="form-text text-muted">
-									start date </small> <input type="text" class="form-control"
-									id="startDate" placeholder="Start Date (MM/DD/XXXX)" required>
+									start date </small> <input type="text" class="<?php echo isset($errors['startDate']) ? "is-invalid" : ""; ?> form-control"
+									id="startDate" placeholder="Start Date (MM/DD/XXXX)" name="startDate" <?php echo isset($vals['startDate']) ? 'value="'.$vals['startDate'].'"' : ""; ?> required>
 							</div>
 
 							<div class="form-group">
 								<small id="endDateHelpBlock" class="form-text text-muted"> end
-									date </small> <input type="text" class="form-control"
-									id="endDate" placeholder="End Date (MM/DD/XXXX)" required>
+									date </small> <input type="text" class="<?php echo isset($errors['endDate']) ? "is-invalid" : ""; ?> form-control"
+									id="endDate" placeholder="End Date (MM/DD/XXXX)" name="endDate" <?php echo isset($vals['endDate']) ? 'value="'.$vals['endDate'].'"' : ""; ?> required>
 							</div>
 
 							<div class="form-group">
 								<small id="locationHelpBlock" class="form-text text-muted"> zip
-									code </small> <input type="text" class="form-control"
-									id="location" placeholder="Zip Code" required>
+									code </small> <input type="text" class="<?php echo isset($errors['zipcode']) ? "is-invalid" : ""; ?> form-control"
+									id="location" placeholder="Zip Code" name="zipcode" <?php echo isset($vals['zipcode']) ? 'value="'.$vals['zipcode'].'"' : ""; ?> required>
 							</div>
 
-							<input type="file" name="inpFile" id="inpFile">
+							<input type="file" id="inpFile" name="itemImg">
 							<div class="image-preview" id="imagePreview">
 								<img src="" alt="Image Preview" class="image-preview__image"/>
 								<span class="image-preview__default-text">Image Preview</span>
@@ -123,5 +123,6 @@ require_once SRC . 'itemProc/doNewItem.php';
 	 });
 	</script>
 	<?php require_once SRC . 'components/footer.php'; ?>
+	<?php echo '<script src="' . __HOST__ . 'js/newlisting.js"></script>';?>
 </body>
 </html>

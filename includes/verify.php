@@ -15,6 +15,11 @@ function cleanPhone($data) {
     return $data;
 }
 
+function cleanMoney($money) {
+    $money = cleanData($money);
+    return preg_replace("/[^0-9.]+/", "", $money);
+}
+
 /*function cleanAlphabetical($data) {
     $data = cleanData($data);
     $data = preg_replace("/[^a-zA-Z]+/", "", $data);
@@ -82,6 +87,19 @@ function verifyPassword($password) {
     return preg_match("(?=^.{8,20}$)((?!.*\s)(?=.*[A-Z])(?=.*[a-z]))((?=(.*\d){1,})|(?=(.*\W){1,}))^.*$", $password);
 }
 
+function verifyItemName($name) {
+    return preg_match("/^[a-zA-Z.\-!\?,\/\:\;' \(\)\|+]*$/", $name);
+}
+
+function verifyDate($date) {
+    $parts = explode("-", $date);
+    return strlen($parts[0]) == 4 && strlen($parts[1]) == 2 && strlen($parts[2]) == 2;
+}
+
+function verifyMoney($money) {
+    return preg_match("/^[0-9.]*$/", $money);
+}
+
 
 /**
  * Returns true if specified record does not exist
@@ -104,10 +122,10 @@ function checkRecordNotExists($tblName, $attrName, $value) {
 function checkRecordExists($tblName, $attrName, $value) {
     global $con;
     $sql = "SELECT ID FROM users WHERE " . $attrName . "=?;";
-    $stmt = $con->prepare($sql);
-    $stmt->bind_param("s", $value);
-    $stmt->execute();
-    $result = $stmt->get_result(); // get the mysqli result
+    $stmt = $con->prepare($sql) or die(mysqli_error($con));
+    $stmt->bind_param("s", $value) or die(mysqli_error($con));
+    $stmt->execute() or die(mysqli_error($con));
+    $result = $stmt->get_result() or die(mysqli_error($con)); // get the mysqli result
 
     if ($result->num_rows > 0) {
         return true;

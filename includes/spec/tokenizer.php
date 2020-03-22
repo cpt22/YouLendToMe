@@ -4,11 +4,16 @@ function storeTokenForUser($userID, $expires, $type){
     global $con;
 
     do {
-        $token = openssl_random_pseudo_bytes(48);
-        $token = bin2hex($token);
+        $token = generateToken(96);
     } while (isTokenUsed($token));
     
     $con->query("INSERT INTO tokens (token, expires, type, ID) VALUES ('$token', '$expires', '$type', '$userID')") or error_log(mysqli_error($con));
+    return $token;
+}
+
+function generateToken($length) {
+    $token = openssl_random_pseudo_bytes($length / 2);
+    $token = bin2hex($token);
     return $token;
 }
 

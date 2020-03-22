@@ -5,3 +5,4 @@
 * ~~Implement Remember Me and tokenizing at some point~~
 * ~~Strip 9 digit zip codes to 5~~
 * ~~Implement password length and requirement checking in registerUser.php~~
+* Implement autoredirect when prompted to login from a specific page.

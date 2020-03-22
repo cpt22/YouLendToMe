@@ -183,7 +183,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 function doRegistration($firstName, $lastName, $email, $username, $password, $phone, $address1, $address2, $city, $state, $zipcode, $rememberMe)
 {
     $password = password_hash($password, PASSWORD_DEFAULT);
-    global $con;
+    global $con, $user;
 
     // Insert new user
     $sql = "INSERT INTO users (first_name, last_name, email, username, password, phone_number) VALUES (?, ?, ?, ?, ? ,?)";
@@ -203,7 +203,7 @@ function doRegistration($firstName, $lastName, $email, $username, $password, $ph
     // Add user's primary address
     $userID = $result['ID'];
     $stmt = $con->prepare("INSERT INTO addresses (line1, line2, city, state, zipcode, user_ID) VALUES (?, ?, ?, ?, ?, ?)");
-    $stmt->bind_param("ssssii", $address1, $address2, $city, $state, $zipcode, $userID);
+    $stmt->bind_param("ssssii", $address1, $address2, $city, $state, $zipcode, $user->ID);
     $stmt->execute();
     $stmt->close();
     

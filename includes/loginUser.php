@@ -8,8 +8,9 @@ $path = $redirectURL = "";
 $errors = array();
 $vals = array();
 
-if (isset($_GET['ret'])) {
-    $path = cleanData($_GET['ret']);
+// TODO: Implement autoredirect when prompted to login from a specific page.
+if (isset($_GET['redir'])) {
+    $path = cleanData($_GET['redir']);
     if (isset($_GET['item'])) {
         $item = cleanData($_GET['item']);
         $path = getRet($path, $item);

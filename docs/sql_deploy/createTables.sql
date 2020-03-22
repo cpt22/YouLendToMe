@@ -28,16 +28,6 @@ SET time_zone = "+00:00";
 -- Table structure for table `addresses`
 --
 
-SET FOREIGN_KEY_CHECKS = 0;
-DROP TABLE `addresses`;
-DROP TABLE users;
-DROP TABLE borrows;
-DROP TABLE items;
-DROP TABLE images;
-DROP TABLE tokens;
-DROP TABLE credit_cards;
-SET FOREIGN_KEY_CHECKS = 1;
-
 CREATE TABLE `addresses` (
   `line1` varchar(200) COLLATE utf8_unicode_ci NOT NULL,
   `line2` varchar(200) COLLATE utf8_unicode_ci NOT NULL,
@@ -65,7 +55,7 @@ INSERT INTO `addresses` (`line1`, `line2`, `city`, `state`, `zipcode`, `user_ID`
 
 CREATE TABLE `borrows` (
   `user_ID` int(11) NOT NULL,
-  `item_ID` int(11) NOT NULL,
+  `item_ID` varchar(10) NOT NULL,
   `start_date` date NOT NULL,
   `end_date` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
@@ -93,7 +83,7 @@ CREATE TABLE `credit_cards` (
 
 CREATE TABLE `images` (
   `filename` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
-  `item_ID` int(11) NOT NULL,
+  `item_ID` VARCHAR(10) NOT NULL,
   `ID` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
@@ -113,7 +103,7 @@ CREATE TABLE `items` (
   `start_date` date NOT NULL,
   `end_date` date NOT NULL,
   `owner_ID` int(11) NOT NULL,
-  `ID` int(11) NOT NULL
+  `ID` VARCHAR(10) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 -- --------------------------------------------------------
@@ -228,12 +218,6 @@ ALTER TABLE `credit_cards`
 -- AUTO_INCREMENT for table `images`
 --
 ALTER TABLE `images`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT for table `items`
---
-ALTER TABLE `items`
   MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT;
 
 --
