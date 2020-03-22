@@ -6,7 +6,7 @@ if (! isUserLoggedIn()) {
     header('Location: ' . __HOST__ . 'user/login.php?redir=azOfQW');
 }
 
-$itemID = $title = $description = $dailyRate = $startDate = $endDate = $zipcode = $file_ext = $file_tmp = "";
+$itemID = $title = $description = $dailyRate = $startDate = $endDate = $zipcode = $category = $file_ext = $file_tmp = "";
 
 $vals = $errors = array();
 if (isset($_FILES['itemImg'])) {
@@ -101,9 +101,15 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     } else {
         $errors['zipcode'] = "Please enter a zipcode";
     }
+    
+    if (!empty($_POST['category']) && $_POST['category'] != -1) {
+        $vals['category'] = $category = cleanNumeric($_POST['zipcode']);
+    } else {
+        $errors['category'] = "Please select a category";
+    }
 
     if (empty($errors)) {
-        if (uploadItem($itemID, $title, $description, $dailyRate, $startDate, $endDate, $zipcode)) {
+        if (uploadItem($itemID, $title, $description, $dailyRate, $startDate, $endDate, $zipcode, $category)) {
             if (!empty($file_ext) && !empty($file_tmp)) {
                 updateImage($itemID, $file_ext, $file_tmp);
             }
@@ -115,7 +121,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
 }
 
-function uploadItem($itemID, $title, $description, $dailyRate, $startDate, $endDate, $zipcode)
+function uploadItem($itemID, $title, $description, $dailyRate, $startDate, $endDate, $zipcode, $category)
 {
     global $con, $user;
 
@@ -138,9 +144,9 @@ function uploadItem($itemID, $title, $description, $dailyRate, $startDate, $endD
     }
 
     // Insert new user
-    $sql = "UPDATE items SET title=?, description=?, rate=?, location=?, start_date=?, end_date=? WHERE ID=?";
+    $sql = "UPDATE items SET title=?, description=?, rate=?, location=?, start_date=?, end_date=?, category=? WHERE ID=?";
     $stmt = $con->prepare($sql) or DIE(mysqli_error($con));
-    $stmt->bind_param("sssssss", $title, $description, $dailyRate, $zipcode, $startDate, $endDate, $itemID);
+    $stmt->bind_param("ssssssis", $title, $description, $dailyRate, $zipcode, $startDate, $endDate, $category, $itemID);
     $stmt->execute();
     $stmt->close();
 

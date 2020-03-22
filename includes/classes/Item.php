@@ -11,6 +11,7 @@ class Item {
     private $listed;
     private $borrowed;
     private $location;
+    private $category = array();
     private $owner;
     private $ID;
     private $images = array();
@@ -43,6 +44,7 @@ class Item {
             $this->listed = $item['listed'];
             $this->borrowed = $item['borrowed'];
             $this->location = $item['location'];
+            $this->category['ID'] = $item['category'];
             $this->owner = $item['owner_ID'];
         } else {
             echo "ITEM NOT FOUND";
@@ -50,6 +52,7 @@ class Item {
         }
         
         $this->loadImages();
+        $this->loadCategory();
     }
     
     
@@ -96,6 +99,10 @@ class Item {
         return $this->location;
     }
     
+    public function getCategory() {
+        return $this->category;
+    }
+    
     public function getOwner()
     {
         return $this->owner;
@@ -122,6 +129,17 @@ class Item {
         if($result->num_rows > 0) {
             while($row = $result->fetch_assoc()) {
                 array_push($this->images, new Image(__HOST__ . "images/item/" . $row['filename'], $this->ID));
+            }
+        }
+    }
+    
+    private function loadCategory() {
+        global $con;
+        $cat_id = $this->category['ID'];
+        $result = $con->query("SELECT name FROM categories WHERE ID='$cat_id'");
+        if($result->num_rows > 0) {
+            while($row = $result->fetch_assoc()) {
+                $this->category['name'] = $row['name'];
             }
         }
     }

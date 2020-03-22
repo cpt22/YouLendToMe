@@ -1,3 +1,8 @@
+<?php
+if (!isUserLoggedIn()) {
+    sendToLogin(null);
+}
+?>
 <!doctype html>
 <html lang="en">
 <head>

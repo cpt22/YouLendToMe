@@ -93,4 +93,9 @@ function logUserInWithToken($token) {
 function isUserLoggedIn() {
     return isset($_SESSION['username']) && isset($_SESSION['userID']);
 }
+
+
+function sendToLogin() {
+    header("Location: " . __HOST__ . "user");
+}
 ?>

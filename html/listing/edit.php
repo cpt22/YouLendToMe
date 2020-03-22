@@ -20,6 +20,8 @@ if (isset($_GET['i'])) {
         $vals['endDate'] = convertDate($item->getEndDate());
     if (empty($vals['zipcode']))
         $vals['zipcode'] = $item->getLocation();
+    if (empty($vals['category']))
+        $vals['category'] = $item->getCategory()['ID'];
     if (empty($vals['image']))
         $vals['image'] = $item->getImages()[0]->getFile();
     if (empty($vals['itemID']))
@@ -135,6 +137,23 @@ display: block;
 									<?php echo isset($vals['zipcode']) ? 'value="'.$vals['zipcode'].'"' : ""; ?>
 									required>
 							</div>
+							
+							<div class="form-group">
+									<select id="inputCategory" class="<?php echo isset($errors['category']) ? "is-invalid" : ""; ?> form-control" name="category"
+										<?php echo isset($vals['category']) ? 'value="'.$vals['category'].'"' : ""; ?> required>
+										<option value="-1">--Category--</option>
+										<?php
+										global $con;
+										$result = $con->query("SELECT * FROM categories");
+										while ($row = $result->fetch_assoc()) {
+										    echo ($vals['category']);
+										    $toSelect = ($row['ID'] == $vals['category']) ? " selected" : "";
+										    echo '<option value="'. $row['ID'] . '"' . $toSelect . '>' . $row['name'] . '</option>';
+										}
+										?>
+									</select>
+									<span class="error_form" id="inputState_error"></span>
+								</div>
 
 							<input type="file" id="inpFile" name="itemImg">
 							<div class="image-preview" id="imagePreview">

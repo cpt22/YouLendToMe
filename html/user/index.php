@@ -1,5 +1,8 @@
 <?php 
-require_once SRC . 'session.php' ?>
+if (!isUserLoggedIn()) {
+    sendToLogin(null);
+}
+?>
 <!doctype html>
 <html lang="en">
 <head>

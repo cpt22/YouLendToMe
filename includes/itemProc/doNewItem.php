@@ -6,7 +6,7 @@ if (!isUserLoggedIn()) {
     header('Location: ' . __HOST__ . 'user/login.php?redir=azOfQW');
 }
 
-$title = $description = $dailyRate = $startDate = $endDate = $zipcode = $file_ext = $file_tmp = "";
+$title = $description = $dailyRate = $startDate = $endDate = $zipcode = $category = $file_ext = $file_tmp = "";
 
 $vals = $errors = array();
 if(isset($_FILES['itemImg'])){
@@ -89,24 +89,31 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $errors['zipcode'] = "Please enter a zipcode";
     }
     
-    if (empty($errors)) {
-        uploadItem($title, $description, $dailyRate, $startDate, $endDate, $zipcode, $file_tmp, $file_ext);
+    if (!empty($_POST['category']) && $_POST['category'] != -1) {
+        $vals['category'] = $category = cleanNumeric($_POST['category']);
     } else {
+        $errors['category'] = "Please select a category";
+    }
+    
+    if (empty($errors)) {
+        uploadItem($title, $description, $dailyRate, $startDate, $endDate, $zipcode, $category, $file_tmp, $file_ext);
+    } else {
+        var_dump($errors);
     }
 }
 
 
 
-function uploadItem($title, $description, $dailyRate, $startDate, $endDate, $zipcode, $file_tmp, $file_ext) {
+function uploadItem($title, $description, $dailyRate, $startDate, $endDate, $zipcode, $category, $file_tmp, $file_ext) {
     global $con, $user;
     
     do {
         $id = generateToken(10);
     } while ($con->query("SELECT ID FROM items WHERE ID='$id'")->num_rows != 0);
     // Insert new user
-    $sql = "INSERT INTO items (title, description, rate, location, start_date, end_date, owner_ID, ID) VALUES (?, ?, ?, ?, ? ,?, ?, ?)";
+    $sql = "INSERT INTO items (title, description, rate, location, start_date, end_date, category, owner_ID, ID) VALUES (?, ?, ?, ?, ?, ? ,?, ?, ?)";
     $stmt = $con->prepare($sql);
-    $stmt->bind_param("ssssssis", $title, $description, $dailyRate, $zipcode, $startDate, $endDate, $user->getUserID(), $id);
+    $stmt->bind_param("ssssssiis", $title, $description, $dailyRate, $zipcode, $startDate, $endDate, $category, $user->getUserID(), $id);
     $stmt->execute();
     $stmt->close();
     

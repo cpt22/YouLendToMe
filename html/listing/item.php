@@ -22,9 +22,7 @@ if (isset($_GET['i'])) {
 	<?php require_once SRC . 'components/navbar.php'; ?>
 	
 	<?php
-	   $res = $con->query("SELECT description FROM items LIMIT 1");
-	   $res = $res->fetch_assoc();
-	   $my_html = MarkdownExtra::defaultTransform($res['description']);
+	   $my_html = MarkdownExtra::defaultTransform($item->getDescription());
 	   echo $my_html;
 	   
 	   

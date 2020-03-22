@@ -10,10 +10,19 @@
 	<div class="collapse navbar-collapse" id="navbarSupportedContent">
 		<ul class="navbar-nav mr-auto">
 			<li class="nav-item active"><a class="nav-link" href="<?php echo __HOST__; ?>">Home</a></li>
-			<li class="nav-item"><a class="nav-link" href="#">Search</a></li>
+			<li class="nav-item"><a class="nav-link" href="<?php echo __HOST__ . 'listing/search.php'; ?>">Search</a></li>
 			<?php
 			if (isUserLoggedIn()) {
-				echo '<li class="nav-item"><a class="nav-link" href="' . __HOST__ . '/listing/new.php">New Listing</a></li>';
+				echo '<li class="nav-item"><a class="nav-link" href="' . __HOST__ . 'listing/new.php">New Listing</a></li>';
+				echo '<li class="nav-item dropdown">
+				<a class="nav-link dropdown-toggle" href="#" id="navAccountDropdwn" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+				Account
+				</a>
+				<div class="dropdown-menu" aria-labelledby="navbarDropdown">
+				<a class="dropdown-item" href="' . __HOST__ . 'user/items.php">My Listings</a>
+                <a class="dropdown-item" href="' . __HOST__ . 'user/settings.php">Settings</a>
+				</div>
+				</li>';
 			}
 			?>
 		</ul>
