@@ -49,7 +49,7 @@ if (isUserLoggedIn()) {
 						</label>
 					</div>
 
-					<button class="btn btn-lg btn-primary btn-block" type="submit">Sign
+					<button class="btn btn-lg btn-primary btn-block" name='submit' type="submit">Sign
 						in</button>
 				</form>
 

@@ -21,7 +21,7 @@ if (isset($_GET['redir'])) {
     $redirectURL = __HOST__ . $path;
 }
 
-if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['submit'])) {
     if (isset($_POST['username'])) {
         $vals['username'] = $username = cleanData($_POST['username']);
     } else {

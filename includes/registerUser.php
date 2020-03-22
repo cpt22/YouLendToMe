@@ -4,8 +4,7 @@ require_once SRC . 'verify.php';
 
 $firstName = $lastName = $email = $username = $password = $confirmPW = $phone = $address1 = $address2 = $city = $state = $zipcode = $rememberMe = "";
 $vals = $errors = array();
-
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['submit'])) {
     /*
      * Verify first and last names
      */
