@@ -73,9 +73,12 @@ function logUserInWithToken($token) {
     
     if ($result->num_rows == 1) {
         $result = $result->fetch_assoc();
-        if ($result['expires'] < time())
+        if ($result['expires'] < time()) {
+            removeToken($token);
+            setCookie('remember', '', time() - 3600, '/');
             return;
-        
+        }
+            
         if ($result['type'] != 0)
             return;
         
