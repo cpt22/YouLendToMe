@@ -1,3 +1,5 @@
 /.DS_Store
 /.htaccess
-/images/item
+/images/item/*.jpg
+/images/item/*.jpeg
+/images/item/*.png
