@@ -34,38 +34,38 @@ require_once SRC . 'USStates.php';
 						<div class="col-9 col-sm-6">
 							<div class="form-signin">
 								<div class="form-label-group">
-									<input type="text" id="inputFirstName" class="form-control"
-										placeholder="First name" name="first-name" required autofocus>
+									<input type="text" id="inputFirstName" class="<?php echo isset($errors['first-name']) ? "is-invalid" : ""; ?> form-control"
+										placeholder="First name" name="first-name" <?php echo isset($vals['first-name']) ? 'value="'.$vals['first-name'].'"' : ""; ?> required autofocus>
 									<span class="error_form" id="inputFirstName_error"></span>
 									<label for="inputFirstName">First name</label>
 								</div>
 								<div class="form-label-group">
-									<input type="text" id="inputLastName" class="form-control"
-										placeholder="Last name" name="last-name" required> <label
+									<input type="text" id="inputLastName" class="<?php echo isset($errors['last-name']) ? "is-invalid" : ""; ?>  form-control"
+										placeholder="Last name" name="last-name" <?php echo isset($vals['last-name']) ? 'value="'.$vals['last-name'].'"' : ""; ?> required> <label
 										for="inputLastName">Last name</label>
 									<span class="error_form" id="inputLastName_error"></span>
 								</div>
 								<div class="form-label-group">
-									<input type="email" id="inputEmail" class="form-control"
-										placeholder="Email address" name="email" required> <label
+									<input type="email" id="inputEmail" class="<?php echo isset($errors['email']) ? "is-invalid" : ""; ?>  form-control"
+										placeholder="Email address" name="email" <?php echo isset($vals['email']) ? 'value="'.$vals['email'].'"' : ""; ?> required> <label
 										for="inputEmail">Email address</label>
 									<span class="error_form" id="inputEmail_error"></span>
 								</div>
 								<div class="form-label-group">
-									<input type="text" id="inputUsername" class="form-control"
-										placeholder="Username" name="username" required> <label
+									<input type="text" id="inputUsername" class="<?php echo isset($errors['username']) ? "is-invalid" : ""; ?>  form-control"
+										placeholder="Username" name="username" <?php echo isset($vals['username']) ? 'value="'.$vals['username'].'"' : ""; ?> required> <label
 										for="inputUsername">Username</label>
 									<span class="error_form" id="inputUsername_error"></span>
 								</div>
 								<div class="form-label-group">
-									<input type="password" id="inputPassword" class="form-control"
+									<input type="password" id="inputPassword" class="<?php echo isset($errors['password']) ? "is-invalid" : ""; ?> form-control"
 										placeholder="Password" name="password" required> <label
 										for="inputPassword">Password</label>
 									<span class="error_form" id="inputPassword_error"></span>
 								</div>
 								<div class="form-label-group">
 									<input type="password" id="inputConfirmPassword"
-										class="form-control" placeholder="Confirm Password"
+										class="<?php echo isset($errors['confirm-password']) ? "is-invalid" : ""; ?> form-control" placeholder="Confirm Password"
 										name="confirm-password" required> <label
 										for="inputConfirmPassword">Confirm Password</label>
 										<span class="error_form" id="inputConfirmPassword_error"></span>
@@ -75,32 +75,32 @@ require_once SRC . 'USStates.php';
 						<div class="col-9 col-sm-6">
 							<div class="form-signin">
 								<div class="form-label-group">
-									<input type="text" id="inputPhone" class="form-control"
-										placeholder="Phone Number" name="phone" required> <label
+									<input type="text" id="inputPhone" class="<?php echo isset($errors['phone']) ? "is-invalid" : ""; ?> form-control"
+										placeholder="Phone Number" name="phone" <?php echo isset($vals['phone']) ? 'value="'.$vals['phone'].'"' : ""; ?> required> <label
 										for="inputPhone">Phone Number</label>
 									<span class="error_form" id="inputPhone_error"></span>
 								</div>
 								<div class="form-label-group">
-									<input type="text" id="inputAddress1" class="form-control"
-										placeholder="Address line 1" name="address-1" required> <label
+									<input type="text" id="inputAddress1" class="<?php echo isset($errors['address-1']) ? "is-invalid" : ""; ?> form-control"
+										placeholder="Address line 1" name="address-1" <?php echo isset($vals['address-1']) ? 'value="'.$vals['address-1'].'"' : ""; ?> required> <label
 										for="inputAddress1">Address line 1</label>
 										<span class="error_form" id="inputAddress1_error"></span>
 								</div>
 								<div class="form-label-group">
-									<input type="text" id="inputAddress2" class="form-control"
-										placeholder="Address line 2" name="address-2"> <label
+									<input type="text" id="inputAddress2" class="<?php echo isset($errors['address-2']) ? "is-invalid" : ""; ?> form-control"
+										placeholder="Address line 2" name="address-2" <?php echo isset($vals['address-2']) ? 'value="'.$vals['address-2'].'"' : ""; ?> > <label
 										for="inputAddress2">Address line 2</label>
 									<span class="error_form" id="inputAddress2_error"></span>
 								</div>
 								<div class="form-label-group">
-									<input type="text" id="inputCity" class="form-control"
-										placeholder="City" name="city" required> <label
+									<input type="text" id="inputCity" class="<?php echo isset($errors['city']) ? "is-invalid" : ""; ?> form-control"
+										placeholder="City" name="city" <?php echo isset($vals['city']) ? 'value="'.$vals['city'].'"' : ""; ?> required> <label
 										for="inputCity">City</label>
 										<span class="error_form" id="inputCity_error"></span>
 								</div>
 								<div class="form-label-group">
-									<select id="inputState" class="form-control form-control-lg" name="state"
-										required>
+									<select id="inputState" class="<?php echo isset($errors['state']) ? "is-invalid" : ""; ?> form-control form-control-lg" name="state"
+										<?php echo isset($vals['state']) ? 'value="'.$vals['state'].'"' : ""; ?> required>
 										<option>State</option>
 										<?php
 										global $USStates;
@@ -111,9 +111,8 @@ require_once SRC . 'USStates.php';
 									</select>
 									<span class="error_form" id="inputState_error"></span>
 								</div>
-								<!-- STATE CODE HERE -->
 								<div class="form-label-group">
-									<input type="text" id="inputZip" class="form-control"
+									<input type="text" id="inputZip" class="<?php echo isset($errors['zipcode']) ? "is-invalid" : ""; ?> form-control"
 										placeholder="Zip code" name="zipcode" required> <label
 										for="inputZip">Zip code</label>
 										<span class="error_form" id="inputZip_error"></span>
