@@ -1,6 +1,6 @@
 //client-side registration validation
 $(document).ready(function() {
-$(function(){
+//$(function(){
   $("#inputFirstName_error").hide();
   $("#inputLastName_error").hide();
   $("#inputEmail_error").hide();
@@ -277,5 +277,5 @@ $(function(){
       $("#inputZip").addClass("is-invalid");
     }
   }
-});
+//});
 });
