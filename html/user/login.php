@@ -20,7 +20,7 @@ if (isUserLoggedIn()) {
 			<div class="col-4">
 				<form class="form-signin" action="" method="post">
 					<div class="text-center mb-4">
-						<img class="mb-4" src="../images/YLTM.png"
+						<img class="mb-4" src="<?php echo __HOST__; ?>images/YLTM.png"
 							alt="" width="80" height="80">
 						<h1 class="h3 mb-3 font-weight-normal">Sign in to YLTM</h1>
 					</div>

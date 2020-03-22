@@ -1,5 +1,5 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-	<a class="navbar-brand" href="#"><img src="../../html/images/YLTM.png" width="40" height="40"></a>
+	<a class="navbar-brand" href="#"><img src="<?php echo __HOST__;?>images/YLTM.png" width="40" height="40"></a>
 	<a class="navbar-brand" href="#">You Lend To Me</a>
 	<button class="navbar-toggler" type="button" data-toggle="collapse"
 		data-target="#navbarSupportedContent"
