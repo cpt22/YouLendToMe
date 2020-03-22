@@ -56,10 +56,13 @@ while ($row = $result->fetch_assoc()) {
 				            <div class="col-sm-9 py-3">
 					              <div class="row title-text"><a href="' . __HOST__ . 'listing/item.php?i=' . $item->getID() . '" class="title-link">' . $item->getTitle() . '</a></div>
 				                  <div class="row">$' . $item->getRate() . ' per day</div>
-                          <div class="row">Category:'. $item->getCategory() . '</div>
+                          <div class="row">Category:'. $item->getCategory()['name'] . '</div>
                           <div class="row">Location(zipcode):' . $item->getLocation() . '</div>
                           <div class="row">Description: '. $item->getDescription() . '</div>
-                          <div class="row">Available Till: '. $item->getEndDate() . '</div>
+                          <div class="row">Available Till: '. date("m-d-Y", strtotime($item->getEndDate())) . '</div>
+                          <form method="post">
+                            <button type="submit" class="btn btn-secondary" style="margin-top:10px;">Delete Listing</button>
+                          </form>
                             </div>
 			             </div>';
 			}
