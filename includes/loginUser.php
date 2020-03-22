@@ -6,6 +6,7 @@ $username = $password = $rememberMe = "";
 $path = $redirectURL = "";
 
 $errors = array();
+$vals = array();
 
 if (isset($_GET['ret'])) {
     $path = cleanData($_GET['ret']);
@@ -19,23 +20,23 @@ if (isset($_GET['ret'])) {
     $redirectURL = __HOST__ . $path;
 }
 
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     if (isset($_POST['username'])) {
-        $username = cleanData($_POST['username']);
+        $vals['username'] = $username = cleanData($_POST['username']);
     } else {
         $errors['username'] = "Missing username";
     }
 
     if (isset($_POST['password'])) {
-        $password = cleanData($_POST['password']);
+        $vals['password'] = $password = cleanData($_POST['password']);
     } else {
         $errors['password'] = "Missing password";
     }
 
     if (isset($_POST['remember-me'])) {
-        $rememberMe = cleanData($_POST['remember-me']);
+        $rememberMe = true;
     } else {
-        
+        $rememberMe = false;
     }
 
     if (empty($errors)) {
@@ -47,7 +48,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
 function doLogin($username, $password, $rememberMe)
 {
-    global $con, $redirectURL;
+    global $con, $errors, $redirectURL;
     $sql = "SELECT username,password FROM users WHERE username=?";
     $stmt = $con->prepare($sql);
     $stmt->bind_param("s", $username);
@@ -55,19 +56,17 @@ function doLogin($username, $password, $rememberMe)
     $result = $stmt->get_result();
     $stmt->close();
 
-    if ($result - num_rows == 1) {
+    if ($result->num_rows == 1) {
         $result = $result->fetch_assoc();
 
         $username = $result['username'];
         $passwordHash = $result['password'];
                
         if (password_verify($password, $passwordHash)) {
-            initializeSession($username, $redirectURL);
-        } else {
-            echo "USER NOT FOUND";
+            initializeSession($username, $rememberMe, $redirectURL);
+            return;
         }
-    } else {
-        echo "USER NOT FOUND";
     }
+    $errors['loginAttempt'] = false;
 }
 ?>

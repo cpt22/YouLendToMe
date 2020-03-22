@@ -1,10 +1,17 @@
 <?php
-require_once SRC . 'session.php';
+require_once SRC . "spec/tokenizer.php";
 
 if (isset($_SESSION['username']) || isset($_SESSION['userID'])) {
     // remove PHPSESSID from browser
     if (isset($_COOKIE[session_name()]))
         setcookie(session_name(), "", time() - 3600);
+    
+    // Remove remember me cookie
+    if (isset($_COOKIE['remember'])) {
+        removeToken($_COOKIE['remember']);
+        setcookie('remember', "", time() - 3600, "/");
+    }
+    
     // clear session from globals
     $_SESSION = array();
     // clear session from disk
@@ -12,7 +19,7 @@ if (isset($_SESSION['username']) || isset($_SESSION['userID'])) {
     
     //location("Header: ../index.php");
     //Begin new session
-    session_start();
+    //session_start();
 }
     header("location: " . __HOST__ . "index.php");
 ?>

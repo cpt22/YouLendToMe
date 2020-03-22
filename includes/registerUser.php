@@ -145,14 +145,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     /*
      * Check if a user would like to stay logged in on this device
      */
-    if (! empty($_POST['remember-me'])) {
-        $rememberMe = cleanData($_POST['remember-me']);
-        if ($rememberMe == "true") {
-            $rememberMe = true;
-        } else {
-            $rememberMe = false;
-        }
-    } else {}
+    if (isset($_POST['remember-me'])) {
+        $rememberMe = true;
+    } else {
+        $rememberMe = false;
+    }
 
     /*
      * If errors arr is empty, register the user
@@ -210,7 +207,7 @@ function doRegistration($firstName, $lastName, $email, $username, $password, $ph
     $stmt->close();
     
     //TODO: Implement link redirection for login pages
-    initializeSession($username, null);
+    initializeSession($username, $rememberMe, null);
 }
 
 ?>

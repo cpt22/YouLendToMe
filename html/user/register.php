@@ -121,7 +121,7 @@ require_once SRC . 'USStates.php';
 							</div>
 						</div>
 						<div class="checkbox mb-3">
-							<label> <input type="checkbox" value="remember-me"> Remember me
+							<label> <input type="checkbox" name="remember-me"> Remember me
 							</label>
 						</div>
 						<button class="btn btn-lg btn-primary btn-block" type="submit">Sign
