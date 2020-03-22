@@ -80,149 +80,179 @@ $(function(){
 
 
 
-//firstname validation function
+// firstname validation function
   function check_fname(){
     var pattern = /^[a-zA-Z.\-' ]*$/;
     var fname = $("#inputFirstName").val();
     if(pattern.test(fname) && fname !== ''){
       $("#inputFirstName_error").hide();
-      $("#inputFirstName").css("color","#000000");
+      $("#inputFirstName").removeClass("is-invalid");
     }
     else{
       $("#inputFirstName_error").html("Only Characters Allowed");
       $("#inputFirstName_error").show();
-      $("#inputFirstName").css("color","#F90A0A");
+      $("#inputFirstName").addClass("is-invalid");
     }
   }
-//lastname validation function
+// lastname validation function
   function check_lname(){
       var pattern = /^[a-zA-Z.\-' ]*$/;
       var fname = $("#inputLastName").val();
       if(pattern.test(fname) && fname !== ''){
         $("#inputLastName_error").hide();
-        $("#inputLastName").css("color","#000000");
+        $("#inputLastName").removeClass("is-invalid");
       }
       else{
         $("#inputLastName_error").html("Only Characters Allowed");
         $("#inputLastName_error").show();
-        $("#inputLastName").css("color","#F90A0A");
+        $("#inputLastName").addClass("is-invalid");
       }
     }
-//email address validation
+// email address validation
   function check_email(){
     var regex = /^([a-zA-Z0-9_.+-])+\@(([a-zA-Z0-9-])+\.)+([a-zA-Z0-9]{2,4})+$/;
     var email = $("#inputEmail").val();
     var valid =  regex.test(email);
     if(valid === true){
       $("#inputEmail_error").hide();
-      $("#inputEmail").css("color","#000000");
+      $("#inputEmail").removeClass("is-invalid");
+      
+      $.post("../verification/checkEmailTaken.php",
+    		  {
+    		    email: email
+    		  },
+    		  function(data, status){
+    			  console.log(data);
+    		    if (data == "available") {
+    		    	$("#inputEmail").addClass("is-valid");
+    		    } else {
+    		    	$("#inputEmail").addClass("is-invalid");
+    		    	$("#inputEmail_error").html("Email associated with another account");
+    		    	$("#inputEmail_error").show();
+    		    }
+    		  });
     }
     else{
       $("#inputEmail_error").html("Email Address Invalid");
       $("#inputEmail_error").show();
-      $("#inputEmail").css("color","#F90A0A");
+      $("#inputEmail").addClass("is-invalid");
     }
   }
-//username validation
+// username validation
   function check_username(){
     var username = $("#inputUsername").val();
     var pattern = /^[a-zA-Z0-9]*$/;
     if(pattern.test(username) && username !== ''){
       $("#inputUsername_error").hide();
-      $("#inputUsername").css("color","#000000");
+      $("#inputUsername").removeClass("is-invalid");
+      
+      $.post("../verification/checkUNameTaken.php",
+    		  {
+    		    username: username
+    		  },
+    		  function(data, status){
+    			  console.log(data);
+    		    if (data == "available") {
+    		    	$("#inputUsername").addClass("is-valid");
+    		    } else {
+    		    	$("#inputUsername").addClass("is-invalid");
+    		    	$("#inputUsername_error").html("Username Taken");
+    		    	$("#inputUsername_error").show();
+    		    }
+    		  });
     }
     else{
       $("#inputUsername_error").html("Only Characters and Numbers Allowed");
       $("#inputUsername_error").show();
-      $("#inputUsername").css("color","#F90A0A");
+      $("#inputUsername").addClass("is-invalid");
     }
   }
-//password validation
+// password validation
   function check_password(){
     var pattern = /^(?=.*\d).{4,15}$/ ;
     var password  = $("#inputPassword").val();
     if(pattern.test(password) && password !== ''){
       $("#inputPassword_error").hide();
-      $("#inputPassword").css("color","#000000");
+      $("#inputPassword").removeClass("is-invalid");
     }
     else{
       $("#inputPassword_error").html("Password needs 4-15 characters with atleast 1 number");
       $("#inputPassword_error").show();
-      $("#inputPassword").css("color","#F90A0A");
+      $("#inputPassword").addClass("is-invalid");
     }
   }
-//cpassword validation
+// cpassword validation
   function check_cpassword(){
     var pass1 = $("#inputPassword").val();
     var pass2 = $("#inputConfirmPassword").val();
     if(pass1 === pass2){
       $("#inputConfirmPassword_error").hide();
-      $("#inputConfirmPassword").css("color","#000000");
+      $("#inputConfirmPassword").removeClass("is-invalid");
     }
     else{
       $("#inputConfirmPassword_error").html("Passwords do not match");
       $("#inputConfirmPassword_error").show();
-      $("#inputConfirmPassword").css("color","#F90A0A");
+      $("#inputConfirmPassword").addClass("is-invalid");
     }
   }
-//phone number validation
+// phone number validation
   function check_phone(){
     var phone = $("#inputPhone").val();
     var pattern = /^(1?(-?\d{3})-?)?(\d{3})(-?\d{4})$/;
     if(pattern.test(phone) && phone !== ''){
       $("#inputPhone_error").hide();
-      $("#inputPhone").css("color","#000000");
+      $("#inputPhone").removeClass("is-invalid");
     }
     else{
       $("#inputPhone_error").html("Invalid Phone Number");
       $("#inputPhone_error").show();
-      $("#inputPhone").css("color","#F90A0A");
+      $("#inputPhone").addClass("is-invalid");
     }
 
   }
-//check address field 1
+// check address field 1
   function check_addr1(){
     var addr = $("#inputAddress1").val();
     var pattern = /^[a-zA-Z0-9.# ]*$/;
     if(pattern.test(addr) && addr !== ''){
       $("#inputAddress1_error").hide();
-      $("#inputAddress1").css("color","#000000");
+      $("#inputAddress1").removeClass("is-invalid");
     }
     else{
       $("#inputAddress1_error").html("Invalid Address Entry");
       $("#inputAddress1_error").show();
-      $("#inputAddress1").css("color","#F90A0A");
+      $("#inputAddress1").addClass("is-invalid");
     }
   }
-//check address field 2
+// check address field 2
   function check_addr2(){
       var addr = $("#inputAddress2").val();
       var pattern = /^[a-zA-Z0-9.# ]*$/;
       if(pattern.test(addr) && addr !== ''){
         $("#inputAddress2_error").hide();
-        $("#inputAddress2").css("color","#000000");
+        $("#inputAddress2").removeClass("is-invalid");
       }
       else{
         $("#inputAddress2_error").html("Invalid Address Entry");
         $("#inputAddress2_error").show();
-        $("#inputAddress2").css("color","#F90A0A");
+        $("#inputAddress2").addClass("is-invalid");
       }
     }
-//check city
+// check city
   function check_city(){
     var city = $("#inputCity").val();
     var pattern = /^[a-zA-Z.\-' ]*$/;
     if(pattern.test(city) && city !== ''){
       $("#inputCity_error").hide();
-      $("#inputCity").css("color","#000000");
+      $("#inputCity").removeClass("is-invalid");
     }
     else{
       $("#inputCity_error").html("Only characters allowed");
       $("#inputCity_error").show();
-      $("#inputCity").css("color","#F90A0A");
+      $("#inputCity").addClass("is-invalid");
     }
   }
-//check if a state has been selected
+// check if a state has been selected
   function check_state(){
     var state = $("#inputState").val();
     if(state !== "State"){
@@ -233,18 +263,18 @@ $(function(){
       $("#inputState_error").show();
     }
   }
-//check if zipcode is valid
+// check if zipcode is valid
   function check_zip(){
     var zip = $("#inputZip").val();
     var pattern = /^[0-9]{5}(?:-[0-9]{4})?$/;
     if(pattern.test(zip) && zip !== ''){
       $("#inputZip_error").hide();
-      $("#inputZip").css("color","#000000");
+      $("#inputZip").removeClass("is-invalid");
     }
     else{
       $("#inputZip_error").html("Invalid Zipcode");
       $("#inputZip_error").show();
-      $("#inputZip").css("color","#F90A0A");
+      $("#inputZip").addClass("is-invalid");
     }
   }
 });
