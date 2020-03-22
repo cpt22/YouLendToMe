@@ -1,4 +1,4 @@
-<?php 
+<?php
 require_once SRC . 'registerUser.php';
 require_once SRC . 'USStates.php';
 ?>
@@ -18,15 +18,11 @@ require_once SRC . 'USStates.php';
 					<div class="row">
 						<div class="text-center mb-4">
 							<img class="mb-4"
-								src="/docs/4.3/assets/brand/bootstrap-solid.svg" alt=""
-								width="72" height="72">
-							<h1 class="h3 mb-3 font-weight-normal">Register</h1>
+								src="../images/YLTM.png" alt=""
+								width="80" height="80">
+							<h1 class="h3 mb-3 font-weight-normal">Register Account with YLTM</h1>
 							<p>
-								Build form controls with floating labels via the
-								<code>:placeholder-shown</code>
-								pseudo-element. <a
-									href="https://caniuse.com/#feat=css-placeholder-shown">Works in
-									latest Chrome, Safari, and Firefox.</a>
+								Fill up the following fields with accurate information. Personal Information can be altered later. You will need to add your credit card detailsin settings after making an account.
 							</p>
 						</div>
 						<div class="col-9 col-sm-6">

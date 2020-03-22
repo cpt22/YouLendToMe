@@ -20,8 +20,8 @@ if (isUserLoggedIn()) {
 			<div class="col-4">
 				<form class="form-signin" action="" method="post">
 					<div class="text-center mb-4">
-						<img class="mb-4" src="/docs/4.3/assets/brand/bootstrap-solid.svg"
-							alt="" width="72" height="72">
+						<img class="mb-4" src="../images/YLTM.png"
+							alt="" width="80" height="80">
 						<h1 class="h3 mb-3 font-weight-normal">Sign in to YLTM</h1>
 					</div>
 					<?php if(isset($errors['loginAttempt']) && $errors['loginAttempt'] == false) {
@@ -53,7 +53,7 @@ if (isUserLoggedIn()) {
 						in</button>
 				</form>
 
-        <form class="form-signin" method="post" action="register.php">
+        <form class="form-signin" method="post" action="register.php" style="padding-top:0px;">
         <button class="btn btn-lg btn-secondary btn-block" type="submit">Sign
             up</button>
         </form>
