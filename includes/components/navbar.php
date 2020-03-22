@@ -1,4 +1,5 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+	<a class="navbar-brand" href="#"><img src="../../html/images/YLTM.png" width="40" height="40"></a>
 	<a class="navbar-brand" href="#">You Lend To Me</a>
 	<button class="navbar-toggler" type="button" data-toggle="collapse"
 		data-target="#navbarSupportedContent"
@@ -28,8 +29,8 @@
 			}
 			?>
 		</ul>
-		
-		<?php 
+
+		<?php
 		if (isset($user)) {
 		    echo '<button class="btn btn-outline-danger my-2 my-sm-0" type="submit" onclick="window.location.href=' . "'" . __HOST__ . "user/logout.php'" . ';">Logout</button>';
 		} else {
