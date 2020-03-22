@@ -168,14 +168,14 @@ $(document).ready(function() {
   }
 // password validation
   function check_password(){
-    var pattern = /^(?=.*\d).{4,15}$/ ;
+    var pattern = /(?=^.{8,20}$)((?!.*\s)(?=.*[A-Z])(?=.*[a-z]))((?=(.*\d){1,})|(?=(.*\W){1,}))^.*$/;
     var password  = $("#inputPassword").val();
     if(pattern.test(password) && password !== ''){
       $("#inputPassword_error").hide();
       $("#inputPassword").removeClass("is-invalid");
     }
     else{
-      $("#inputPassword_error").html("Password needs 4-15 characters with atleast 1 number");
+      $("#inputPassword_error").html("Password needs 8-20 characters with at least 1 number, 1 lowercase letter, and 1 uppercase letter");
       $("#inputPassword_error").show();
       $("#inputPassword").addClass("is-invalid");
     }
