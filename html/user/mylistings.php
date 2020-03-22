@@ -54,7 +54,7 @@ while ($row = $result->fetch_assoc()) {
 			             </div>';
 			}
 			?>
-			<div class="row border-bottom">
+			<!--<div class="row border-bottom">
 				<div class="col py-3">
 					<div class="image-holder">
 						<img src="../images/meyer.jpg" class="square" />
@@ -64,9 +64,8 @@ while ($row = $result->fetch_assoc()) {
 					<div class="row title-text"><a href="#" class="title-link">TITLE</a></div>
 					<div class="row">$100.00 per day</div>
 				</div>
-			</div>
-			<div class="row">Hi2</div>
-			<div class="row">Hi3</div>
+			</div>-->
+
 		</div>
 	</div>
 	<?php require_once SRC . 'components/footer.php'; ?>

@@ -19,7 +19,7 @@
 				</a>
 				<div class="dropdown-menu" aria-labelledby="navbarDropdown">
                 <a class="dropdown-item" href="' . __HOST__ . 'listing/new.php">New Listing</a>
-				<a class="dropdown-item" href="' . __HOST__ . 'user/items.php">My Listings</a>
+				<a class="dropdown-item" href="' . __HOST__ . 'user/mylistings.php">My Listings</a>
                 <div class="dropdown-divider"></div>
                 <a class="dropdown-item" href="' . __HOST__ . 'user/settings.php">Settings</a>
 				</div>
