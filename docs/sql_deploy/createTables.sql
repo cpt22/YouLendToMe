@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 22, 2020 at 01:21 AM
+-- Generation Time: Mar 22, 2020 at 04:46 PM
 -- Server version: 8.0.18
 -- PHP Version: 7.3.11
 
@@ -29,10 +29,10 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE `addresses` (
-  `line1` varchar(200) COLLATE utf8_unicode_ci NOT NULL,
-  `line2` varchar(200) COLLATE utf8_unicode_ci NOT NULL,
-  `city` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
-  `state` varchar(30) COLLATE utf8_unicode_ci NOT NULL,
+  `line1` varchar(200) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+  `line2` varchar(200) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+  `city` varchar(100) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+  `state` varchar(30) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
   `zipcode` int(5) NOT NULL,
   `user_ID` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
@@ -55,10 +55,38 @@ INSERT INTO `addresses` (`line1`, `line2`, `city`, `state`, `zipcode`, `user_ID`
 
 CREATE TABLE `borrows` (
   `user_ID` int(11) NOT NULL,
-  `item_ID` varchar(10) NOT NULL,
+  `item_ID` varchar(10) COLLATE utf8_unicode_ci NOT NULL,
   `start_date` date NOT NULL,
   `end_date` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `categories`
+--
+
+CREATE TABLE `categories` (
+  `name` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
+  `ID` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Dumping data for table `categories`
+--
+
+INSERT INTO `categories` (`name`, `ID`) VALUES
+('General', 1),
+('Electronics', 2),
+('Sports', 3),
+('Fashion', 4),
+('Music', 5),
+('Education', 6),
+('Toys', 7),
+('Hobbies', 8),
+('Furnishings', 9),
+('Books', 10),
+('Party Equipment', 11);
 
 -- --------------------------------------------------------
 
@@ -67,7 +95,7 @@ CREATE TABLE `borrows` (
 --
 
 CREATE TABLE `credit_cards` (
-  `number` varchar(19) COLLATE utf8_unicode_ci NOT NULL,
+  `number` varchar(19) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
   `exp_month` int(11) NOT NULL,
   `exp_year` int(11) NOT NULL,
   `cvv` int(11) NOT NULL,
@@ -82,10 +110,24 @@ CREATE TABLE `credit_cards` (
 --
 
 CREATE TABLE `images` (
-  `filename` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
-  `item_ID` VARCHAR(10) NOT NULL,
+  `filename` varchar(100) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+  `item_ID` varchar(10) COLLATE utf8_unicode_ci NOT NULL,
   `ID` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Dumping data for table `images`
+--
+
+INSERT INTO `images` (`filename`, `item_ID`, `ID`) VALUES
+('444569f7e01bc3fff208fc6fb9c7277abccc6bf232fae1a65506a62b85611922.jpg', '935e245384', 9),
+('0db39bd212d5a0c8656f77efdcd54e098612ec521d995ca15972d047bad6da87.jpg', 'aac67e833b', 10),
+('e12a94017e108e8f534d539b362fd775f9d68bf274408a721bff927f45d54e56.jpg', '1ecf4aff5f', 11),
+('419e41f132fa2e738b303d5c64eb8d6e6d3f5f51ae1a727310872d8e57d3b785.jpg', 'f248dd583d', 12),
+('525df4db09c49f80453ebbb185a5179fe105e4c6b0b8b8fa41ac97440f10e492.jpeg', 'bc6704c83c', 13),
+('f3a67f65e5e7fc8c0739c7c0d16ec611b712fedec50c1fd99bf6eabe8c570ea1.jpg', 'e1b5d19b27', 14),
+('a33c311d454645b59745e12140a1760e5c1b4bcbb0d8b59ef4ffb9c1fdac1b72.jpeg', 'c4d830930e', 15),
+('7589404f301ec6441835b4679bbcc37bbe8071c9f531a03ae870d9fc4ac426a2.jpg', 'd6f0649b13', 18);
 
 -- --------------------------------------------------------
 
@@ -94,17 +136,32 @@ CREATE TABLE `images` (
 --
 
 CREATE TABLE `items` (
-  `title` varchar(200) COLLATE utf8_unicode_ci NOT NULL,
-  `description` varchar(5000) COLLATE utf8_unicode_ci NOT NULL,
+  `title` varchar(200) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+  `description` varchar(5000) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
   `listed` tinyint(1) NOT NULL DEFAULT '0',
   `borrowed` tinyint(1) NOT NULL DEFAULT '0',
   `location` int(5) NOT NULL,
-  `rate` decimal(4,2) NOT NULL,
+  `rate` decimal(6,2) NOT NULL,
   `start_date` date NOT NULL,
   `end_date` date NOT NULL,
+  `category` int(11) NOT NULL,
   `owner_ID` int(11) NOT NULL,
-  `ID` VARCHAR(10) NOT NULL
+  `ID` varchar(10) COLLATE utf8_unicode_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Dumping data for table `items`
+--
+
+INSERT INTO `items` (`title`, `description`, `listed`, `borrowed`, `location`, `rate`, `start_date`, `end_date`, `category`, `owner_ID`, `ID`) VALUES
+('ginger', 'is the best dog ', 0, 0, 60093, '100.00', '2020-05-05', '2020-06-06', 1, 8, '1ecf4aff5f'),
+('yinger', 'hi            ', 0, 0, 67009, '100.00', '2020-05-05', '2020-10-10', 1, 8, '935e245384'),
+('yinger', 'hi             ', 0, 0, 67009, '100.00', '2020-05-05', '2020-10-10', 1, 8, 'aac67e833b'),
+('ginger', 'is the best dog             ', 0, 0, 60093, '100.00', '2020-05-22', '2020-06-06', 1, 8, 'bc6704c83c'),
+('daw', ' add', 0, 0, 60093, '100.00', '2020-03-30', '2020-03-31', 1, 8, 'c4d830930e'),
+('yinn', '        yane    ', 0, 0, 60093, '100.00', '2020-03-09', '2020-03-23', 1, 8, 'd6f0649b13'),
+('hi im yinny', '***best*** dog ', 0, 0, 60093, '100.00', '2020-03-02', '2020-03-31', 1, 8, 'e1b5d19b27'),
+('ginger', 'is the best dog  ', 0, 0, 60093, '100.00', '2020-05-05', '2020-06-06', 1, 8, 'f248dd583d');
 
 -- --------------------------------------------------------
 
@@ -113,7 +170,7 @@ CREATE TABLE `items` (
 --
 
 CREATE TABLE `tokens` (
-  `token` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
+  `token` varchar(100) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
   `expires` bigint(20) NOT NULL,
   `type` int(11) NOT NULL,
   `ID` int(11) NOT NULL
@@ -124,6 +181,7 @@ CREATE TABLE `tokens` (
 --
 
 INSERT INTO `tokens` (`token`, `expires`, `type`, `ID`) VALUES
+('16a5095957cf257bc22221d43acb1566d41bef659491b7e530e93defb9c299b28440825d52a8b2441c5f70862d1c014a', 1587487319, 0, 8),
 ('339d6d56dd8e90ea8cd67b2214e9534e6e8c345fa5f6d33632d19ec961e1fd3d180f2bdbac46e99e76bc7c84884e5a9d', 1587431307, 0, 8);
 
 -- --------------------------------------------------------
@@ -133,12 +191,12 @@ INSERT INTO `tokens` (`token`, `expires`, `type`, `ID`) VALUES
 --
 
 CREATE TABLE `users` (
-  `first_name` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
-  `last_name` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
-  `email` varchar(400) COLLATE utf8_unicode_ci NOT NULL,
-  `username` varchar(20) COLLATE utf8_unicode_ci NOT NULL,
+  `first_name` varchar(100) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+  `last_name` varchar(100) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+  `email` varchar(400) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+  `username` varchar(20) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
   `password` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
-  `phone_number` varchar(11) COLLATE utf8_unicode_ci NOT NULL,
+  `phone_number` varchar(11) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
   `ID` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
@@ -171,6 +229,12 @@ ALTER TABLE `borrows`
   ADD KEY `item_ID` (`item_ID`);
 
 --
+-- Indexes for table `categories`
+--
+ALTER TABLE `categories`
+  ADD PRIMARY KEY (`ID`);
+
+--
 -- Indexes for table `credit_cards`
 --
 ALTER TABLE `credit_cards`
@@ -190,6 +254,7 @@ ALTER TABLE `images`
 ALTER TABLE `items`
   ADD PRIMARY KEY (`ID`),
   ADD KEY `owner_ID` (`owner_ID`);
+ALTER TABLE `items` ADD FULLTEXT KEY `searchindex` (`title`,`description`);
 
 --
 -- Indexes for table `tokens`
@@ -209,6 +274,12 @@ ALTER TABLE `users`
 --
 
 --
+-- AUTO_INCREMENT for table `categories`
+--
+ALTER TABLE `categories`
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+
+--
 -- AUTO_INCREMENT for table `credit_cards`
 --
 ALTER TABLE `credit_cards`
@@ -218,7 +289,7 @@ ALTER TABLE `credit_cards`
 -- AUTO_INCREMENT for table `images`
 --
 ALTER TABLE `images`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 
 --
 -- AUTO_INCREMENT for table `users`
