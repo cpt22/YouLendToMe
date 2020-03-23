@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 22, 2020 at 04:46 PM
+-- Generation Time: Mar 23, 2020 at 12:18 AM
 -- Server version: 8.0.18
 -- PHP Version: 7.3.11
 
@@ -59,6 +59,13 @@ CREATE TABLE `borrows` (
   `start_date` date NOT NULL,
   `end_date` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Dumping data for table `borrows`
+--
+
+INSERT INTO `borrows` (`user_ID`, `item_ID`, `start_date`, `end_date`) VALUES
+(8, '1ecf4aff5f', '2020-03-02', '2020-03-24');
 
 -- --------------------------------------------------------
 
