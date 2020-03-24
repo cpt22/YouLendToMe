@@ -39,35 +39,31 @@ if (isset($_GET['i'])) {
 	<?php require_once SRC . 'components/navbar.php'; ?>
 
 
-  <div class="container p-3">
-		<div class="row">
-			<div class="col redBorder">
-				<img src="image link here" class="rounded float-left"
-					alt="image alternate text here" width="400" height="400">
-			</div>
-
-			<div class="col">
-				<div class="row p-2">
-					<h1 class="itemName">Item Name PlaceHolder</h1>
+  	<div class="container border-right border-left">
+		<div class="container p-3">
+			<div class="row">
+				<div class="col">
+					<img src="<?php echo $item->getImages()[0]->getFile(); ?>"
+						class="rounded float-left" alt="image alternate text here"
+						width="400" height="400">
 				</div>
-				<div class="row p-2">Dates</div>
-				<div class="row p-2">Price</div>
-				<div class="row p-2">Rent now</div>
+
+				<div class="col">
+					<div class="row p-2">
+						<h1 class="itemName"><?php echo $item->getTitle(); ?></h1>
+					</div>
+					<div class="row p-2">Available: <?php echo $item->getStartDate() . "-" . $item->getEndDate(); ?></div>
+					<div class="row p-2">$<?php echo $item->getRate(); ?> per day</div>
+					<div class="row p-2">Rent now</div>
+				</div>
 			</div>
 		</div>
-	</div>
 
 
-	<div class="container blackBorder">
-		<div class="row">
-			<div class="col">DESCRIPTION: Lorem ipsum dolor sit amet, consectetur
-				adipiscing elit, sed do eiusmod tempor incididunt ut labore et
-				dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
-				exercitation ullamco laboris nisi ut aliquip ex ea commodo
-				consequat. Duis aute irure dolor in reprehenderit in voluptate velit
-				esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat
-				cupidatat non proident, sunt in culpa qui officia deserunt mollit
-				anim id est laborum.</div>
+		<div class="container">
+			<div class="row">
+				<div class="col"><?php echo $desc_data; ?></div>
+			</div>
 		</div>
 	</div>
 
