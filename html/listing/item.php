@@ -38,9 +38,8 @@ if (isset($_GET['i'])) {
 <body>
 	<?php require_once SRC . 'components/navbar.php'; ?>
 
-
-  	<div class="container border-right border-left">
-		<div class="container p-3">
+  	<div class="container border-dark border-right border-left">
+		<div class="col p-3">
 			<div class="row">
 				<div class="col">
 					<img src="<?php echo $item->getImages()[0]->getFile(); ?>"
