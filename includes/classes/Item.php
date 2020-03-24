@@ -14,6 +14,7 @@ class Item {
     private $owner;
     private $ID;
     private $images = array();
+    private $deleted;
     
     
 
@@ -45,8 +46,8 @@ class Item {
             $this->location = $item['location'];
             $this->category['ID'] = $item['category'];
             $this->owner = $item['owner_ID'];
+            $this->deleted = $item['deleted'];
         } else {
-            echo "ITEM NOT FOUND";
             return;
         }
         
@@ -91,6 +92,10 @@ class Item {
     public function isBorrowed()
     {
         return $this->borrowed == 1 ? true : false;
+    }
+    
+    public function isDeleted() {
+        return $this->deleted == 1 ? true : false;
     }
     
     public function getLocation()

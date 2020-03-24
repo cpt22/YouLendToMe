@@ -10,6 +10,12 @@ $item = null;
 if (isset($_GET['i'])) {
     $itemID = cleanAlphanumeric(cleanData($_GET['i']));
     $item = new Item($itemID);
+    
+    if ($item->isDeleted()) {
+        http_response_code(404);
+        require_once(__HOST__ . "404.php");
+        die();
+    }
 
     if (empty($vals['itemTitle']))
         $vals['itemTitle'] = $item->getTitle();
@@ -46,7 +52,7 @@ function convertDate($date) {
 <html lang="en">
 <head>
 <?php require_once SRC . 'components/header.php'; ?>
-<?php echo '<link href="' . __HOST__ . 'styles/loginregister.css" rel="stylesheet">'; ?>
+<link href="<?php echo __HOST__; ?>styles/loginregister.css" rel="stylesheet">'; ?>
 <title>You Lend To Me</title>
 <style>
 .image-preview {
@@ -176,6 +182,6 @@ display: block;
 		</div>
 	</div>	
 	<?php require_once SRC . 'components/footer.php'; ?>
-	<?php echo '<script src="' . __HOST__ . 'js/newlisting.js"></script>';?>
+	<script src="<?php echo __HOST__ ?>js/newlisting.js"></script>';?>
 </body>
 </html>

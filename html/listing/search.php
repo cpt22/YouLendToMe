@@ -5,7 +5,7 @@ $items = array();
 
 if (isset($_GET['s'])) {
     $search = cleanData($_GET['s']);
-    $sql = "SELECT ID FROM items WHERE MATCH(title, description)
+    $sql = "SELECT ID FROM items WHERE deleted=0 AND MATCH(title, description)
     AGAINST(? IN NATURAL LANGUAGE MODE) LIMIT 50";
     $stmt = $con->prepare($sql);
     $stmt->bind_param("s", $search);
@@ -32,19 +32,7 @@ if (isset($_GET['s'])) {
 </head>
 <body>
 	<?php require_once SRC . 'components/navbar.php'; ?>
-	<div class="row justify-content-center">
-		<div class="col-md-7">
-			<div class="row border-bottom">
-				<div class="col py-3">
-					<div class="image-holder">
-						<img src="../images/meyer.jpg" class="square" />
-					</div>
-				</div>
-			</div>
-			<div class="row">Hi2</div>
-			<div class="row">Hi3</div>
-		</div>
-	</div>
+	
 	<?php require_once SRC . 'components/footer.php'; ?>
 </body>
 </html>

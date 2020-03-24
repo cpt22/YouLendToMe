@@ -6,7 +6,7 @@ require_once SRC . 'classes/Item.php';
 
 $items = array();
 
-$result = $con->query("SELECT ID FROM items WHERE owner_ID=" . $user->getUserID());
+$result = $con->query("SELECT ID FROM items WHERE deleted=0 AND owner_ID=" . $user->getUserID());
 while ($row = $result->fetch_assoc()) {
     array_push($items, new Item($row['ID']));
 }
@@ -45,24 +45,31 @@ while ($row = $result->fetch_assoc()) {
 	<div class="row justify-content-center">
 		<div class="col-md-7">
 
-		<?php
+			<?php
 			foreach ($items as $item) {
-			     echo '<div class="row border-bottom">
+			     echo '<div class="row border-bottom listing-row">
 				            <div class="col py-3">
 					           <div class="image-holder">
 						          <img src="' . $item->getImages()[0]->getFile() . '" class="square" />
 					           </div>
 				            </div>
 				            <div class="col-sm-9 py-3">
-					              <div class="row title-text"><a href="' . __HOST__ . 'listing/item.php?i=' . $item->getID() . '" class="title-link">' . $item->getTitle() . '</a></div>
-				                  <div class="row">$' . $item->getRate() . ' per day</div>
-                          <div class="row">Category:'. $item->getCategory()['name'] . '</div>
-                          <div class="row">Location(zipcode):' . $item->getLocation() . '</div>
-                          <div class="row">Description: '. $item->getDescription() . '</div>
-                          <div class="row">Available Till: '. date("m-d-Y", strtotime($item->getEndDate())) . '</div>
-                          <form method="post">
-                            <button type="submit" class="btn btn-secondary" style="margin-top:10px;">Delete Listing</button>
-                          </form>
+					           <div class="row title-text"><a href="' . __HOST__ . 'listing/item.php?i=' . $item->getID() . '" class="title-link">' . $item->getTitle() . '</a></div>
+				                <div class="row">$' . $item->getRate() . ' per day</div>
+                                <div class="row">Category:'. $item->getCategory()['name'] . '</div>
+                                <div class="row">Location(zipcode):' . $item->getLocation() . '</div>
+                                <div class="row">Description: '. $item->getDescription() . '</div>
+                                <div class="row">Available Till: '. date("m-d-Y", strtotime($item->getEndDate())) . '</div>
+                                <div class="row">
+                                    <div class="btn-toolbar">
+                                        <div class="btn-group mr-2">
+                                            <button type="button" class="btn' . ($item->isListed() ? " btn-danger" : " btn-success") .  ' is-listed" assoc-id="' . $item->getID() . '">' . ($item->isListed() ? 'Delist' : 'Relist') . '</button>
+                                        </div>
+                                        <div class="btn-group mr-2">
+                                            <button type="button" class="btn btn-secondary del-listing" assoc-id="' . $item->getID() . '">Delete Listing</button>
+                                        </div> 
+                                    </div>
+                                </div>
                             </div>
 			             </div>';
 			}
@@ -82,5 +89,6 @@ while ($row = $result->fetch_assoc()) {
 		</div>
 	</div>
 	<?php require_once SRC . 'components/footer.php'; ?>
+	<script src="<?php echo __HOST__; ?>js/mylistings.js" type="text/javascript"></script>
 </body>
 </html>
