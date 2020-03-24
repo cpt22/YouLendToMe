@@ -1,6 +1,4 @@
 <?php
-require_once SRC . 'session.php';
-require_once SRC . 'verify.php';
 
 $firstName = $lastName = $email = $username = $password = $confirmPW = $phone = $address1 = $address2 = $city = $state = $zipcode = $rememberMe = "";
 $vals = $errors = array();

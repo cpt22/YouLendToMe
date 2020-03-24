@@ -1,6 +1,4 @@
 <?php
-require_once SRC . "spec/tokenizer.php";
-
 if (isset($_SESSION['username']) || isset($_SESSION['userID'])) {
     // remove PHPSESSID from browser
     if (isset($_COOKIE[session_name()]))

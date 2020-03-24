@@ -2,15 +2,13 @@
 //Begin user session
 session_start();
 
-require_once SRC . 'connect.php';
 require_once SRC . 'classes/User.php';
-require_once SRC . "spec/tokenizer.php";
+require_once SRC . "misc/tokenizer.php";
 
 $user = null;
 
 if (isset($_SESSION['username']) && isset($_SESSION['userID'])) {
-    $user = new User($_SESSION['username'], $_SESSION['userID']);
-    $user->initialize($_SESSION['email'], $_SESSION['firstName'], $_SESSION['lastName']);
+    initializeUser();
 } else if (isset($_COOKIE['remember'])) {
     logUserInWithToken($_COOKIE['remember']);
 } else {
@@ -39,10 +37,11 @@ function initializeSession($username, $rememberMe, $url) {
     }
 }
 
-//TODO: REMOVE
-/*function initializeSession($username) {
-    intializeSession($username, "index.php");
-}*/
+function initializeUser() {
+    global $user;
+    $user = new User($_SESSION['username'], $_SESSION['userID']);
+    $user->initialize($_SESSION['email'], $_SESSION['firstName'], $_SESSION['lastName']);
+}
 
 function loadUserInfo($username, $userID) {
     global $con;
@@ -83,7 +82,9 @@ function logUserInWithToken($token) {
             return;
         
         loadUserInfo(null, $result['ID']);
-    }   
+    }  
+    
+    initializeUser();
 }
 
 /**
@@ -98,4 +99,6 @@ function isUserLoggedIn() {
 function sendToLogin() {
     header("Location: " . __HOST__ . "user");
 }
+
+
 ?>

@@ -116,7 +116,7 @@ $(document).ready(function() {
       $("#inputEmail_error").hide();
       $("#inputEmail").removeClass("is-invalid");
       
-      $.post("../verification/checkEmailTaken.php",
+      $.post("../request/verification/checkEmailTaken.php",
     		  {
     		    email: email
     		  },
@@ -145,7 +145,7 @@ $(document).ready(function() {
       $("#inputUsername_error").hide();
       $("#inputUsername").removeClass("is-invalid");
       
-      $.post("../verification/checkUNameTaken.php",
+      $.post("../request/verification/checkUNameTaken.php",
     		  {
     		    username: username
     		  },

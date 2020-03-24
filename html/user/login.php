@@ -1,6 +1,6 @@
 <?php
-require_once SRC . 'retPath.php';
-require_once SRC . 'loginUser.php';
+require_once SRC . 'misc/retPath.php';
+require_once SRC . 'user/loginUser.php';
 
 if (isUserLoggedIn()) {
     header('location: index.php');
@@ -10,7 +10,7 @@ if (isUserLoggedIn()) {
 <html lang="en">
 <head>
 <?php require_once SRC . 'components/header.php'; ?>
-<?php echo '<link href="' . __HOST__ . 'styles/loginregister.css" rel="stylesheet">' ?>
+<link href="<?php echo __HOST__; ?>styles/loginregister.css" rel="stylesheet">
 <title>You Lend To Me</title>
 </head>
 <body>

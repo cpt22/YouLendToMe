@@ -1,6 +1,5 @@
 <?php
-require_once SRC . 'verify.php';
-require_once SRC . 'spec/tokenizer.php';
+require_once SRC . 'misc/tokenizer.php';
 
 if (!isUserLoggedIn()) {
     header('Location: ' . __HOST__ . 'user/login.php?redir=azOfQW');

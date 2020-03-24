@@ -1,9 +1,5 @@
 <?php
-if (! isUserLoggedIn()) {
-    sendToLogin(null);
-}
 require_once SRC . 'classes/Item.php';
-require_once SRC . 'verify.php';
 
 $items = array();
 

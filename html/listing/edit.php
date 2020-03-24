@@ -1,6 +1,9 @@
 <?php
+if (!isUserLoggedIn()) {
+    sendToLogin(null);
+}
+
 require_once SRC . 'itemProc/doUpdateItem.php';
-require_once SRC . 'verify.php';
 require_once SRC . 'classes/Item.php';
 
 $item = null;

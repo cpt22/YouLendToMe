@@ -1,12 +1,11 @@
 <?php
-require_once SRC . 'registerUser.php';
-require_once SRC . 'USStates.php';
+require_once SRC . 'user/registerUser.php';
 ?>
 <!doctype html>
 <html lang="en">
 <head>
 <?php require_once SRC . 'components/header.php'; ?>
-<?php echo '<link href="' . __HOST__ . 'styles/loginregister.css" rel="stylesheet">' ?>
+<link href="<?php echo __HOST__; ?>styles/loginregister.css" rel="stylesheet">
 <title>You Lend To Me</title>
 </head>
 <body>
@@ -125,6 +124,6 @@ require_once SRC . 'USStates.php';
 		</form>
 	</div>
 	<?php require_once SRC . 'components/footer.php'; ?>
-	<script type="text/javascript" src="../js/register.js"></script>
+	<script src="<?php echo __HOST__; ?>js/register.js" type="text/javascript"></script>
 </body>
 </html>

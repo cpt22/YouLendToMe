@@ -1,7 +1,4 @@
 <?php
-require_once SRC . 'connect.php';
-require_once SRC . 'verify.php';
-
 $username = "";
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {

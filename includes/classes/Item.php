@@ -1,5 +1,4 @@
 <?php
-require_once SRC . 'connect.php';
 require_once SRC . 'classes/Image.php';
 
 class Item {
@@ -84,14 +83,14 @@ class Item {
         return $this->endDate;
     }
     
-    public function getListed()
+    public function isListed()
     {
-        return $this->listed;
+        return $this->listed == 1 ? true : false;
     }
     
-    public function getBorrowed()
+    public function isBorrowed()
     {
-        return $this->borrowed;
+        return $this->borrowed == 1 ? true : false;
     }
     
     public function getLocation()

@@ -1,6 +1,4 @@
 <?php
-require_once SRC . 'session.php';
-require_once SRC . 'verify.php';
 
 $username = $password = $rememberMe = "";
 $path = $redirectURL = "";

@@ -1,6 +1,5 @@
 <?php
-require_once SRC . 'connect.php';
-require_once SRC . 'USStates.php';
+require_once SRC . 'misc/USStates.php';
 
 function cleanData($data) {
     $data = trim($data);

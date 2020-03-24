@@ -1,4 +1,8 @@
 <?php
+if (!isUserLoggedIn()) {
+    sendToLogin(null);
+}
+
 require_once SRC . 'itemProc/doNewItem.php';
 ?>
 <!doctype html>
@@ -25,8 +29,6 @@ require_once SRC . 'itemProc/doNewItem.php';
 }
 </style>
 </head>
-
-
 <body>
 	<?php require_once SRC . 'components/navbar.php'; ?>
 

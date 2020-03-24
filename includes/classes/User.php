@@ -1,5 +1,4 @@
 <?php
-require_once SRC . 'connect.php';
 require_once SRC . 'classes/Card.php';
 require_once SRC . 'classes/Address.php';
 
