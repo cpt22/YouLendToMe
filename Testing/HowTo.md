@@ -19,11 +19,11 @@
 
 1. Test User
 ⋅⋅* first_name: Test-First
-⋅⋅* last_name: Test-Last
-⋅⋅* email: test@youlendtome.com
-⋅⋅* username: test
-⋅⋅* password: Test1234
-⋅⋅* phone: 0000000000
+- last_name: Test-Last
+- email: test@youlendtome.com
+- username: test
+- password: Test1234
+- phone: 0000000000
 
 2. Test Address
 ⋅⋅* line1: test1
