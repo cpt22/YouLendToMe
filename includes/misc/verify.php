@@ -52,7 +52,10 @@ function verifyName($name) {
  * @return mixed
  */
 function verifyEmail($email) {
-    return filter_var($email, FILTER_VALIDATE_EMAIL);
+    if (filter_var($email, FILTER_VALIDATE_EMAIL))
+        return true;
+    else 
+        return false;
 }
 
 function verifyUsername($username) {
