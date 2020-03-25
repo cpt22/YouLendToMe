@@ -1,18 +1,18 @@
-##Mac OS/X##
+##Mac OS/X
 1. Navigate to Testing directory
 2. Execute ./phpunit --bootstrap load.php tests
 
-##Windows##
+##Windows
 1. Instructions may be the same as on mac but I'm not sure, so orion try testing this
 
-##Writing test cases##
+##Writing test cases
 - Follow documentation [here](https://phpunit.readthedocs.io/en/9.0/writing-tests-for-phpunit.html)
 - Be sure to include the actual file and any other dependencies at the top of the test file using proper syntax -> ```require_once SRC . "path to file with no leading /"```
 - Name the file```name of file to be tested``` + ```Test.php``` and place this file in the ```tests``` folder
 - e.g. testing verify.php would yield VerifyTest.php
 
 
-##Sample Information##
+##Sample Information
 1. Please create all this info prior to running test suite
 2. Use test.sql in the create folder to build the test user. Reference info can be found below
 
