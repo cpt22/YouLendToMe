@@ -7,8 +7,8 @@ require_once SRC . 'classes/Item.php';
 $items = array();
 
 $sql = "SELECT ID
-FROM items I, borrows B 
-WHERE B.user_ID=" . $user->getUserID() . " 
+FROM items I, borrows B
+WHERE B.user_ID=" . $user->getUserID() . "
     AND B.item_ID=I.ID";
 $result = $con->query($sql);
 while ($row = $result->fetch_assoc()) {
@@ -40,9 +40,15 @@ while ($row = $result->fetch_assoc()) {
 </head>
 <body>
 	<?php require_once SRC . 'components/navbar.php'; ?>
+  <div class="jumbotron jumbotron-fluid">
+  <div class="container">
+    <h1 class="display-12">My Listed Items</h1>
+    <p class="lead">Displayed below are the items you have borrowed. You can view and return items</p>
+  </div>
+</div>
 	<div class="row justify-content-center">
 		<div class="col-md-7">
-		
+
 		<?php
 			foreach ($items as $item) {
 			     echo '<div class="row border-bottom">
@@ -75,4 +81,3 @@ while ($row = $result->fetch_assoc()) {
 	<?php require_once SRC . 'components/footer.php'; ?>
 </body>
 </html>
-
