@@ -51,7 +51,7 @@ if (isset($_GET['i'])) {
 					<div class="row p-2">
 						<h1 class="itemName"><?php echo $item->getTitle(); ?></h1>
 					</div>
-					<div class="row p-2">Available: <?php echo $item->getStartDate() . "-" . $item->getEndDate(); ?></div>
+					<div class="row p-2">Available: <?php echo date("m-d-Y", strtotime($item->getStartDate())) . " to " . date("m-d-Y", strtotime($item->getEndDate())); ?></div>
 					<div class="row p-2">$<?php echo $item->getRate(); ?> per day</div>
 					<div class="row p-2">Rent now</div>
 				</div>
