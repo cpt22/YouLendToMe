@@ -1,4 +1,9 @@
 <?php
+
+
+include 'YouLendToMe/includes/phpunit-7.5.20.phar';
+
+
 require_once SRC . 'classes/Image.php';
 
 class Item {
@@ -15,15 +20,15 @@ class Item {
     private $ID;
     private $images = array();
     private $deleted;
-    
-    
+
+
 
     public function __construct($ID) {
         $this->ID = $ID;
         $this->initialize($ID);
     }
-    
-   
+
+
     private function initialize($ID) {
         global $con;
         $sql = "SELECT * FROM items WHERE ID=?";
@@ -32,10 +37,10 @@ class Item {
         $stmt->execute();
         $result = $stmt->get_result();
         $stmt->close();
-        
+
         if ($result->num_rows == 1) {
             $item = $result->fetch_assoc();
-            
+
             $this->title = $item['title'];
             $this->description = $item['description'];
             $this->rate = $item['rate'];
@@ -50,12 +55,12 @@ class Item {
         } else {
             return;
         }
-        
+
         $this->loadImages();
         $this->loadCategory();
     }
-    
-    
+
+
     /*
      * GETTERS
      */
@@ -63,7 +68,7 @@ class Item {
     {
         return $this->title;
     }
-    
+
     public function getDescription()
     {
         return $this->description;
@@ -73,45 +78,45 @@ class Item {
     {
         return $this->rate;
     }
-    
+
     public function getStartDate()
     {
         return $this->startDate;
     }
-    
+
     public function getEndDate()
     {
         return $this->endDate;
     }
-    
+
     public function isListed()
     {
         return $this->listed == 1 ? true : false;
     }
-    
+
     public function isBorrowed()
     {
         return $this->borrowed == 1 ? true : false;
     }
-    
+
     public function isDeleted() {
         return $this->deleted == 1 ? true : false;
     }
-    
+
     public function getLocation()
     {
         return $this->location;
     }
-    
+
     public function getCategory() {
         return $this->category;
     }
-    
+
     public function getOwner()
     {
         return $this->owner;
     }
-    
+
     public function getID()
     {
         return $this->ID;
@@ -121,7 +126,7 @@ class Item {
     {
         return $this->images;
     }
-    
+
     /**
      * Loads all images associated with this item from the database into this item object
      */
@@ -136,7 +141,7 @@ class Item {
             }
         }
     }
-    
+
     private function loadCategory() {
         global $con;
         $cat_id = $this->category['ID'];
@@ -149,4 +154,3 @@ class Item {
     }
 
 }
-
