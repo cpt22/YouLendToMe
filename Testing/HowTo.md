@@ -13,8 +13,8 @@
 
 
 ## Sample Information
-1. Please create all this info prior to running test suite
-2. Use test.sql in the create folder to build the test user. Reference info can be found below
+- Please create all this info prior to running test suite
+- Use test.sql in the create folder to build the test user. Reference info can be found below
 
 
 1. Test User
