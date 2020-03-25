@@ -18,21 +18,12 @@
 
 
 1. Test User
-<<<<<<< HEAD
   * first_name: Test-First
   * last_name: Test-Last
   * email: test@youlendtome.com
   * username: test
   * password: Test1234
   * phone: 0000000000
-=======
-⋅⋅* first_name: Test-First
-- last_name: Test-Last
-- email: test@youlendtome.com
-- username: test
-- password: Test1234
-- phone: 0000000000
->>>>>>> branch 'master' of https://github.com/cpt22/YouLendToMe.git
 
 2. Test Address
   * line1: test1
