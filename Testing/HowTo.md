@@ -18,19 +18,19 @@
 
 
 1. Test User
-..* First Name: Test-First
-..* Last Name: Test-Last
-..* Email: test@youlendtome.com
-..* Username: test
-..* Password: Test1234
-..* Phone: 0000000000
+⋅⋅* First Name: Test-First
+⋅⋅* Last Name: Test-Last
+⋅⋅* Email: test@youlendtome.com
+⋅⋅* Username: test
+⋅⋅* Password: Test1234
+⋅⋅* Phone: 0000000000
 
 3. Test Credit card (via PMA)
-- number: 0000000000000000
-- exp_month: 1
-- exp_year: 2024
-- cvv: 123
-- user_ID: **FIND USER ID OF THE TEST USER AND USE THAT ID HERE**
+⋅⋅* number: 0000000000000000
+⋅⋅* exp_month: 1
+⋅⋅* exp_year: 2024
+⋅⋅* cvv: 123
+⋅⋅* user_ID: **FIND USER ID OF THE TEST USER AND USE THAT ID HERE**
 
 4. Test Item (via new item page)
 - Log in as test user and create this item
