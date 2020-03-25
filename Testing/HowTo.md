@@ -14,7 +14,8 @@
 
 ## Sample Information
 - Please create all this info prior to running test suite
-- Use test.sql in the create folder to build the test user. Reference info can be found below
+- Use test.sql in the create folder to build the test user. Navigate to phpmyadmin->click yltm database->click SQL at top->copy code from test.sql into box->hit go
+- Reference info can be found below
 
 
 1. Test User
