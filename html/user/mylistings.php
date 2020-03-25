@@ -6,7 +6,7 @@ require_once SRC . 'classes/Item.php';
 
 $items = array();
 
-$result = $con->query("SELECT ID FROM items WHERE deleted=0 AND owner_ID=" . $user->getUserID());
+$result = $con->query("SELECT ID FROM items WHERE deleted=0 AND owner_ID=" . $user->getUserID()) or die($conn->error);
 while ($row = $result->fetch_assoc()) {
     array_push($items, new Item($row['ID']));
 }
@@ -67,7 +67,7 @@ while ($row = $result->fetch_assoc()) {
                                         </div>
                                         <div class="btn-group mr-2">
                                             <button type="button" class="btn btn-secondary del-listing" assoc-id="' . $item->getID() . '">Delete Listing</button>
-                                        </div> 
+                                        </div>
                                     </div>
                                 </div>
                             </div>
