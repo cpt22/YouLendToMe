@@ -1,9 +1,5 @@
 <?php
 
-
-include 'YouLendToMe/includes/phpunit-7.5.20.phar';
-
-
 require_once SRC . 'classes/Image.php';
 
 class Item {
@@ -30,8 +26,9 @@ class Item {
 
 
     private function initialize($ID) {
-        global $con;
+        global $con;        
         $sql = "SELECT * FROM items WHERE ID=?";
+        
         $stmt = $con->prepare($sql);
         $stmt->bind_param("s", $ID);
         $stmt->execute();
@@ -40,7 +37,6 @@ class Item {
 
         if ($result->num_rows == 1) {
             $item = $result->fetch_assoc();
-
             $this->title = $item['title'];
             $this->description = $item['description'];
             $this->rate = $item['rate'];

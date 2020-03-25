@@ -4,6 +4,14 @@ require_once SRC . "misc/verify.php";
 
 final class VerifyTest extends TestCase
 {
+    public function setUp(): void {
+        
+    }
+    
+    public function tearDown(): void {
+        
+    }
+    
     public function testIsValidEmail(): void {
         $this->assertEquals(true, verifyEmail("ctingle18@gmail.com"));
     }
