@@ -53,7 +53,8 @@ if (isset($_GET['i'])) {
 					</div>
 					<div class="row p-2">Available: <?php echo $item->getStartDate() . "-" . $item->getEndDate(); ?></div>
 					<div class="row p-2">$<?php echo $item->getRate(); ?> per day</div>
-					<div class="row p-2">Rent now</div>
+					<div class="row p-2"><button type="button" class="btn btn-primary">Rent</button></div>
+          <!-- Need to add actual renting functionality to this button above-->
 				</div>
 			</div>
 		</div>
