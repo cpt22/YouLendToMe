@@ -8,12 +8,19 @@ if (datefield.type != "date") { // if browser doesn't support input type="date",
 			.write('<link href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/base/jquery-ui.css" rel="stylesheet" type="text/css" />\n');
 	document
 			.write('<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"><\/script>\n');
-}
+} 
+
 if (datefield.type != "date") { // if browser doesn't support input type="date",
 	// initialize date picker widget:
+	
 	$(document).ready(function() {
 		$('#startDate').datepicker();
 		$('#endDate').datepicker();
+	});
+} else {
+	$(document).ready(function() {
+		$('#startDate').attr('type', 'date');
+		$('#endDate').attr('type', 'date');
 	});
 }
 
