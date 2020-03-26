@@ -52,7 +52,7 @@ function convertDate($date) {
 <html lang="en">
 <head>
 <?php require_once SRC . 'components/header.php'; ?>
-<link href="<?php echo __HOST__; ?>styles/loginregister.css" rel="stylesheet">'; ?>
+<link href="<?php echo __HOST__ ?>styles/loginregister.css" rel="stylesheet">
 <title>You Lend To Me</title>
 <style>
 .image-preview {
