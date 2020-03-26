@@ -21,7 +21,7 @@
 1. Test User
   * first_name: Test-First
   * last_name: Test-Last
-  * email: test@youlendtome.com
+  * email: test@youlendto.me
   * username: test
   * password: Test1234
   * phone: 0000000000
