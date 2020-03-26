@@ -54,7 +54,7 @@ while ($row = $result->fetch_assoc()) {
 			     echo '<div class="row border-bottom">
 				            <div class="col py-3">
 					           <div class="image-holder">
-						          <img src="' . $item->getImages()[0]->getFile() . '" class="square" />
+						          <img src="' . $item->getImages()[0]->getURL() . '" class="square" />
 					           </div>
 				            </div>
 				            <div class="col-sm-9 py-3">
