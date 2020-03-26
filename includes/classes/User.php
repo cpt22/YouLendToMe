@@ -29,6 +29,8 @@ class User {
         $this->email = $email;
         $this->firstName = $firstName;
         $this->lastName = $lastName;
+        $this->loadAddresses();
+        $this->loadCards();
     }
 
    
