@@ -38,6 +38,7 @@ $(document).ready(function() {
 					var result = JSON.parse(data);
 					
 					if (result.result == 0) {
+						$(parent).toggle();
 						$(parent).remove();
 					}
 				} catch (err) {
@@ -48,5 +49,6 @@ $(document).ready(function() {
 	        return false;
 	    }
 		
-	})
+	});
+	
 });

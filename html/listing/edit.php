@@ -182,6 +182,6 @@ display: block;
 		</div>
 	</div>	
 	<?php require_once SRC . 'components/footer.php'; ?>
-	<script src="<?php echo __HOST__ ?>js/newlisting.js"></script>';?>
+	<script src="<?php echo __HOST__ ?>js/newlisting.js"></script>
 </body>
 </html>
