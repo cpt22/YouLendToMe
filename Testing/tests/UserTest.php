@@ -10,7 +10,6 @@ final class UserTest extends TestCase
     protected function setUp(): void
     {
         $this->user = new User("test");
-        var_dump($this->user);
     }
 
     protected function tearDown(): void
