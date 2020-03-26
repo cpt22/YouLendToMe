@@ -32,9 +32,10 @@ if (isset($_GET['i'])) {
     if (empty($vals['category']))
         $vals['category'] = $item->getCategory()['ID'];
     if (empty($vals['image']))
-        $vals['image'] = $item->getImages()[0]->getFile();
+        $vals['image'] = $item->getImages()[0]->getURL();
     if (empty($vals['itemID']))
         $vals['itemID'] = $item->getID();
+    
 
     if ($item->getOwner() != $user->getUserID()) {
         header("Location: " . __HOST__ . "listing/edit.php?i=" . $item->getID());
@@ -155,7 +156,6 @@ display: block;
 										global $con;
 										$result = $con->query("SELECT * FROM categories");
 										while ($row = $result->fetch_assoc()) {
-										    echo ($vals['category']);
 										    $toSelect = ($row['ID'] == $vals['category']) ? " selected" : "";
 										    echo '<option value="'. $row['ID'] . '"' . $toSelect . '>' . $row['name'] . '</option>';
 										}
