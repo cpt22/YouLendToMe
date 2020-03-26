@@ -9,7 +9,8 @@ require_once SRC . 'itemProc/doNewItem.php';
 <html lang="en">
 <head>
 <?php require_once SRC . 'components/header.php'; ?>
-<?php echo '<link href="' . __HOST__ . 'styles/loginregister.css" rel="stylesheet">'; ?>
+<link href="<?php echo __HOST__ ?>styles/loginregister.css" rel="stylesheet">
+<link href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/base/jquery-ui.css" rel="stylesheet" type="text/css" />
 <title>You Lend To Me</title>
 <style>
 .image-preview {
@@ -135,6 +136,7 @@ require_once SRC . 'itemProc/doNewItem.php';
 		</div>
 	</div>
 	<?php require_once SRC . 'components/footer.php'; ?>
-	<?php echo '<script src="' . __HOST__ . 'js/newlisting.js"></script>';?>
+	<script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+	<script src="<?php echo __HOST__ ?>js/newlisting.js"></script>
 </body>
 </html>
