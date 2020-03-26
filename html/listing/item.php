@@ -42,7 +42,7 @@ if (isset($_GET['i'])) {
 		<div class="col p-3">
 			<div class="row">
 				<div class="col">
-					<img src="<?php echo $item->getImages()[0]->getFile(); ?>"
+					<img src="<?php echo $item->getImages()[0]->getURL(); ?>"
 						class="rounded float-left" alt="image alternate text here"
 						width="400" height="400">
 				</div>

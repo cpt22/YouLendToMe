@@ -44,7 +44,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['submit'])) {
      * Verify username and check that username is not already taken
      */
     if (! empty($_POST['username'])) {
-        $vals['username'] = $username = cleanData($_POST['username']);
+        $vals['username'] = $username = strtolower(cleanData($_POST['username']));
         if (verifyUsername($username)) {
             if (strlen($username) >= 2 && strlen($username) <= 15) {
                 if (checkRecordNotExists('users', 'username', $username)) {} else {
