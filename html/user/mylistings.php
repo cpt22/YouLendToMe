@@ -6,7 +6,7 @@ require_once SRC . 'classes/Item.php';
 
 $items = array();
 
-$result = $con->query("SELECT ID FROM items WHERE deleted=0 AND owner_ID=" . $user->getUserID()) or die($conn->error);
+$result = $con->query("SELECT ID FROM items WHERE deleted=0 AND owner_ID=" . $user->getUserID()) or die($con->error);
 while ($row = $result->fetch_assoc()) {
     array_push($items, new Item($row['ID']));
 }
