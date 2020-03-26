@@ -38,8 +38,9 @@ $(document).ready(function() {
 					var result = JSON.parse(data);
 					
 					if (result.result == 0) {
-						$(parent).toggle();
-						$(parent).remove();
+						$(parent).slideUp(400, function() {
+							$(parent).remove();
+						});
 					}
 				} catch (err) {
 				}
