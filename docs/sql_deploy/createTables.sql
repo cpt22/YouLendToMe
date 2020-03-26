@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 24, 2020 at 02:44 AM
+-- Generation Time: Mar 26, 2020 at 01:58 AM
 -- Server version: 8.0.18
 -- PHP Version: 7.3.11
 
@@ -46,7 +46,8 @@ INSERT INTO `addresses` (`line1`, `line2`, `city`, `state`, `zipcode`, `user_ID`
 ('13kjh', 'jhhgj', 'jhgjhg', 'Alabama', 60093, 12),
 ('145 Evergreen Ln', '', 'Winnetka', 'Illinois', 60093, 8),
 ('145 Evergreen Ln', '', 'Winnetka', 'Illinois', 60093, 14),
-('18767', '765', '765', 'Idaho', 60093, 13);
+('18767', '765', '765', 'Idaho', 60093, 13),
+('test1', 'test2', 'testcity', 'teststate', 10101, 23);
 
 -- --------------------------------------------------------
 
@@ -57,10 +58,17 @@ INSERT INTO `addresses` (`line1`, `line2`, `city`, `state`, `zipcode`, `user_ID`
 DROP TABLE IF EXISTS `borrows`;
 CREATE TABLE `borrows` (
   `user_ID` int(11) NOT NULL,
-  `item_ID` varchar(10) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+  `item_ID` char(10) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
   `start_date` date NOT NULL,
   `end_date` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Dumping data for table `borrows`
+--
+
+INSERT INTO `borrows` (`user_ID`, `item_ID`, `start_date`, `end_date`) VALUES
+(23, 'f6f6f6f6f6', '2020-05-15', '2020-05-20');
 
 -- --------------------------------------------------------
 
@@ -70,7 +78,7 @@ CREATE TABLE `borrows` (
 
 DROP TABLE IF EXISTS `categories`;
 CREATE TABLE `categories` (
-  `name` varchar(50) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+  `name` char(50) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
   `ID` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
@@ -99,13 +107,20 @@ INSERT INTO `categories` (`name`, `ID`) VALUES
 
 DROP TABLE IF EXISTS `credit_cards`;
 CREATE TABLE `credit_cards` (
-  `number` varchar(19) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+  `number` char(19) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
   `exp_month` int(11) NOT NULL,
   `exp_year` int(11) NOT NULL,
   `cvv` int(11) NOT NULL,
   `user_ID` int(11) NOT NULL,
   `ID` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Dumping data for table `credit_cards`
+--
+
+INSERT INTO `credit_cards` (`number`, `exp_month`, `exp_year`, `cvv`, `user_ID`, `ID`) VALUES
+('0000000000000000', 1, 2024, 123, 23, 4);
 
 -- --------------------------------------------------------
 
@@ -116,7 +131,7 @@ CREATE TABLE `credit_cards` (
 DROP TABLE IF EXISTS `images`;
 CREATE TABLE `images` (
   `filename` varchar(100) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
-  `item_ID` varchar(10) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+  `item_ID` char(10) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
   `ID` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
@@ -133,7 +148,12 @@ INSERT INTO `images` (`filename`, `item_ID`, `ID`) VALUES
 ('f3a67f65e5e7fc8c0739c7c0d16ec611b712fedec50c1fd99bf6eabe8c570ea1.jpg', 'e1b5d19b27', 14),
 ('a33c311d454645b59745e12140a1760e5c1b4bcbb0d8b59ef4ffb9c1fdac1b72.jpeg', 'c4d830930e', 15),
 ('7589404f301ec6441835b4679bbcc37bbe8071c9f531a03ae870d9fc4ac426a2.jpg', 'd6f0649b13', 18),
-('cd4f5653c4c994680d487f014dec43933800a601e345be77a756afdf5b03f7cc.jpg', '5026dd8b76', 19);
+('cd4f5653c4c994680d487f014dec43933800a601e345be77a756afdf5b03f7cc.jpg', '5026dd8b76', 19),
+('1355af1eb35d8f866b7055712ca596d5089907b679c969c78778b60780ee6ed6.jpeg', '72eb2060bb', 20),
+('0ed4dddc6207623c9a729b0614175e085707d38560dc33921b37de61cb411d1b.jpg', '34a31bf1bf', 21),
+('c4954ea61b8eb8f9521e7e7fb78bddf72e1c164e4b749cb4af098db27b1d0a69.png', 'a8d2afba6a', 22),
+('8066f63d2c24048fcb7e87b787c12b5205af6b94118350fd18afd468079e77a2.jpeg', 'e69eafdc80', 23),
+('thisisatestimage', 'f6f6f6f6f6', 24);
 
 -- --------------------------------------------------------
 
@@ -154,7 +174,7 @@ CREATE TABLE `items` (
   `category` int(11) NOT NULL,
   `owner_ID` int(11) NOT NULL,
   `deleted` tinyint(1) NOT NULL DEFAULT '0',
-  `ID` varchar(10) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL
+  `ID` char(10) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
@@ -163,14 +183,19 @@ CREATE TABLE `items` (
 
 INSERT INTO `items` (`title`, `description`, `listed`, `borrowed`, `location`, `rate`, `start_date`, `end_date`, `category`, `owner_ID`, `deleted`, `ID`) VALUES
 ('ginger', 'is the best dog ', 0, 0, 60093, '100.00', '2020-05-05', '2020-06-06', 1, 8, 0, '1ecf4aff5f'),
-('iPhone SE', ' 16gb good condition and working', 0, 0, 44106, '1.00', '2020-04-01', '2020-05-01', 2, 15, 0, '5026dd8b76'),
+('iPhone SE', ' cool phone good condition', 1, 0, 44106, '1.00', '2020-04-01', '2020-05-01', 2, 15, 0, '34a31bf1bf'),
+('iPhone SE', ' 16gb good condition and working', 0, 0, 44106, '1.00', '2020-04-01', '2020-05-01', 2, 15, 1, '5026dd8b76'),
+('Little Yin', '  ', 1, 0, 11791, '100.00', '2020-06-13', '2020-06-15', 8, 16, 0, '72eb2060bb'),
 ('yinger', 'hi            ', 0, 0, 67009, '100.00', '2020-05-05', '2020-10-10', 1, 8, 1, '935e245384'),
+('test', ' a big ol test', 1, 0, 91011, '1.00', '2000-11-11', '2000-12-12', 6, 18, 0, 'a8d2afba6a'),
 ('yinger', 'hi             ', 0, 0, 67009, '100.00', '2020-05-05', '2020-10-10', 1, 8, 0, 'aac67e833b'),
 ('ginger', 'is the best dog             ', 0, 0, 60093, '100.00', '2020-05-22', '2020-06-06', 1, 8, 0, 'bc6704c83c'),
 ('daw', ' add', 0, 0, 60093, '100.00', '2020-03-30', '2020-03-31', 1, 8, 0, 'c4d830930e'),
 ('yinn', '        yane    ', 0, 0, 60093, '100.00', '2020-03-09', '2020-03-23', 1, 8, 0, 'd6f0649b13'),
 ('hi im yinny', '***best*** dog ', 0, 0, 60093, '100.00', '2020-03-02', '2020-03-31', 1, 8, 0, 'e1b5d19b27'),
-('ginger', 'is the best dog  ', 0, 0, 60093, '100.00', '2020-05-05', '2020-06-06', 1, 8, 0, 'f248dd583d');
+('Chair', ' Chair with 3/4 legs', 1, 0, 90001, '5000.00', '2020-03-27', '2022-05-06', 9, 19, 0, 'e69eafdc80'),
+('ginger', 'is the best dog  ', 0, 0, 60093, '100.00', '2020-05-05', '2020-06-06', 1, 8, 0, 'f248dd583d'),
+('test title', 'test description', 1, 1, 10101, '280.00', '2020-05-05', '2020-06-06', 6, 23, 1, 'f6f6f6f6f6');
 
 -- --------------------------------------------------------
 
@@ -180,7 +205,8 @@ INSERT INTO `items` (`title`, `description`, `listed`, `borrowed`, `location`, `
 
 DROP TABLE IF EXISTS `tokens`;
 CREATE TABLE `tokens` (
-  `token` varchar(100) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+  `selector` char(25) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+  `token` char(100) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
   `expires` bigint(20) NOT NULL,
   `type` int(11) NOT NULL,
   `ID` int(11) NOT NULL
@@ -190,11 +216,13 @@ CREATE TABLE `tokens` (
 -- Dumping data for table `tokens`
 --
 
-INSERT INTO `tokens` (`token`, `expires`, `type`, `ID`) VALUES
-('0daae978f0c0772a84621127f6dc13e0f751544787a3ca60aea18793a56492adb1edfa34e2de4faadd2bd973747ad30f', 1587530458, 0, 8),
-('16a5095957cf257bc22221d43acb1566d41bef659491b7e530e93defb9c299b28440825d52a8b2441c5f70862d1c014a', 1587487319, 0, 8),
-('339d6d56dd8e90ea8cd67b2214e9534e6e8c345fa5f6d33632d19ec961e1fd3d180f2bdbac46e99e76bc7c84884e5a9d', 1587431307, 0, 8),
-('dc8a5b70ed75297e51f12d5bb4f328b23a48150fb1040f3f5e9e62a73192d0030a8f0cbc159d4190bb8a5a63bb3aaf22', 1587602334, 0, 8);
+INSERT INTO `tokens` (`selector`, `token`, `expires`, `type`, `ID`) VALUES
+('', '0daae978f0c0772a84621127f6dc13e0f751544787a3ca60aea18793a56492adb1edfa34e2de4faadd2bd973747ad30f', 1587530458, 0, 8),
+('', '1052a2576bb8a23c68221801edbfe4e57c22e1a4d6e9d4585a51807d799ea4eb24aff002f84db46f9fb47657d3cdbec2', 1587743693, 0, 8),
+('', '16a5095957cf257bc22221d43acb1566d41bef659491b7e530e93defb9c299b28440825d52a8b2441c5f70862d1c014a', 1587487319, 0, 8),
+('', '339d6d56dd8e90ea8cd67b2214e9534e6e8c345fa5f6d33632d19ec961e1fd3d180f2bdbac46e99e76bc7c84884e5a9d', 1587431307, 0, 8),
+('', '9caaa2c657ffeb03a6c1357a8129a4f9f7ce10d6d37fb7cc91d885682ebce26d6578ac4115dcf2c66dff7efd8140f25e', 1587683270, 0, 16),
+('', 'ad3c79e0eb7347857f0a70ffa772ce617125abe64c00101cdb7edaa41e2d8997ae6db3d119158445c0d9e988e0a7f39c', 1587753412, 0, 19);
 
 -- --------------------------------------------------------
 
@@ -206,8 +234,8 @@ DROP TABLE IF EXISTS `users`;
 CREATE TABLE `users` (
   `first_name` varchar(100) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
   `last_name` varchar(100) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
-  `email` varchar(400) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
-  `username` varchar(20) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+  `email` varchar(256) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+  `username` char(20) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
   `password` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
   `phone_number` varchar(11) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
   `ID` int(11) NOT NULL
@@ -222,7 +250,12 @@ INSERT INTO `users` (`first_name`, `last_name`, `email`, `username`, `password`,
 ('Jerry', 'Jerry', 'cpt15@case.edu', 'jerry', '$2y$10$kjib.2Soz6TE90zfN8QCAOMDWrq8R5oVzmR7u/ifEpMXbbVQSyrG2', '8472743667', 12),
 ('Crhkjsh', 'kjhfjk', 'cpt@gmail.com', 'acting', '$2y$10$2TJQ4Anz0YDOLunLlYVn8.9yXtJbXUQbjwGhUQnHNuRQc6C4z8RGy', '8766', 13),
 ('Ginger', 'Yinger', 'yin@gmail.com', 'yinny', '$2y$10$gEninkvajKK92dSGpQnxp.jDyW6Ss2ZUU8aphk8gxgwAqMAMRHHPW', '8888888888', 14),
-('Prithik', 'Karthikeyan', 'prithik2000@gmail.com', 'prithik2000', '$2y$10$PJ7D4N9Nv97BLDKO6oGTee3qLTcd0mnunGDELsBstDX2rwDGxLLjm', '2167780722', 15);
+('Prithik', 'Karthikeyan', 'prithik2000@gmail.com', 'prithik2000', '$2y$10$PJ7D4N9Nv97BLDKO6oGTee3qLTcd0mnunGDELsBstDX2rwDGxLLjm', '2167780722', 15),
+('Chloe', 'Van Dorn', 'chv7@case.edu', 'chloe', '$2y$10$7fRqJS88rQRwodlQ3HI7HuiKKgbesJ9V78bE/4V0bryU3/zOcAYgu', '3479310151', 16),
+('orion', 'Follett', 'oxf21@case.edu', 'oxf21', '$2y$10$SGCCM3xrNmEqfPNDm5giKOT9o/ERvBkqBPw6CS/QXgdG8bWVYnxw6', '6263907606', 17),
+('o', 'f', 'o@gmail.com', 'orionfollett', '$2y$10$VsSQW7bJVbBeFMbqKvAoX.Mz/il93i5ecOX2MUwQqBbFo..c.xoLy', '1234567890', 18),
+('Kate', 'S', 'kxs792@case.edu', 'katesmersfelt', '$2y$10$SnApzQvoxhzz81PYP7INzuMzchokQt5TbUli1M40I5MqhXeMvGlyi', '8189137763', 19),
+('Test-First', 'Test-Last', 'test@youlendto.me', 'test', '$2y$10$pYNyNQRW8A6qvXJB6aVkDOvh2O1v8p44Jl4Kp8/yaSrriITTFyzzO', '0000000000', 23);
 
 --
 -- Indexes for dumped tables
@@ -297,19 +330,19 @@ ALTER TABLE `categories`
 -- AUTO_INCREMENT for table `credit_cards`
 --
 ALTER TABLE `credit_cards`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `images`
 --
 ALTER TABLE `images`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
 
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
 
 --
 -- Constraints for dumped tables
