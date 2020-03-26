@@ -13,22 +13,36 @@ class User {
     private $cards = array();
     private $addresses = array();
 
-    public function __construct($username, $userID) {
+    public function __construct($username) {
         $this->username = $username;
-        $this->userID = $userID;
+        $this->initialize();
     }
 
 
     /**
      * Initializes some values of this user
-     * @param String $email
-     * @param String $firstName
-     * @param String $lastName
-     */
-    public function initialize($email, $firstName, $lastName) {
-        $this->email = $email;
-        $this->firstName = $firstName;
-        $this->lastName = $lastName;
+     **/
+    private function initialize() {
+        global $con;
+        $sql = "SELECT * FROM users WHERE username=?";
+        
+        $stmt = $con->prepare($sql);
+        $stmt->bind_param("s", $this->username);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        $stmt->close();
+        
+        if ($result->num_rows == 1) {
+            $usr = $result->fetch_assoc();
+            $this->userID = $usr['ID'];
+            $this->email = $usr['email'];
+            $this->firstName = $usr['first_name'];
+            $this->lastName = $usr['last_name'];
+            $this->phone = $usr['phone_number'];
+        } else {
+            return;
+        }
+        
         $this->loadAddresses();
         $this->loadCards();
     }

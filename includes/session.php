@@ -39,8 +39,7 @@ function initializeSession($username, $rememberMe, $url) {
 
 function initializeUser() {
     global $user;
-    $user = new User($_SESSION['username'], $_SESSION['userID']);
-    $user->initialize($_SESSION['email'], $_SESSION['firstName'], $_SESSION['lastName']);
+    $user = new User($_SESSION['username']);
 }
 
 function loadUserInfo($username, $userID) {

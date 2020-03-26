@@ -9,8 +9,8 @@ final class UserTest extends TestCase
 
     protected function setUp(): void
     {
-        $this->user = new User("test", 23);
-        $this->user->initialize("test@youlendtome.com","Test-First","Test-Last");
+        $this->user = new User("test");
+        var_dump($this->user);
     }
 
     protected function tearDown(): void
@@ -23,7 +23,7 @@ final class UserTest extends TestCase
     }
 //test whether email is right
     public function testEmail(): void {
-        $this->assertEquals("test@youlendtome.com", $this->user->getEmail());
+        $this->assertEquals("test@youlendto.me", $this->user->getEmail());
     }
 //test whether first name is returned
     public function testFirstName(): void {
