@@ -16,7 +16,7 @@ if (isset($_GET['i'])) {
 <html lang="en">
 <head>
 <?php require_once SRC . 'components/header.php'; ?>
-
+<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
 
 
 <style>
@@ -53,6 +53,12 @@ if (isset($_GET['i'])) {
 					</div>
 					<div class="row p-2">Available: <?php echo date("m-d-Y", strtotime($item->getStartDate())) . " to " . date("m-d-Y", strtotime($item->getEndDate())); ?></div>
 					<div class="row p-2">$<?php echo $item->getRate(); ?> per day</div>
+					
+					<form method="post" action="">
+					<div class="form-group">
+						<input type="text" id="rentDateRange" class="form-control" name="dateRange"></input>
+						</div>
+					</form>
 					<div class="row p-2"><button type="button" class="btn btn-primary">Rent</button></div>
           <!-- Need to add actual renting functionality to this button above-->
 				</div>
@@ -68,5 +74,9 @@ if (isset($_GET['i'])) {
 	</div>
 
 	<?php require_once SRC . 'components/footer.php'; ?>
+	<script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
+	<!--<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>-->
+	<script type="text/javascript" src="<?php echo __HOST__; ?>js/daterangepicker.js"></script>
+	<script type="text/javascript" src="<?php echo __HOST__; ?>js/rentitem.js"></script>
 </body>
 </html>
