@@ -19,7 +19,7 @@ $.post("../request/getAvailDates.php", {
 		    dt.start = moment(dt.start);
 		    dt.end = moment(dt.end);
 		}
-		
+		console.log(result);
 		dateRanges = result.unavailDates;
 	} catch (err) {
 	}

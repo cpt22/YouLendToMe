@@ -18,7 +18,7 @@ if (isset($_POST['id'])) {
     if ($itemResult->num_rows == 1) {
         $itemResult = $itemResult->fetch_assoc();
         
-        $to_return['start'] = date('m/d/Y', strtotime($itemResult['start_date']));
+        $to_return['start'] = date('m/d/Y',(($itemResult['start_date'] < time()) ? time() : strtotime($itemResult['start_date'])));
         $to_return['end'] = date('m/d/Y', strtotime($itemResult['end_date']));
         
         $stmt = $con->prepare("SELECT start_date,end_date FROM borrows WHERE item_ID=?");
