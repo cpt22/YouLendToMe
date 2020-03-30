@@ -54,18 +54,17 @@ if (isset($_GET['i'])) {
 					<div class="row p-2">Available: <?php echo date("m-d-Y", strtotime($item->getStartDate())) . " to " . date("m-d-Y", strtotime($item->getEndDate())); ?></div>
 					<div class="row p-2">$<?php echo $item->getRate(); ?> per day</div>
 					
+					<div class="row p-2"><button type="button" id="rentButton" class="btn btn-primary" disabled>Rent</button></div>
 					<form method="post" action="">
-					<div class="form-group">
-						<input type="text" id="rentDateRange" class="form-control" name="dateRange"></input>
+						<div class="form-group">
+							<input type="text" id="rentDateRange" class="form-control" name="dateRange"></input>
 						</div>
 					</form>
-					<div class="row p-2"><button type="button" id="rentButton" class="btn btn-primary" disabled>Rent</button></div>
-          <!-- Need to add actual renting functionality to this button above-->
+					
 				</div>
 			</div>
 		</div>
 
-<!-- test unit-testing branch-->
 		<div class="container">
 			<div class="row">
 				<div class="col"><?php echo $desc_data; ?></div>
