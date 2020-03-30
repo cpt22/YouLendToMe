@@ -59,7 +59,7 @@ if (isset($_GET['i'])) {
 						<input type="text" id="rentDateRange" class="form-control" name="dateRange"></input>
 						</div>
 					</form>
-					<div class="row p-2"><button type="button" class="btn btn-primary">Rent</button></div>
+					<div class="row p-2"><button type="button" id="rentButton" class="btn btn-primary" disabled>Rent</button></div>
           <!-- Need to add actual renting functionality to this button above-->
 				</div>
 			</div>
@@ -76,7 +76,7 @@ if (isset($_GET['i'])) {
 	<?php require_once SRC . 'components/footer.php'; ?>
 	<script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
 	<!--<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>-->
-	<script type="text/javascript" src="<?php echo __HOST__; ?>js/daterangepicker.js"></script>
+	<script type="text/javascript" src="<?php echo __HOST__; ?>js/daterangepicker.min.js"></script>
 	<script type="text/javascript" src="<?php echo __HOST__; ?>js/rentitem.js"></script>
 </body>
 </html>

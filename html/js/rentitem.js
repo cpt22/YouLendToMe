@@ -2,10 +2,11 @@ const queryString = window.location.search;
 const urlParams = new URLSearchParams(queryString);
 const id = urlParams.get('i');
 
-var dateRanges = null;//[ { 'start' : moment('2020-03-20'), 'end' : moment('2020-03-22')} , 
-	//{'start' : moment('2020-03-30'), 'end' : moment('2020-04-01')}
+var dateRanges = null;
 
-//];
+var isValidDate = false;
+var hasRangeContainedInvalid = false;
+
 
 $.post("../request/getAvailDates.php", {
 	id : id
@@ -13,22 +14,20 @@ $.post("../request/getAvailDates.php", {
 	var result = null;
 	try {
 		result = JSON.parse(data);
-		console.log(result);
 		for(var i = 0; i < result.unavailDates.length; i++) {
 		    var dt = result.unavailDates[i];
 		    dt.start = moment(dt.start);
 		    dt.end = moment(dt.end);
 		}
-		//result.start = Date(result.start).toLocaleDateString;
-		//result.end = Date(result.end).toLocaleDateString;
-		console.log(result);
+		
 		dateRanges = result.unavailDates;
 	} catch (err) {
 	}
 	
 	$('#rentDateRange').daterangepicker({
-		"minYear" : 2020,
-		"maxYear" : 2020,
+		"applyButtonClasses" : "applyButton btn-primary",
+		"minYear" : result.start.substring(6),
+		"maxYear" : result.end.substring(6),
 		"startDate" : result.start,
 		"endDate" : result.start,
 		"minDate" : result.start,
@@ -46,18 +45,18 @@ $.post("../request/getAvailDates.php", {
 			}
 			temp.setDate(temp.getDate() + 1);
 		}
-		console.log(hasRangeContainedInvalid);
+
 		if (hasRangeContainedInvalid) {
-			alert("invalid date");
-			$('#rentDateRange').trigger('blur');
-			$('#rentDateRange').trigger('focus');
+			$('#rentButton').prop('disabled', true);
+			isValidDate = false;
+			return false;
 		} else {
-			//hasRangeContainedInvalid = false;
+			isValidDate = true;
+			$('#rentButton').prop('disabled', false);
 		}
 	});
 });
 
-var hasRangeContainedInvalid = false;
 
 function isContained(first, last, middle) {
 	return middle >= first && middle <= last;
@@ -72,6 +71,7 @@ function isInvalidDate(date, log) {
 
 		if (val && isContained(startDate, endDate, date)) {
 			hasRangeContainedInvalid = true;
+			
 		}
 		return val;
 	}, false);
@@ -92,10 +92,12 @@ $('#rentDateRange').on('clickDate.daterangepicker', function(ev) {
 	if ($('#rentDateRange').data('daterangepicker').endDate == null) {
 		hasRangeContainedInvalid = false;
 	} else {
-
+		if (hasRangeContainedInvalid) {
+			$('.applyButton').prop('disabled', true);
+		}
 	}
 });
 
-$(function() {
-	
+$('#rentDateRange').keypress(function() {
+	return false;
 });
