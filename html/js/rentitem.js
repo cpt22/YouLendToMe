@@ -98,6 +98,7 @@ $('#rentDateRange').on('clickDate.daterangepicker', function(ev) {
 	}
 });
 
-$('#rentDateRange').keydown(function() {
+$('#rentDateRange').keydown(function(e) {
+	e.preventDefault();
 	return false;
 });
