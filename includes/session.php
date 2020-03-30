@@ -96,7 +96,7 @@ function isUserLoggedIn() {
 
 
 function sendToLogin() {
-    header("Location: " . __HOST__ . "user");
+    header("Location: " . __HOST__ . "user/login.php");
 }
 
 
