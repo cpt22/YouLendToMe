@@ -63,9 +63,6 @@ function verifyUsername($username) {
 }
 
 function verifyPhone($phone) {
-    /*
-     * ADD MORE LOGIC TO VERIFY PHONES HERE
-     */
     return preg_match("/^[0-9]*$/", $phone) && (strlen($phone) == 10 || strlen($phone) == 11);
 }
 
