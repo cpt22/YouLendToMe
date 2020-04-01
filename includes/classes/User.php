@@ -85,7 +85,7 @@ class User {
     /**
      * Loads all addresses associated with this user from the database into this user object
      */
-    public function loadAddresses() {
+    protected function loadAddresses() {
         global $con;
         $userID = $this->userID;
         $sql = "SELECT line1,line2,city,state,zipcode FROM addresses WHERE user_ID='$userID'";
@@ -101,7 +101,7 @@ class User {
     /**
      * Loads all credit cards associated with this user into this user object
      */
-    public function loadCards() {
+    protected function loadCards() {
         global $con;
         $userID = $this->userID;
         $sql = "SELECT number,exp_month,exp_year,cvv FROM credit_cards WHERE user_ID='$userID'";
