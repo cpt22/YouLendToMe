@@ -126,7 +126,7 @@ class Item {
     /**
      * Loads all images associated with this item from the database into this item object
      */
-    public function loadImages() {
+    protected function loadImages() {
         global $con;
         $id = $this->ID;
         $sql = "SELECT filename FROM images WHERE item_ID='$id'";
@@ -138,7 +138,7 @@ class Item {
         }
     }
 
-    private function loadCategory() {
+    protected function loadCategory() {
         global $con;
         $cat_id = $this->category['ID'];
         $result = $con->query("SELECT name FROM categories WHERE ID='$cat_id'");

@@ -6,6 +6,12 @@ $item = null;
 if (isset($_GET['i'])) {
     $itemID = cleanAlphanumeric(cleanData($_GET['i']));
     $item = new Item($itemID);
+    
+    if ($item->getTitle() == null) {
+        http_response_code(404);
+        include ROOT . 'html/404.php';
+        die();
+    }
 
     $desc_data = MarkdownExtra::defaultTransform($item->getDescription());
 } else {
