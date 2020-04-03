@@ -1,22 +1,21 @@
 <?php
 
 $username = $password = $rememberMe = "";
-$path = $redirectURL = "";
+$path = $redirectURL = null;
+$params = array();
 
 $errors = array();
 $vals = array();
 
-// TODO: Implement autoredirect when prompted to login from a specific page.
-if (isset($_GET['redir'])) {
+parse_str(parse_url($_SERVER['HTTP_REFERER'], PHP_URL_QUERY), $params);
+if (isset($params['redir'])) {
     $path = cleanData($_GET['redir']);
-    if (isset($_GET['item'])) {
-        $item = cleanData($_GET['item']);
-        $path = getRet($path, $item);
+    if (isset($params['i'])) {
+        $item = 'i=' . cleanData($params['i']);
+        $redirectURL = getRet($path, $item);
     } else {
-        $path = getRet($path, null);
+        $redirectURL = getRet($path, null);
     }
-    
-    $redirectURL = __HOST__ . $path;
 }
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['submit'])) {

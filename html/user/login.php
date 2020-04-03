@@ -18,7 +18,7 @@ if (isUserLoggedIn()) {
 	<div class="container">
 		<div class="row justify-content-center">
 			<div class="col-4">
-				<form class="form-signin" action="" method="post">
+				<form class="form-signin" action="<?php echo $_SERVER['REQUEST_URI']; ?>" method="post">
 					<div class="text-center mb-4">
 						<img class="mb-4" src="<?php echo __HOST__; ?>images/YLTM.png"
 							alt="" width="80" height="80">
@@ -52,8 +52,7 @@ if (isUserLoggedIn()) {
 					<button class="btn btn-lg btn-primary btn-block" name='submit' type="submit">Sign
 						in</button>
 				</form>
-
-        <form class="form-signin" method="post" action="register.php" style="padding-top:0px;">
+        <form class="form-signin" method="post" action="<?php echo __HOST__; ?>user/register.php? . <?php echo parse_url($_SERVER['REQUEST_URI'], PHP_URL_QUERY); ?>" style="padding-top:0px;">
         <button class="btn btn-lg btn-secondary btn-block" type="submit">Sign
             up</button>
         </form>

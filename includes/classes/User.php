@@ -75,11 +75,11 @@ class User {
       return $this->phone;
     }
 
-    public function getAddress(){
+    public function getAddresses(){
       return $this->addresses;
     }
 
-    public function getCredit(){
+    public function getCards(){
       return $this->cards;
     }
     /**
@@ -88,12 +88,12 @@ class User {
     protected function loadAddresses() {
         global $con;
         $userID = $this->userID;
-        $sql = "SELECT line1,line2,city,state,zipcode FROM addresses WHERE user_ID='$userID'";
+        $sql = "SELECT line1,line2,city,state,zipcode,ID FROM addresses WHERE user_ID='$userID'";
         $result = $con->query($sql);
 
         if($result->num_rows > 0) {
             while($row = $result->fetch_assoc()) {
-                array_push($this->addresses, new Address($row['line1'], $row['line2'], $row['city'], $row['state'], $row['zipcode']));
+                array_push($this->addresses, new Address($row['line1'], $row['line2'], $row['city'], $row['state'], $row['zipcode'], $row['ID']));
             }
         }
     }
@@ -104,12 +104,12 @@ class User {
     protected function loadCards() {
         global $con;
         $userID = $this->userID;
-        $sql = "SELECT number,exp_month,exp_year,cvv FROM credit_cards WHERE user_ID='$userID'";
+        $sql = "SELECT number,exp_month,exp_year,cvv,ID FROM credit_cards WHERE user_ID='$userID'";
         $result = $con->query($sql);
 
         if($result->num_rows > 0) {
             while($row = $result->fetch_assoc()) {
-                array_push($this->cards, new Card($row['number'], $row['exp_month'], $row['exp_year'], $row['cvv']));
+                array_push($this->cards, new Card($row['number'], $row['exp_month'], $row['exp_year'], $row['cvv'], $row['ID']));
             }
         }
     }

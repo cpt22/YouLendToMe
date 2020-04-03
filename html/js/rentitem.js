@@ -102,3 +102,11 @@ $('#rentDateRange').keydown(function(e) {
 	e.preventDefault();
 	return false;
 });
+
+
+function openRent() {
+	$('#rentButton').hide();
+	$('#rentalFormContainer').slideDown('slow');
+}
+
+$('.selectpicker').selectpicker();

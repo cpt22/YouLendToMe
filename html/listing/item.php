@@ -6,7 +6,7 @@ $item = null;
 if (isset($_GET['i'])) {
     $itemID = cleanAlphanumeric(cleanData($_GET['i']));
     $item = new Item($itemID);
-    
+
     if ($item->getTitle() == null) {
         http_response_code(404);
         include ROOT . 'html/404.php';
@@ -14,15 +14,20 @@ if (isset($_GET['i'])) {
     }
 
     $desc_data = MarkdownExtra::defaultTransform($item->getDescription());
+
+    $rent = isUserLoggedIn() ? "openRent()" : "window.location.assign('" . __HOST__ . "user/login.php?redir=tkj59g&i=" . $item->getID() . "')";
 } else {
-    header("Location: " . __HOST__);
+    http_response_code(404);
+    include ROOT . 'html/404.php';
+    die();
 }
 ?>
 <!doctype html>
 <html lang="en">
 <head>
 <?php require_once SRC . 'components/header.php'; ?>
-<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
+<link rel="stylesheet" type="text/css"
+	href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
 
 
 <style>
@@ -57,16 +62,16 @@ if (isset($_GET['i'])) {
 					<div class="row p-2">
 						<h1 class="itemName"><?php echo $item->getTitle(); ?></h1>
 					</div>
-					<div class="row p-2">Available: <?php echo date("m-d-Y", strtotime($item->getStartDate())) . " to " . date("m-d-Y", strtotime($item->getEndDate())); ?></div>
+					<!-- <div class="row p-2">Available: <?php echo date("m-d-Y", strtotime($item->getStartDate())) . " to " . date("m-d-Y", strtotime($item->getEndDate())); ?></div>-->
 					<div class="row p-2">$<?php echo $item->getRate(); ?> per day</div>
-					
-					<div class="row p-2"><button type="button" id="rentButton" class="btn btn-primary" disabled>Rent</button></div>
-					<form method="post" action="">
-						<div class="form-group">
-							<input type="text" id="rentDateRange" class="form-control" name="dateRange"></input>
-						</div>
-					</form>
-					
+
+					<div class="row p-2">
+						<button type="button" id="rentButton" class="btn btn-primary"
+							onclick="<?php echo $rent; ?>";
+							>Rent</button>
+					</div>
+										
+					<?php if(isUserLoggedIn()) require_once SRC . 'components/rent.php'; ?>
 				</div>
 			</div>
 		</div>
@@ -79,9 +84,12 @@ if (isset($_GET['i'])) {
 	</div>
 
 	<?php require_once SRC . 'components/footer.php'; ?>
-	<script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
+	<script type="text/javascript"
+		src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
 	<!--<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>-->
-	<script type="text/javascript" src="<?php echo __HOST__; ?>js/daterangepicker.min.js"></script>
-	<script type="text/javascript" src="<?php echo __HOST__; ?>js/rentitem.js"></script>
+	<script type="text/javascript"
+		src="<?php echo __HOST__; ?>js/daterangepicker.min.js"></script>
+	<script type="text/javascript"
+		src="<?php echo __HOST__; ?>js/rentitem.js"></script>
 </body>
 </html>

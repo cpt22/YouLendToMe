@@ -11,7 +11,7 @@ require_once SRC . 'user/registerUser.php';
 <body>
 	<?php require_once SRC . 'components/navbar.php'; ?>
 	<div class="container">
-		<form class="" action="" method="post">
+		<form class="" action="<?php $_SERVER['REQUEST_URI']; ?>" method="post">
 			<div class="row justify-content-center">
 				<div class="col-sm-9">
 					<div class="row">
@@ -122,6 +122,10 @@ require_once SRC . 'user/registerUser.php';
 				</div>
 			</div>
 		</form>
+		<form class="form-signin" method="post" action="<?php echo __HOST__; ?>user/login.php? . <?php echo parse_url($_SERVER['REQUEST_URI'], PHP_URL_QUERY); ?>" style="padding-top:0px;">
+        <button class="btn btn-lg btn-secondary btn-block" type="submit">Sign
+            up</button>
+        </form>
 	</div>
 	<?php require_once SRC . 'components/footer.php'; ?>
 	<script src="<?php echo __HOST__; ?>js/register.js" type="text/javascript"></script>
