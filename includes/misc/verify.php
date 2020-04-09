@@ -63,9 +63,6 @@ function verifyUsername($username) {
 }
 
 function verifyPhone($phone) {
-    /*
-     * ADD MORE LOGIC TO VERIFY PHONES HERE
-     */
     return preg_match("/^[0-9]*$/", $phone) && (strlen($phone) == 10 || strlen($phone) == 11);
 }
 
@@ -123,11 +120,11 @@ function checkRecordNotExists($tblName, $attrName, $value) {
  */
 function checkRecordExists($tblName, $attrName, $value) {
     global $con;
-    $sql = "SELECT ID FROM users WHERE " . $attrName . "=?;";
-    $stmt = $con->prepare($sql) or die(mysqli_error($con));
-    $stmt->bind_param("s", $value) or die(mysqli_error($con));
-    $stmt->execute() or die(mysqli_error($con));
-    $result = $stmt->get_result() or die(mysqli_error($con)); // get the mysqli result
+    $sql = "SELECT * FROM " . $tblName . " WHERE " . $attrName . "=?";
+    $stmt = $con->prepare($sql);
+    $stmt->bind_param("s", $value);
+    $stmt->execute();
+    $result = $stmt->get_result();
 
     if ($result->num_rows > 0) {
         return true;

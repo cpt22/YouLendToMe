@@ -1,5 +1,5 @@
 <?php
-//Begin user session
+// Begin user session
 session_start();
 
 require_once SRC . 'classes/User.php';
@@ -18,31 +18,40 @@ if (isset($_SESSION['username']) && isset($_SESSION['userID'])) {
 
 /**
  * Initializes the session with variables from the database
+ *
  * @param Int $userID
  */
-function initializeSession($username, $rememberMe, $url) {
+function initializeSession($username, $rememberMe, $url)
+{
     global $con;
-    
+
     loadUserInfo($username, null);
-    
+
     if ($rememberMe != null && $rememberMe) {
         $token = storeTokenForUser($_SESSION['userID'], time() + (86400 * 30), 0);
         setcookie('remember', $token, time() + (86400 * 30), "/");
     }
-    
-    if ($url != null && $url != "") {
-       header("Location: " . $url);
-    } else {
-       header ("Location: " . __HOST__ . "user/index.php");
-    }
+
+    redirectUser($url);
 }
 
-function initializeUser() {
+function redirectUser($url) {
+    if ($url != null && ! empty($url)) {
+        header("Location: " . $url);
+    } else {
+        header("Location: " . __HOST__ . "user/index.php");
+    }
+    exit();
+}
+
+function initializeUser()
+{
     global $user;
     $user = new User($_SESSION['username']);
 }
 
-function loadUserInfo($username, $userID) {
+function loadUserInfo($username, $userID)
+{
     global $con;
     if ($username != null) {
         $sql = "SELECT * FROM users WHERE username='$username'";
@@ -51,9 +60,9 @@ function loadUserInfo($username, $userID) {
     } else {
         return;
     }
-    
+
     $result = $con->query($sql);
-    
+
     if ($result->num_rows == 1) {
         while ($row = $result->fetch_assoc()) {
             $_SESSION['username'] = $row['username'];
@@ -65,10 +74,11 @@ function loadUserInfo($username, $userID) {
     }
 }
 
-function logUserInWithToken($token) {
+function logUserInWithToken($token)
+{
     global $con;
     $result = getRowFromToken($token);
-    
+
     if ($result->num_rows == 1) {
         $result = $result->fetch_assoc();
         if ($result['expires'] < time()) {
@@ -76,28 +86,35 @@ function logUserInWithToken($token) {
             setCookie('remember', '', time() - 3600, '/');
             return;
         }
-            
+
         if ($result['type'] != 0)
             return;
-        
+
         loadUserInfo(null, $result['ID']);
-    }  
-    
+    }
+
     initializeUser();
 }
 
 /**
  * Returns if user is logged in or not
+ *
  * @return boolean
  */
-function isUserLoggedIn() {
+function isUserLoggedIn()
+{
     return isset($_SESSION['username']) && isset($_SESSION['userID']);
 }
 
-
-function sendToLogin() {
-    header("Location: " . __HOST__ . "user");
+function sendToLoginParam($param)
+{
+    header("Location: " . __HOST__ . "user/login.php?" . $param);
 }
 
+function sendToLogin()
+{
+    error_log("sent to login");
+    header("Location: " . __HOST__ . "user/login.php");
+}
 
 ?>

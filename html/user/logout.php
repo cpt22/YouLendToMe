@@ -1,4 +1,19 @@
 <?php
+$params = array();
+$redirectURL = "";
+parse_str(parse_url($_SERVER['HTTP_REFERER'], PHP_URL_QUERY), $params);
+if (isset($params['redir'])) {
+    $path = cleanData($_GET['redir']);
+    if (isset($params['i'])) {
+        $item = 'i=' . cleanData($params['i']);
+        $redirectURL = getRet($path, $item);
+    } else {
+        $redirectURL = getRet($path, null);
+    }
+} else {
+    $redirectURL = __HOST__ . "index.php";
+}
+
 if (isset($_SESSION['username']) || isset($_SESSION['userID'])) {
     // remove PHPSESSID from browser
     if (isset($_COOKIE[session_name()]))
@@ -19,5 +34,6 @@ if (isset($_SESSION['username']) || isset($_SESSION['userID'])) {
     //Begin new session
     //session_start();
 }
-    header("location: " . __HOST__ . "index.php");
+
+header("Location: " . $redirectURL);
 ?>

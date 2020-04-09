@@ -5,13 +5,15 @@ class Address {
     private $city;
     private $state;
     private $zipcode;
+    private $id;
     
-    public function __construct($line1, $line2, $city, $state, $zipcode) {
+    public function __construct($line1, $line2, $city, $state, $zipcode, $id) {
         $this->line1 = $line1;
         $this->line2 = $line2;
         $this->city = $city;
         $this->state = $state;
         $this->zipcode = $zipcode;
+        $this->id = $id;
     }
     
     public function getLine1() {
@@ -32,5 +34,9 @@ class Address {
     
     public function getZipcode() {
         return $this->zipcode;
+    }
+    
+    public function getID() {
+        return $this->id;
     }
 }

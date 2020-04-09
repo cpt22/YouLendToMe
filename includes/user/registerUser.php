@@ -2,6 +2,21 @@
 
 $firstName = $lastName = $email = $username = $password = $confirmPW = $phone = $address1 = $address2 = $city = $state = $zipcode = $rememberMe = "";
 $vals = $errors = array();
+
+$path = $redirectURL = null;
+$params = array();
+
+parse_str(parse_url($_SERVER['HTTP_REFERER'], PHP_URL_QUERY), $params);
+if (isset($params['redir'])) {
+    $path = cleanData($_GET['redir']);
+    if (isset($params['item'])) {
+        $item = 'i=' . cleanData($params['item']);
+        $redirectURL = getRet($path, $item);
+    } else {
+        $redirectURL = getRet($path, null);
+    }
+}
+
 if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['submit'])) {
     /*
      * Verify first and last names
@@ -205,7 +220,7 @@ function doRegistration($firstName, $lastName, $email, $username, $password, $ph
     $stmt->close();
     
     //TODO: Implement link redirection for login pages
-    initializeSession($username, $rememberMe, null);
+    initializeSession($username, $rememberMe, $redirectURL);
 }
 
 ?>

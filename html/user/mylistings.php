@@ -66,6 +66,9 @@ while ($row = $result->fetch_assoc()) {
                                             <button type="button" class="btn' . ($item->isListed() ? " btn-danger" : " btn-success") .  ' is-listed" assoc-id="' . $item->getID() . '">' . ($item->isListed() ? 'Delist' : 'Relist') . '</button>
                                         </div>
                                         <div class="btn-group mr-2">
+                                            <button type="button" class="btn btn-primary" onclick="window.location.href=' . "'" . __HOST__ . 'listing/edit.php?i=' . $item->getID() . "'" . '">Edit</button>
+                                        </div>
+                                        <div class="btn-group mr-2">
                                             <button type="button" class="btn btn-secondary del-listing" assoc-id="' . $item->getID() . '">Delete Listing</button>
                                         </div>
                                     </div>

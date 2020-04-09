@@ -38,7 +38,9 @@ $(document).ready(function() {
 					var result = JSON.parse(data);
 					
 					if (result.result == 0) {
-						$(parent).remove();
+						$(parent).slideUp(400, function() {
+							$(parent).remove();
+						});
 					}
 				} catch (err) {
 				}
@@ -48,5 +50,6 @@ $(document).ready(function() {
 	        return false;
 	    }
 		
-	})
+	});
+	
 });

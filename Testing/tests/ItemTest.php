@@ -67,7 +67,7 @@ final class ItemTest extends TestCase
         $img = $this->item->getImages()[0];
         var_dump($img); 
         $this->assertEquals("thisisatestimage", $img->getFile());
-        $this->assertEquals(__HOST__ . "images/item/thisisatestimage", explode("/", $img->getURL())[4]);
+        $this->assertEquals(__HOST__ . "images/item/thisisatestimage", $img->getURL());
     }
 
     public function testDeleted(): void
