@@ -215,7 +215,7 @@ function doRegistration($firstName, $lastName, $email, $username, $password, $ph
     // Add user's primary address
     $userID = $result['ID'];
     $stmt = $con->prepare("INSERT INTO addresses (line1, line2, city, state, zipcode, user_ID) VALUES (?, ?, ?, ?, ?, ?)");
-    $stmt->bind_param("ssssii", $address1, $address2, $city, $state, $zipcode, $user->ID);
+    $stmt->bind_param("sssssi", $address1, $address2, $city, $state, $zipcode, $user->ID);
     $stmt->execute();
     $stmt->close();
     
