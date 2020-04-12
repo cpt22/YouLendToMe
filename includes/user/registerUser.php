@@ -218,7 +218,6 @@ function doRegistration($firstName, $lastName, $email, $username, $password, $ph
     $stmt->bind_param("sssssi", $address1, $address2, $city, $state, $zipcode, $user->ID);
     $stmt->execute();
     $stmt->close();
-    //
     
     //TODO: Implement link redirection for login pages
     initializeSession($username, $rememberMe, $redirectURL);
