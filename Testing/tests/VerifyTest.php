@@ -27,14 +27,19 @@ final class VerifyTest extends TestCase
     }
 
     public function testVerifyDate(): void {
-
+      $this->assertEquals(true, verifyDate("12/12/2020"));
+      $this->assertEquals(false, verifyDate("12/12/20"));
     }
 
     public function testVerifyPhone(): void {
-
+        $this->assertEquals(true, verifyPhone("1234567890"));
+        $this->assertEquals(false, verifyPhone("11234567890"));
     }
 
     public function testVerifyAddress(): void {
+
+          $this->assertEquals(true, verifyAddress("123 Oak Dr."));
+          $this->assertEquals(false, verifyAddress("123 Oak Dr?"));
 
     }
 
@@ -62,5 +67,5 @@ final class VerifyTest extends TestCase
 
     }
 
-    //should we test the clean functions 
+    //should we test the clean functions
 }
