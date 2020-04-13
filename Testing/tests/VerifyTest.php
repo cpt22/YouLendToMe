@@ -29,6 +29,8 @@ final class VerifyTest extends TestCase
     public function testVerifyDate(): void {
         $this->assertEquals(true, verifyDate("2000-06-02"));
         $this->assertEquals(false, verifyDate("09-08-2000"));
+        $this->assertEquals(true, verifyDate("12/12/2020"));
+        $this->assertEquals(false, verifyDate("12/12/20"));
     }
 
     public function testVerifyPhone(): void {
@@ -36,14 +38,8 @@ final class VerifyTest extends TestCase
       $this->assertEquals(true, verifyPhone("21778808221"));
       $this->assertEquals(false, verifyPhone("AB77880822"));
       $this->assertEquals(true, verifyPhone("111111111111"));
-      $this->assertEquals(true, verifyDate("12/12/2020"));
-      $this->assertEquals(false, verifyDate("12/12/20"));
     }
 
-    public function testVerifyPhone(): void {
-        $this->assertEquals(true, verifyPhone("1234567890"));
-        $this->assertEquals(false, verifyPhone("11234567890"));
-    }
 
     public function testVerifyAddress(): void {
       $this->assertEquals(true, verifyAddress("220C Michelson House Cleveland #44106"));
