@@ -27,14 +27,20 @@ final class VerifyTest extends TestCase
     }
 
     public function testVerifyDate(): void {
-
+        $this->assertEquals(true, verifyDate("2000-06-02"));
+        $this->assertEquals(false, verifyDate("09-08-2000"));
     }
 
     public function testVerifyPhone(): void {
-
+      $this->assertEquals(true, verifyPhone("2177880822"));
+      $this->assertEquals(true, verifyPhone("21778808221"));
+      $this->assertEquals(false, verifyPhone("AB77880822"));
+      $this->assertEquals(true, verifyPhone("111111111111"));
     }
 
     public function testVerifyAddress(): void {
+      $this->assertEquals(true, verifyAddress("220C Michelson House Cleveland #44106"));
+      $this->assertEquals(false, verifyAddress("%% mike l//,,"));
 
     }
 
@@ -43,24 +49,27 @@ final class VerifyTest extends TestCase
     }
 
     public function testVerifyZipcode(): void {
-
+      $this->assertEquals(true, verifyZipcode("44106"));
+      $this->assertEquals(false, verifyZipcode("ABCDEF"));
+      $this->assertEquals(false, verifyZipcode("4410676"));
     }
 
     public function testVerifyPasscode(): void {
-
+      $this->assertEquals(false, verifyPasscode("michelson"));
+      $this->assertEquals(false, verifyPasscode("hello"));
+      $this->assertEquals(false, verifyPasscode("helloworld1"));
+      $this->assertEquals(false, verifyPasscode("h########1"));
+      $this->assertEquals(true, verifyPasscode("Helloworld1"));
     }
 
     public function testVerifyMoney(): void{
-
-    }
-
-    public function testVerifyDate(): void{
-
+      $this->assertEquals(false, verifyMoney("USD0"));
+      $this->assertEquals(true, verifyMoney("50"));
     }
 
     public function testCheckIfRecordExists(): void{
 
     }
 
-    //should we test the clean functions 
+    //should we test the clean functions
 }
