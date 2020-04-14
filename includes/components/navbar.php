@@ -33,7 +33,7 @@
 		<?php
 		$toRedir = !empty(parse_url($_SERVER['REQUEST_URI'], PHP_URL_QUERY)) ? "?" . parse_url($_SERVER['REQUEST_URI'], PHP_URL_QUERY) : "";
 		
-		if (isset($user)) {
+		if (isUserLoggedIn()) {
 		    echo '<button class="btn btn-outline-danger my-2 my-sm-0" type="submit" onclick="window.location.href=' . "'" . __HOST__ . "user/logout.php" . $toRedir . "'" . '">Logout</button>';
 		} else {
 		    echo '<button class="btn btn-outline-light my-2 my-sm-0" type="submit" onclick="window.location.href=' . "'" . __HOST__ . "user/login.php'" . '">Sign
