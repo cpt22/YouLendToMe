@@ -82,8 +82,19 @@ function verifyZipcode($zip) {
     return (preg_match("/^[0-9]*$/", $zip) && strlen($zip) == 5);
 }
 
-function verifyPassword($password) {
+/*function verifyPassword($password) {
     return preg_match("(?=^.{8,20}$)((?!.*\s)(?=.*[A-Z])(?=.*[a-z]))((?=(.*\d){1,})|(?=(.*\W){1,}))^.*$", $password);
+}*/
+function verifyPassword($password) {
+    $uppercase = preg_match('@[A-Z]@', $password);
+    $lowercase = preg_match('@[a-z]@', $password);
+    $number    = preg_match('@[0-9]@', $password);
+    $specialChars = preg_match('@[^\w]@', $password);
+    
+    if($uppercase && $lowercase && ($number || $specialChars) && strlen($password) >= 8 && strlen($password) <= 20) {
+        return true;
+    }
+    return false;
 }
 
 function verifyItemName($name) {

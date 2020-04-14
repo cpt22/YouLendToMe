@@ -73,6 +73,8 @@ final class VerifyTest extends TestCase
         $this->assertEquals(false, verifyPassword("helloworld1"));
         $this->assertEquals(false, verifyPassword("h########1"));
         $this->assertEquals(true, verifyPassword("Helloworld1"));
+        $this->assertEquals(true, verifyPassword("Helloworld@"));
+        
     }
 
     public function testVerifyMoney(): void
