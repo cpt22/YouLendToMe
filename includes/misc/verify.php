@@ -76,9 +76,9 @@ function verifyState($state) {
 }
 
 function verifyZipcode($zip) {
-    if (strlen($zip) > 5) {
-        $zip = substr($zip, 0, 5);
-    }
+    /*if (strlen($zip) > 5) {
+        $zip2 = substr($zip, 0, 5);
+    }*/
     return (preg_match("/^[0-9]*$/", $zip) && strlen($zip) == 5);
 }
 
