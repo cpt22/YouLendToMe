@@ -9,38 +9,38 @@ final class CardTest extends TestCase
 
     protected function setUp(): void
     {
-        $this->item = new Card("12345678", 01, 22, 123, "f6f6f6f6f6");
+        $this->card = new Card("12345678", 01, 22, 123, "f6f6f6f6f6");
     }
 
     protected function tearDown(): void
     {
-        $this->item = NULL;
+        $this->card = NULL;
     }
 
-    protected function TestGetNumber() {
+    public function testGetNumber() {
           $this->assertEquals("12345678", $this->card->getNumber());
     }
 
-    protected function TestGetRedactedNumber() {
-      $this->assertEquals("*****678", $this->card->getNumber());
+    public function testGetRedactedNumber() {
+      $this->assertEquals("****5678", $this->card->getRedactedNumber());
 
     }
 
-    protected function TestGetExpMonth() {
+    public function testGetExpMonth() {
       $this->assertEquals(01, $this->card->getExpMonth());
     }
 
-    protected function TestGetExpYear() {
+    public function testGetExpYear() {
 
         $this->assertEquals(22, $this->card->getExpYear());
     }
 
-    protected function TestGetCVV() {
+    public function testGetCVV() {
 
         $this->assertEquals(123, $this->card->getCVV());
     }
 
-    protected function TestGetID() {
+    public function testGetID() {
 
         $this->assertEquals("f6f6f6f6f6", $this->card->getID());
     }

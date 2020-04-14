@@ -22,7 +22,7 @@ class Card {
         $pre = substr($this->number, 0, strlen($this->number)-3);
         $post = substr($this->number, strlen($pre)-1);
         $tmp = "";
-        for ($i = 0; $i < strlen($pre); $i++) {
+        for ($i = 0; $i < strlen($pre)-1; $i++) {
             $tmp = $tmp . "*";
         }
         $tmp = $tmp . $post;
