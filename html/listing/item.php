@@ -15,7 +15,12 @@ if (isset($_GET['i'])) {
 
     $desc_data = MarkdownExtra::defaultTransform($item->getDescription());
 
-    $rent = isUserLoggedIn() ? "openRent()" : "window.location.assign('" . __HOST__ . "user/login.php?redir=tkj59g&i=" . $item->getID() . "')";
+    if (! $item->isDeleted())
+        $rent = isUserLoggedIn() ? "openRent()" : "window.location.assign('" . __HOST__ . "user/login.php?redir=tkj59g&i=" . $item->getID() . "')";
+
+    if (isUserLoggedIn()) {
+        require_once SRC . 'itemProc/doRent.php';
+    }
 } else {
     http_response_code(404);
     include ROOT . 'html/404.php';

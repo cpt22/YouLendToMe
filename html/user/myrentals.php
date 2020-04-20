@@ -4,15 +4,20 @@ if (! isUserLoggedIn()) {
 }
 require_once SRC . 'classes/Item.php';
 
-$items = array();
+$things = array();
 
-$sql = "SELECT ID
+$sql = "SELECT I.ID, B.start_date, B.end_date
 FROM items I, borrows B
 WHERE B.user_ID=" . $user->getUserID() . "
     AND B.item_ID=I.ID";
 $result = $con->query($sql);
 while ($row = $result->fetch_assoc()) {
-    array_push($items, new Item($row['ID']));
+    $thing = array();
+    $thing['item'] = new Item($row['ID']);
+    $sd = date('m/d/Y', strtotime($row['start_date']));
+    $ed = date('m/d/Y', strtotime($row['end_date']));
+    $thing['dates'] = $sd . "-" . $ed;
+    array_push($things, $thing);
 }
 ?>
 <!doctype html>
@@ -50,7 +55,8 @@ while ($row = $result->fetch_assoc()) {
 		<div class="col-md-7">
 
 		<?php
-			foreach ($items as $item) {
+			foreach ($things as $thing) {
+			    $item = $thing['item'];
 			     echo '<div class="row border-bottom">
 				            <div class="col py-3">
 					           <div class="image-holder">
@@ -60,6 +66,7 @@ while ($row = $result->fetch_assoc()) {
 				            <div class="col-sm-9 py-3">
 					              <div class="row title-text"><a href="' . __HOST__ . 'listing/item.php?i=' . $item->getID() . '" class="title-link">' . $item->getTitle() . '</a></div>
 				                  <div class="row">$' . $item->getRate() . ' per day</div>
+                                  <div class="row">' . $thing['dates'] . '</div>
                             </div>
 			             </div>';
 			}
