@@ -15,8 +15,8 @@ if (isset($_GET['i'])) {
 
     $desc_data = MarkdownExtra::defaultTransform($item->getDescription());
 
-    if (! $item->isDeleted())
-        $rent = isUserLoggedIn() ? "openRent()" : "window.location.assign('" . __HOST__ . "user/login.php?redir=tkj59g&i=" . $item->getID() . "')";
+  
+    $rent = isUserLoggedIn() ? "openRent()" : "window.location.assign('" . __HOST__ . "user/login.php?redir=tkj59g&i=" . $item->getID() . "')";
 
     if (isUserLoggedIn()) {
         require_once SRC . 'itemProc/doRent.php';
@@ -70,11 +70,15 @@ if (isset($_GET['i'])) {
 					<!-- <div class="row p-2">Available: <?php echo date("m-d-Y", strtotime($item->getStartDate())) . " to " . date("m-d-Y", strtotime($item->getEndDate())); ?></div>-->
 					<div class="row p-2">$<?php echo $item->getRate(); ?> per day</div>
 
-					<div class="row p-2">
+					<?php 
+					if (!$item->isDeleted() && $item->isListed()) {
+					 echo '<div class="row p-2">
 						<button type="button" id="rentButton" class="btn btn-primary"
-							onclick="<?php echo $rent; ?>";
+							onclick="' . $rent .'";
 							>Rent</button>
-					</div>
+					       </div>';
+					}
+					?>
 										
 					<?php if(isUserLoggedIn()) require_once SRC . 'components/rent.php'; ?>
 				</div>

@@ -9,7 +9,7 @@ $things = array();
 $sql = "SELECT I.ID, B.start_date, B.end_date
 FROM items I, borrows B
 WHERE B.user_ID=" . $user->getUserID() . "
-    AND B.item_ID=I.ID";
+    AND B.item_ID=I.ID ORDER BY B.start_date DESC";
 $result = $con->query($sql);
 while ($row = $result->fetch_assoc()) {
     $thing = array();
