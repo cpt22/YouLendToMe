@@ -2,6 +2,7 @@
 if (!isUserLoggedIn()) {
     sendToLogin(null);
 }
+require_once SRC . 'user/updateAccountInfo.php';
 ?>
 <!doctype html>
 <html lang="en">
