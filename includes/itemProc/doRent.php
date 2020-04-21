@@ -47,8 +47,8 @@ if (isset($_POST['submit'])) {
         if ($result->num_rows > 0) {
             while ($row = $result->fetch_assoc()) {
                 $temp = array();
-                $temp['start'] = $row['start_date'];
-                $temp['end'] = $row['end_date'];
+                $temp['start'] = strtotime($row['start_date']);
+                $temp['end'] = strtotime($row['end_date']);
                 array_push($unavailDates, $temp);
             }
         }
@@ -74,19 +74,20 @@ if (isset($_POST['submit'])) {
         unset($address);
         
         if ($firstDate > $startDate || $lastDate < $endDate)
-            //$isValidDateRange = false;
+            $isValidDateRange = false;
         
         foreach ($unavailDates as $dateRange) {
-            if ($dateRange['start_date'] > $startDate && $dateRange['start_date'] < $endDate)
+            if ($startDate > $dateRange['start'] && $startDate < $dateRange['end'])
                 $isValidDateRange = false;
-            if ($dateRange['end_date'] > $startDate && $dateRange['end_date'] < $endDate)
+            if ($endDate > $dateRange['start'] && $endDate < $dateRange['end'])
                 $isValidDateRange = false;
-            if ($startDate > $dateRange['start_date'] && $endDate < $dateRange['end_date'])
+            if ($startDate < $dateRange['start'] && $endDate > $dateRange['end'])
+                $isValidDateRange = false;
+            if ($startDate > $dateRange['start'] && $endDate < $dateRange['end'])
                 $isValidDateRange = false;
         }
         unset($dateRange);
         
-        var_dump($isValidDateRange);
         if($userHasAddr && $userHasCC && !$item->isDeleted() && $item->isListed() && $isValidDateRange) {
             if (chargeCard($thisCard, $user->getFirstName() . " " . $user->getLastName(), $thisAddr, $cost)) {
                 $stmt = $con->prepare("INSERT INTO borrows (start_date, end_date, item_ID, user_ID) VALUES (?,?,?,?)");
