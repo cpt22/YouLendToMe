@@ -7,7 +7,7 @@ if (isset($_GET['s'])) {
     $search = cleanData($_GET['s']);
     $sql = "SELECT ID FROM items WHERE deleted=0 AND MATCH(title, description)
     AGAINST(? IN NATURAL LANGUAGE MODE) LIMIT 50";
-    
+
     if (substr_count($search, ' ') <= 1) {
         $sql = "SELECT ID
     FROM items
@@ -26,13 +26,13 @@ if (isset($_GET['s'])) {
     ORDER BY `SCORE` DESC
     LIMIT 10";
     }
-    
+
     $stmt = $con->prepare($sql);
     $stmt->bind_param("s", $search);
     $stmt->execute();
     $result = $stmt->get_result();
     $stmt->close();
-    
+
     while ($row = $result->fetch_assoc()) {
         array_push($items, new Item($row['ID']));
     }
@@ -53,8 +53,25 @@ if (isset($_GET['s'])) {
 </head>
 <body>
 	<?php require_once SRC . 'components/navbar.php'; ?>
+  <div class="jumbotron jumbotron-fluid">
+  <div class="container">
+    <h1 class="display-12">Search for Item</h1>
+    <p class="lead">Use the search bar to find your desired item</p>
+  </div>
+</div>
 	<div class="row justify-content-center">
 		<div class="col-md-7">
+
+      <form action=" "?
+      <div class="p-1 bg-light rounded rounded-pill shadow-sm mb-4">
+            <div class="input-group">
+              <input type="search" placeholder="What're you searching for?" aria-describedby="button-addon1" class="form-control border-0 bg-light">
+              <div class="input-group-append">
+                <button id="button-addon1" type="submit" class="btn btn-link text-primary">Submit<i class="fa fa-search"></i></button>
+              </div>
+            </div>
+          </div>
+      </form>
 
 			<?php
 			foreach ($items as $item) {
@@ -80,5 +97,3 @@ if (isset($_GET['s'])) {
 	<?php require_once SRC . 'components/footer.php'; ?>
 </body>
 </html>
-
- 
