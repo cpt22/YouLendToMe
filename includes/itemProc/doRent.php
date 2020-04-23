@@ -95,8 +95,10 @@ if (isset($_POST['submit'])) {
 
         if ($userHasAddr && $userHasCC && ! $item->isDeleted() && $item->isListed() && $isValidDateRange) {
             if (chargeCard($thisCard, $user->getFirstName() . " " . $user->getLastName(), $thisAddr, $cost)) {
+                $st = $dates[0];
+                $end = $dates[1];
                 $stmt = $con->prepare("INSERT INTO borrows (start_date, end_date, item_ID, user_ID) VALUES (?,?,?,?)");
-                $stmt->bind_param("ssss", $dates[0], $dates[1], $item->getID(), $user->getUserID());
+                $stmt->bind_param("ssss", $st, $end, $item->getID(), $user->getUserID());
                 $stmt->execute();
                 // $result = $stmt->get_result();
                 $stmt->close();
@@ -107,7 +109,7 @@ if (isset($_POST['submit'])) {
     } else {}
 }
 
-function sendEmail(){
+function sendEmail() {
   global $user, $item;
   $emaddr = $user->getEmail();
   $itemn = $item->getTitle();
