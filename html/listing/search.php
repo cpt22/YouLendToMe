@@ -5,30 +5,17 @@ $items = array();
 
 if (isset($_GET['s'])) {
     $search = cleanData($_GET['s']);
-    $sql = "SELECT ID FROM items WHERE deleted=0 AND MATCH(title, description)
-    AGAINST(? IN NATURAL LANGUAGE MODE) LIMIT 50";
-
-   /* if (substr_count($search, ' ') <= 1) {
-        $sql = "SELECT ID
-    FROM items
-    WHERE name like '%{$search}%')
-    ORDER BY
-      name LIKE '{$search}%') DESC,
-      ifnull(nullif(instr(name, ' {$search}'), 0), 99999),
-      ifnull(nullif(instr(name, '{$search}'), 0), 99999),
-      name
-    LIMIT 10";
-    } else {
-        $search = '+' . str_replace(' ', ' +', $search) . '*';
-        $sql = "SELECT ID MATCH(items.name) AGAINST('{$search}' IN BOOLEAN MODE) AS SCORE
+    $search = trim($search);
+  
+    $search = '+' . str_replace(' ', ' +', $search) . '*';
+    $sql = "SELECT ID, MATCH(items.title, items.description) AGAINST(? IN BOOLEAN MODE) AS SCORE
         FROM items
-    WHERE MATCH(items.name) AGAINST('{$search}' IN BOOLEAN MODE)
+    WHERE MATCH(items.title, items.description) AGAINST(? IN BOOLEAN MODE)
     ORDER BY `SCORE` DESC
-    LIMIT 10";
-    }*/
+    LIMIT 25";
 
-    $stmt = $con->prepare($sql);
-    $stmt->bind_param("s", $search);
+    $stmt = $con->prepare($sql) or die(mysqli_error($con));
+    $stmt->bind_param("ss", $search, $search) or die(mysqli_error($con));
     $stmt->execute();
     $result = $stmt->get_result();
     $stmt->close();
