@@ -100,10 +100,23 @@ if (isset($_POST['submit'])) {
                 $stmt->execute();
                 // $result = $stmt->get_result();
                 $stmt->close();
+                sendEmail();
                 header("Location: " . __HOST__ . "user/myrentals.php");
             } else {}
         }
     } else {}
+}
+
+function sendEmail(){
+  global $user, $item;
+  $emaddr = $user->getEmail();
+  $itemn = $item->getTitle();
+
+  $msg = "You have successfully rented the following:" . $itemn . " Thanks for using YouLendToMe";
+
+  $msg = wordwrap($msg,70);
+
+  mail($emaddr,"Item Rental Notice",$msg);
 }
 
 function chargeCard($card, $name, $address, $amount)
@@ -111,5 +124,7 @@ function chargeCard($card, $name, $address, $amount)
     // here we would submit the card information to the card processor
     return true;
 }
+
+
 
 ?>
