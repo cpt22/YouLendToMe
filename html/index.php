@@ -16,9 +16,9 @@
 
 	<div class="row">
 
-		<div class="col-lg-3">
+		<div class="col-lg-2">
 
-		
+
 
 		</div>
 		<!-- /.col-lg-3 -->
