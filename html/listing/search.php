@@ -3,7 +3,7 @@ require_once SRC . 'classes/Item.php';
 
 $items = array();
 
-if (isset($_GET['s'])) {
+if (!empty($_GET['s'])) {
     $search = cleanData($_GET['s']);
     $search = trim($search);
   
@@ -54,7 +54,7 @@ if (isset($_GET['s'])) {
 					<div class="input-group">
 						<input type="search" placeholder="What're you searching for?"
 							aria-describedby="button-addon1"
-							class="form-control border-0 bg-light" name="s">
+							class="form-control border-0 bg-light" name="s" value="<?php echo $_GET['s']; ?>">
 						<div class="input-group-append">
 							<button id="button-addon1" type="submit"
 								class="btn btn-link text-primary">
