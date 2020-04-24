@@ -11,7 +11,7 @@ if (!empty($_GET['s'])) {
     $sql = "SELECT ID, MATCH(items.title, items.description) AGAINST(? IN BOOLEAN MODE) AS SCORE
         FROM items
     WHERE MATCH(items.title, items.description) AGAINST(? IN BOOLEAN MODE)
-    ORDER BY `SCORE` DESC
+    ORDER BY `SCORE` DESC WHERE listed=1 AND deleted=0
     LIMIT 25";
 
     $stmt = $con->prepare($sql) or die(mysqli_error($con));
