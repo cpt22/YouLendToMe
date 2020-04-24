@@ -73,7 +73,7 @@
 			                     <h4 class="card-title">
 			                         <a href="' . __HOST__ . 'listing/item.php?i=' . $item->getID() . '">' . $item->getTitle() . '</a>
 			                     </h4>
-			                     <h5>$' . $item->getPrice() . ' per day</h5>
+			                     <h5>$' . $item->getRate() . ' per day</h5>
 			                     <p class="card-text">' . $item->getDescription() . '</p>
 			                 </div>
 			                 <!--<div class="card-footer">
