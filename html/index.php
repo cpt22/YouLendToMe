@@ -62,7 +62,6 @@
 			
 			while ($row = mysqli_fetch_assoc($result)) {
 			    array_push($items, new Item($row['ID']));
-			    
 			}
 			var_dump($items);
 			

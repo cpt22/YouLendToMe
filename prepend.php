@@ -5,5 +5,5 @@ require_once ROOT . 'env.php' ;
 require_once SRC . 'connect.php';
 require_once SRC . 'session.php';
 require_once SRC . 'misc/verify.php';
-require_once SRC . 'classes/item.php';
+require_once SRC . 'classes/Item.php';
 ?>
