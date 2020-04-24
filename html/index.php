@@ -60,9 +60,11 @@
 			$sql = "SELECT * FROM items WHERE listed=1 AND deleted=0";
 			$result = $con->query($sql);
 			
-			while ($row = $result->fetch_assoc()) {
+			while ($row = mysqli_fetch_assoc($result)) {
 			    array_push($items, new Item($row['ID']));
+			    
 			}
+			var_dump($items);
 			
 			for ($i = 0; $i < 9; $i++) {
 			    $id = rand(0, count($items) - 1);
