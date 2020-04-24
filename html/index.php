@@ -63,7 +63,6 @@
 			while ($row = mysqli_fetch_assoc($result)) {
 			    array_push($items, new Item($row['ID']));
 			}
-			var_dump($items);
 			
 			for ($i = 0; $i < 9; $i++) {
 			    $id = rand(0, count($items) - 1);
@@ -78,9 +77,9 @@
 			                     <h5>$24.99</h5>
 			                     <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet numquam aspernatur!</p>
 			                 </div>
-			                 <div class="card-footer">
+			                 <!--<div class="card-footer">
 			                     <small class="text-muted">&#9733; &#9733; &#9733; &#9733; &#9734;</small>
-			                 </div>
+			                 </div>-->
 			             </div>
 			         </div> ';
 			}
