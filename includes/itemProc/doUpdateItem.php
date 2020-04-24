@@ -15,7 +15,7 @@ if (isset($_FILES['itemImg'])) {
         $file_size = $image['size'];
         $file_tmp = $image['tmp_name'];
         $file_type = $image['type'];
-        $file_ext = strtolower(end(explode('.', $image['name'])));
+        $file_ext = strtolower(end(explode('.', $file_name)));
         $extensions = array(
             "jpeg",
             "jpg",
