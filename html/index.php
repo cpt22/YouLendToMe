@@ -63,9 +63,9 @@
 			while ($row = mysqli_fetch_assoc($result)) {
 			    array_push($items, new Item($row['ID']));
 			}
-			$indexes = array_rand($items, 9);
-			for ($i = 0; $i < count($indexes); $i++) {
-			    $item = $items[$indexes[$i]];
+			$range = array_rand(range(0, count($result)), 15);
+			for ($i = 0; $i < 15; $i++) {
+			    $item = $items[$range[$i]];
 			    echo '<div class="col-lg-4 col-md-6 mb-4">
 			             <div class="card h-100">
 			                 <a href="' . __HOST__ . 'listing/item.php?i=' . $item->getID() . '"><img class="card-img-top" src="' . $item->getImages()[0]->getURL() . '" alt=""></a>
