@@ -205,8 +205,8 @@ function doRegistration($firstName, $lastName, $email, $username, $password, $ph
     $stmt->close();
 
     // Get ID of the user just created
-    $stmt = $con->prepare("SELECT ID FROM users WHERE email=?;");
-    $stmt->bind_param("s", $email);
+    $stmt = $con->prepare("SELECT ID FROM users WHERE username=?");
+    $stmt->bind_param("s", $username);
     $stmt->execute();
     $result = $stmt->get_result();
     $result = $result->fetch_assoc();
@@ -215,7 +215,7 @@ function doRegistration($firstName, $lastName, $email, $username, $password, $ph
     // Add user's primary address
     $userID = $result['ID'];
     $stmt = $con->prepare("INSERT INTO addresses (line1, line2, city, state, zipcode, user_ID) VALUES (?, ?, ?, ?, ?, ?)");
-    $stmt->bind_param("sssssi", $address1, $address2, $city, $state, $zipcode, $user->ID);
+    $stmt->bind_param("sssssi", $address1, $address2, $city, $state, $zipcode, $userID);
     $stmt->execute();
     $stmt->close();
     
