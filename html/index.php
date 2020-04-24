@@ -1,3 +1,4 @@
+<?php require_once ROOT . 'Michelf/MarkdownExtra.inc.php';?>
 <!doctype html>
 <html lang="en">
 <head>
@@ -74,7 +75,7 @@
 			                         <a href="' . __HOST__ . 'listing/item.php?i=' . $item->getID() . '">' . $item->getTitle() . '</a>
 			                     </h4>
 			                     <h5>$' . $item->getRate() . ' per day</h5>
-			                     <p class="card-text">' . $item->getDescription() . '</p>
+			                     <p class="card-text">' . MarkdownExtra::defaultTransform($item->getDescription()) . '</p>
 			                 </div>
 			                 <!--<div class="card-footer">
 			                     <small class="text-muted">&#9733; &#9733; &#9733; &#9733; &#9734;</small>
