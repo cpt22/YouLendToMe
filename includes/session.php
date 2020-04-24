@@ -39,7 +39,7 @@ function redirectUser($url) {
     if ($url != null && ! empty($url)) {
         header("Location: " . $url);
     } else {
-        header("Location: " . __HOST__ . "user/index.php");
+        header("Location: " . __HOST__ . "index.php");
     }
     exit();
 }
