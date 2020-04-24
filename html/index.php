@@ -63,8 +63,8 @@
 			while ($row = mysqli_fetch_assoc($result)) {
 			    array_push($items, new Item($row['ID']));
 			}
-			$range = array_rand(range(0, count($result)), (count($items) > 15) ? 15 : count($items));
-			for ($i = 0; $i < 15; $i++) {
+			$range = array_rand(range(0, count($result)), ((count($items) > 15) ? 15 : count($items)));
+			for ($i = 0; $i < count(range); $i++) {
 			    $item = $items[$range[$i]];
 			    echo '<div class="col-lg-4 col-md-6 mb-4">
 			             <div class="card h-100">
