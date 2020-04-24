@@ -10,8 +10,8 @@ if (!empty($_GET['s'])) {
     $search = '+' . str_replace(' ', ' +', $search) . '*';
     $sql = "SELECT ID, MATCH(items.title, items.description) AGAINST(? IN BOOLEAN MODE) AS SCORE
         FROM items
-    WHERE MATCH(items.title, items.description) AGAINST(? IN BOOLEAN MODE)
-    ORDER BY `SCORE` DESC WHERE listed=1 AND deleted=0
+    WHERE MATCH(items.title, items.description) AGAINST(? IN BOOLEAN MODE) AND listed=1 AND deleted=0
+    ORDER BY `SCORE` DESC 
     LIMIT 25";
 
     $stmt = $con->prepare($sql) or die(mysqli_error($con));
