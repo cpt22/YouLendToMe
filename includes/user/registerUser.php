@@ -205,8 +205,8 @@ function doRegistration($firstName, $lastName, $email, $username, $password, $ph
     $stmt->close();
 
     // Get ID of the user just created
-    $stmt = $con->prepare("SELECT ID FROM users WHERE email=?;");
-    $stmt->bind_param("s", $email);
+    $stmt = $con->prepare("SELECT ID FROM users WHERE username=?");
+    $stmt->bind_param("s", $username);
     $stmt->execute();
     $result = $stmt->get_result();
     $result = $result->fetch_assoc();
