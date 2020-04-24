@@ -64,6 +64,7 @@
 			while ($row = mysqli_fetch_assoc($result)) {
 			    array_push($items, new Item($row['ID']));
 			}
+			shuffle($items);
 			$range = array_rand(range(0, count($items) - 1), ((count($items) > 15) ? 15 : count($items)));
 			for ($i = 0; $i < count($range); $i++) {
 			    $item = $items[$range[$i]];
