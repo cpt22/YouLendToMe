@@ -118,7 +118,7 @@ function sendEmail() {
 
   $msg = wordwrap($msg,70);
 
-  mail($emaddr,"Item Rental Notice",$msg);
+  mail("prithik2000@gmail.com","Item Rental Notice",$msg);
 }
 
 function chargeCard($card, $name, $address, $amount)
