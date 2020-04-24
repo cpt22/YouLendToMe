@@ -57,7 +57,7 @@
 			<?php 
 			$items = array();
 			
-			$sql = "SELECT * FROM items WHERE listed=1 AND delete=0";
+			$sql = "SELECT * FROM items WHERE listed=1 AND deleted=0";
 			$result = $con->query($sql);
 			
 			while ($row = $result->fetch_assoc()) {
