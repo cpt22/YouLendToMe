@@ -47,7 +47,7 @@ while ($row = $result->fetch_assoc()) {
 	<?php require_once SRC . 'components/navbar.php'; ?>
   <div class="jumbotron jumbotron-fluid">
   <div class="container">
-    <h1 class="display-12">My Listed Items</h1>
+    <h1 class="display-12">My Rentals</h1>
     <p class="lead">Displayed below are the items you have borrowed. You can view and return items</p>
   </div>
 </div>
