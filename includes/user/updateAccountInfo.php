@@ -1,6 +1,6 @@
 <?php
 $messages = array();
-var_dump($con);
+var_dump($user);
 if (isUserLoggedIn() && isset($_POST['submit'])) {
 
     /**
@@ -11,9 +11,9 @@ if (isUserLoggedIn() && isset($_POST['submit'])) {
         $email = cleanData($_POST['email']);
         if (verifyEmail($email)) {
             if (checkRecordNotExists('users', 'email', $email)) {
-                $sql = "UPDATE USERS SET email=? WHERE username='" . $user->getUsername() . "'";
+                $sql = "UPDATE USERS SET email=? WHERE username=?";
                 $stmt = $con->prepare($sql);
-                $stmt->bind_param("s", $email);
+                $stmt->bind_param("ss", $email, $user->getUsername());
                 $stmt->execute();
                 $stmt->close();
                 $messages['email']['status'] = true;
