@@ -1,6 +1,6 @@
 <?php
 $messages = array();
-
+var_dump($con);
 if (isUserLoggedIn() && isset($_POST['submit'])) {
 
     /**
