@@ -110,6 +110,18 @@ function verifyMoney($money) {
     return preg_match("/^[0-9.]*$/", $money);
 }
 
+function verifyMonth($month) {
+    return preg_match("/^[0-9]*$/", $month) && strlen($month) > 0 && strlen($month) <=2;
+}
+
+function verifyYear($year) {
+    return preg_match("/^[0-9]*$/", $year) && strlen($year) == 4;
+}
+
+function verifyCCNumber($num) {
+    return preg_match("/^[0-9]*$/", $num) && strlen($num) > 10 && strlen($num) < 20;
+}
+
 
 /**
  * Returns true if specified record does not exist
