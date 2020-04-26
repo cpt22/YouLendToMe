@@ -11,7 +11,7 @@ if (isUserLoggedIn() && isset($_POST['submit'])) {
         $email = cleanData($_POST['email']);
         if (verifyEmail($email)) {
             if (checkRecordNotExists('users', 'email', $email)) {
-                $sql = "UPDATE USERS SET email=? WHERE username=?";
+                $sql = "UPDATE users SET email=? WHERE username=?";
                 $stmt = $con->prepare($sql);
                 $stmt->bind_param("ss", $email, $user->getUsername());
                 $stmt->execute();
@@ -35,9 +35,9 @@ if (isUserLoggedIn() && isset($_POST['submit'])) {
         $messages['phone'] = array();
         $phone = cleanData($_POST['phone']);
         if (verifyPhone($phone)) {
-            $sql = "UPDATE USERS SET phone_number=? WHERE username='" . $user->getUsername() . "'";
+            $sql = "UPDATE users SET phone_number=? WHERE username=?";
             $stmt = $con->prepare($sql);
-            $stmt->bind_param("s", $email);
+            $stmt->bind_param("ss", $email, $user->getUsername());
             $stmt->execute();
             $stmt->close();
             $messages['phone']['status'] = true;
