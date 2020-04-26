@@ -91,9 +91,9 @@ function logUserInWithToken($token)
             return;
 
         loadUserInfo(null, $result['ID']);
-    }
-
-    initializeUser();
+        $_SESSION['username'] = $result['username'];
+        initializeUser();
+    } 
 }
 
 /**

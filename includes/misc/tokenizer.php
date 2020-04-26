@@ -33,7 +33,7 @@ function removeToken($token) {
 
 function getRowFromToken($token) {
     global $con;
-    $stmt = $con->prepare("SELECT * FROM tokens WHERE token=?");
+    $stmt = $con->prepare("SELECT * FROM tokens T INNER JOIN users U ON T.ID=U.ID WHERE T.token=?");
     $stmt->bind_param("s", $token);
     $stmt->execute();
     $result = $stmt->get_result();
