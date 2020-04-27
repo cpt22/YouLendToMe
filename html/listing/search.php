@@ -66,7 +66,7 @@ if (!empty($_GET['s'])) {
 			</form>
 
 			<?php
-			if (count($items) == 0 && isset($_GET['search'])) {
+			if (count($items) == 0 && isset($_GET['s'])) {
 			    echo '<div class="row border-bottom">Your search returned no results!</div>';
 			}
 foreach ($items as $item) {
